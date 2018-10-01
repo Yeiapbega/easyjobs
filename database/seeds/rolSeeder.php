@@ -28,5 +28,11 @@ class rolSeeder extends Seeder
         	'id' => 3,
         	'name' => 'PERSON',
         ]);
+
+        Rol::create(
+        [
+        	'id' => 4,
+        	'name' => 'C-P',
+        ]);
     }
 }
