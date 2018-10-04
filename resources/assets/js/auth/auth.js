@@ -1,4 +1,4 @@
-$('.select').niceSelect()
+$('.select').niceSelect();
 $("button[name=submitAuth]").click(function(e)
 {
     $(this).attr('disabled', true)
@@ -88,11 +88,13 @@ $("button[name=submitAuth]").click(function(e)
     })
 })
 
-$('button[name="submReg"]').click(function(e){
-  var form = $('form[name="formReg"]').serialize();
+$('button[name="submReg"]').click(function(e)
+{
+  e.preventDefault();
+  // var form = $('form[name="formReg"]').serialize();
   $.ajax(
   {
-      url: "/login",
+      url: "/register",
       method: "POST",
       data: {
           _token:  $('meta[name="csrf-token"]').attr('content'),
@@ -104,7 +106,7 @@ $('button[name="submReg"]').click(function(e){
           phone: $("input[name='phone']").val(),
           email: $("input[name='email']").val(),
           tyc:  $("input[name='tyc']").val(),
-          rol:  $("input[name='rol']").val(),
+          rol:  $("select[name='rol']").val(),
           password:  $("input[name='password']").val(),
           password_conf: $("input[name='password_confirmation']").val(),
       },

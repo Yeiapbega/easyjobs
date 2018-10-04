@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+
 
 class RegisterController extends Controller
 {
@@ -23,55 +25,95 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
-
     public function ShowRegisterForm()
     {
       return view('auth.register');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
+    public function RegisterForm(Request $ajax)
     {
-        return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
+      if($ajax->ajax())
+      {
+          $request = $ajax->all();
+
+          // $passc = $request->password_conf;
+          $data = Validator::make($request,
+          [
+              'dni' => 'required|min:8|max:10|unique:auth',
+              'name' => 'required',
+              'flname' => 'required',
+              'slname' => 'required',
+              'email' => 'required|unique:auth',
+              'tyc' => 'required',
+              'rol' => 'required',
+              'password' => 'required|min:4',
+              'password_conf' => 'required|same:password',
+              '_token' => 'required'
+          ],
+          [
+              'dni.required' => 'El campo Identificación no puede estar vacio',
+              'dni.min' => 'La Identificación minimo debe tener 8 digitos',
+              'dni.max' => 'La Identificación maximo debe tener 10 digitos',
+              'dni.unique' => 'La Identificación ya está registrada en la base de datos',
+              'password.required' => 'El campo Contraseña no puede estar vacio',
+              'password.min' => 'La contraseña debe tener minimo 4 caracteres',
+              'password_conf.required' => 'Por favor confirme su contraseña',
+              'password_conf.same' => 'Las contraseñas no coinciden, intente de nuevo',
+              'name.required' => 'El campo Nombre no puede estar vacio',
+              'flname.required' => 'El campo Primer Apellido no puede estar vacio',
+              'slname.required' => 'El campo Segundo Apellido no puede estar vacio',
+              'email.required' => 'El campo E-mail no puede estar vacio',
+              'email.unique' => 'Su dirección de correo ya se encuentra en nuestra base de datos',
+              'rol.required' => 'El Campo Rol es obligatorio',
+              'tyc.required' => 'Debes aceptar los terminos y condiciones para registrarte',
+              '_token.required' => 'token vacio'
+          ]);
+          if ($data->fails())
+          {
+              return response()->json(['errors' => $data->errors()]);
+          }
+
+          if ($request['phone'] == "")
+          {
+            $request['phone'] = 0;
+          }
+          if ($request['tyc'] == "on")
+          {
+            $request['tyc'] = "YES";
+          }
+          else
+          {
+            $request['tyc'] = "NO";
+          }
+
+          $query = User::create([
+            'id' => '',
+            'dni' => $request['dni'],
+            'fname' => $request['name'],
+            'sname' => $request['sname'],
+            'flname' => $request['flname'],
+            'slname' => $request['slname'],
+            'email' => $request['email'],
+            'phone' => $request['phone'],
+            'password' => bcrypt($request['password']),
+            'rol_id' => $request['rol'],
+            'dataPermission' => $request['tyc'],
+            'remember_token' => str_random(64),
+            'ApiToken' => str_random(64)
+          ]);
+
+          if (!$query) {
+            return response()->json(['message' => 'Error al registrar el usuario',
+                                  'errors' => 'query']);
+          }
+          else
+          {
+            return response()->json(['message' => "Registro realizado con exito",
+                              'errors' => false,
+                              'type' => 'check']);
+          }
+        }
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-    }
+
 }

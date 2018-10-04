@@ -8,8 +8,22 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" name="formReg" aria-label="{{ __('Register') }}">
+                    <form method="POST" autocomplete="off" name="formReg" aria-label="{{ __('Register') }}">
                         @csrf
+
+                        <div class="form-group row">
+                            <label for="dni" class="col-md-4 col-form-label text-md-right">{{ __('Num de Identificación') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="dni" type="number" class="form-control{{ $errors->has('dni') ? ' is-invalid' : '' }}" name="dni" value="{{ old('dni') }}" min="10">
+
+                                @if ($errors->has('dni'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('dni') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
@@ -68,20 +82,6 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="dni" class="col-md-4 col-form-label text-md-right">{{ __('Num de Identificación') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="dni" type="number" class="form-control{{ $errors->has('dni') ? ' is-invalid' : '' }}" name="dni" value="{{ old('dni') }}" min="10">
-
-                                @if ($errors->has('dni'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('dni') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
 
                             <div class="col-md-6">
@@ -110,19 +110,19 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="slname" class="col-md-4 col-form-label text-md-right">{{ __('Rol') }}</label>
+                            <label for="rol" class="col-md-4 col-form-label text-md-right">{{ __('Rol') }}</label>
 
                             <div class="col-md-6">
-                              <select class="select w-100" name="rol">
+                              <select class="select w-100" name="rol" id="rol">
                                 <option selected disabled>Planeas Usar La Plataforma Para</option>
                                 <option value="2">Contratar</option>
                                 <option value="3">Ser Contratado</option>
                                 <option value="4">Ambos</option>
                               </select>
 
-                                @if ($errors->has('slname'))
+                                @if ($errors->has('rol'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('slname') }}</strong>
+                                        <strong>{{ $errors->first('rol') }}</strong>
                                     </span>
                                 @endif
                             </div>

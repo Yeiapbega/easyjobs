@@ -5,11 +5,12 @@ Route::group(['middleware' => 'guest'], function()
 {
 	Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 	Route::post('login', 'Auth\LoginController@login');
-	Route::get('/chat', function()
-	{
-		return view('layouts.chat');
-	})->name('chat');
+	// Route::get('/chat', function()
+	// {
+	// 	return view('layouts.chat');
+	// })->name('chat');
 	Route::get('/register', 'Auth\RegisterController@ShowRegisterForm')->name('register');
+	Route::post('register', 'Auth\RegisterController@RegisterForm');
 	// Route::get('/login/{id?}', function($id = null)
 	// {
 	// 	$a = $users = DB::table('auth')->select('fname', 'email as user_email', 'dni')
