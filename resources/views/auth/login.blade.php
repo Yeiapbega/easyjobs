@@ -29,7 +29,7 @@
 					        <input type="text" class="form-control form-control-lg input-easy" id="inlineFormInputGroup" placeholder="Password">
 				      </div>
 				      <p>
-				      	<button type="button" class="btn btn-primary s btn-block">Ingresar <span class="lnr lnr-enter"></span></button>
+				      	<button type="button" class="btn btn-primary btn-block">Ingresar <span class="lnr lnr-enter"></span></button>
 				      </p>
 				      <p class="grey-text text-right relaway">
 				    	No estas registrado? 
