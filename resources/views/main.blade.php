@@ -30,15 +30,16 @@
         <meta name="robots" content="index,follow">
         <meta name="googlebot" content="all" />
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport' /> --}}
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}">
         @yield('styles')
     </head>
     <body class="animated fadeIn">   
     <div id="main-contain">
         @yield('content')
-    </div>     
-    <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+    </div>         
     @yield('script')
+    <script type="text/javascript" src="{{ asset('js/socket.io.js') }}"></script>
+    <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>       
     @yield('scriptShow')
 </body>
 </html>

@@ -18,8 +18,10 @@ mix.scripts(
 	'public/bootstrap/js/popper.js',
 	'public/bootstrap/js/bootstrap.min.js',
 	'public/js/sweetAlert.js',
-	'resources/assets/js/app.js'
-], 'public/js/app.js');
+	'public/js/jquery.nice-select.min.js',	
+	'resources/assets/js/app.js',
+	'resources/assets/js/auth/auth.js'
+], 'public/js/app.js').version();
 
 mix.styles(
 [
@@ -27,5 +29,7 @@ mix.styles(
    'public/css/fonts.css',
    'public/icon/css/all.css',
    'public/bootstrap/css/bootstrap.min.css',
-   'resources/assets/css/app.css'
-], 'public/css/app.css')
+   'public/css/nice-select.css',
+   'resources/assets/css/app.css',
+   'public/css/lnr-font.min.css'
+], 'public/css/app.css').version();

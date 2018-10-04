@@ -1,30 +1,24 @@
 <?php
 use Illuminate\Support\Facades\DB;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::group(['middleware' => 'guest'], function()
 {
 	Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 	Route::post('login', 'Auth\LoginController@login');
-	Route::get('/login/{id?}', function($id = null)
+	Route::get('/chat', function()
 	{
-		$a = $users = DB::table('auth')->select('fname', 'email as user_email', 'dni')
-		->where('id', '=', $id)
-		->get();
-		foreach ($a as $key => $value) 
-		{
-			return dd($value);
-		}		
-	});
+		return view('layouts.chat');
+	})->name('chat');
+	// Route::get('/login/{id?}', function($id = null)
+	// {
+	// 	$a = $users = DB::table('auth')->select('fname', 'email as user_email', 'dni')
+	// 	->where('id', '=', $id)
+	// 	->get();
+	// 	foreach ($a as $key => $value) 
+	// 	{
+	// 		return dd($value);
+	// 	}		
+	// });
 
 	Route::get('/', function () 
 	{
@@ -34,11 +28,11 @@ Route::group(['middleware' => 'guest'], function()
 
 
 
-// Route::group(['middleware' => ['auth', 'root'], 'prefix' => 'root'], function()
+// Route::group(['middleware' => ['guest', 'offerter'], 'prefix' => 'o'], function()
 // {
 // 	Route::get('/home', function () 
 // 	{
-// 	   return view('root.home');
+// 	   return view('home' ['offerter' => 'offerter']);
 // 	});		
 // });
 // Route::get('/logout', 'Auth\LoginController@logout')->name('logout');

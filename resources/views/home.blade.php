@@ -1,5 +1,7 @@
 @extends('main')
 @section('title', 'home')
 @section('content')
-	<a href="{{ route('login') }}">login</a>
+<a href="{{ url('login') }}">Login</a>
+|
+<a href="{{ url('chat') }}">Chat</a>
 @endsection

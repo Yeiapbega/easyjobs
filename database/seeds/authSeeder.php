@@ -28,6 +28,7 @@ class authSeeder extends Seeder
         	'password' => bcrypt(1234),
         	'photo' => asset("src/profile_photos/photo.png"),
         	'remember_token' => str_random(64),
+            'dataPermission' => 'YES',
         	'rol_id' => DB::table('rol')
                            ->select('id')
                            ->where('id', 1)
@@ -46,6 +47,7 @@ class authSeeder extends Seeder
         	'password' => bcrypt(12345),
         	'photo' => asset("src/profile_photos/photo.png"),
         	'remember_token' => str_random(64),
+            'dataPermission' => 'YES',
         	'rol_id' => DB::table('rol')
                            ->select('id')
                            ->where('id', 2)
@@ -64,6 +66,7 @@ class authSeeder extends Seeder
         	'password' => bcrypt(123456),
         	'photo' => asset("src/profile_photos/photo.png"),
         	'remember_token' => str_random(64),
+            'dataPermission' => 'YES',
         	'rol_id' => DB::table('rol')
                            ->select('id')
                            ->where('id', 3)
@@ -82,6 +85,7 @@ class authSeeder extends Seeder
         	'password' => bcrypt(1234567),
         	'photo' => asset("src/profile_photos/photo.png"),
         	'remember_token' => str_random(64),
+            'dataPermission' => 'YES',
         	'rol_id' => DB::table('rol')
                            ->select('id')
                            ->where('id', 4)

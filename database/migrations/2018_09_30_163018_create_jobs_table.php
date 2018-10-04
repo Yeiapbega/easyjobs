@@ -21,6 +21,10 @@ class CreateJobsTable extends Migration
             $table->string('images', 100)->default(asset("src/textures/job_defaults.png"));
             $table->integer('hours');
             $table->integer('pay');
+            $table->dateTime('publicate_date');
+            $table->dateTime('finish_date');
+            $table->string('state', 2);
+            $table->text('tags');
             $table->string('offerter', 30);
             $table->foreign('offerter')->references('dni')->on('auth')->onDelete('cascade')->onUpdate('cascade'); 
             //$table->timestamps();
@@ -34,8 +38,8 @@ class CreateJobsTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign(['dni_offerter']);
-        $table->dropColumn('dni_offerter');
+        $table->dropForeign(['offerter']);
+        $table->dropColumn('offerter');
         Schema::dropIfExists('jobs');
     }
 }
