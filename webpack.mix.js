@@ -31,5 +31,6 @@ mix.styles(
    'public/bootstrap/css/bootstrap.min.css',
    'public/css/nice-select.css',
    'resources/assets/css/app.css',
-   'public/css/lnr-font.min.css'
+   'public/css/lnr-font.min.css',
+   'resources/assets/css/auth.css',
 ], 'public/css/app.css').version();
