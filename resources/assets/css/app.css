@@ -1,9 +1,19 @@
 body
 {
-	font-family: 'Quicksand', sans-serif;	
+	font-family: 'Quicksand', sans-serif !important;
 	color: #000;
 	/*padding-right: 5px;*/
 	/*padding-left: 5px;*/
+}
+
+.bold
+{
+  font-weight: bold !important;
+}
+
+.black-text
+{
+  color:#000 !important;
 }
 
 .z-depth-1 {
@@ -58,4 +68,49 @@ input[type=number] { -moz-appearance:textfield; }
 .dropdown-item:active 
 {    
     background-color: #177f90;
+}
+
+.input-icon-easy
+{
+  background: transparent !important;
+  border-right: none;
+  transition: all .5s ease;
+  padding-right: 0px;
+}
+
+.input-icon-easy > span
+{
+  transition: all .5s;
+}
+
+.middle
+{
+  position: relative;
+  top: 10%;
+}
+
+.form-control:focus 
+{
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: none; 
+  transition: all .5s ease;
+}
+
+.input-easy
+{
+  font-size: 17px;
+  border-left: none;
+}
+
+.input-easy::placeholder
+{
+  font-size: 17px;
+}
+
+a:hover
+{
+  text-decoration: none;
 }

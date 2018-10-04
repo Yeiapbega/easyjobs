@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        {{-- <link rel="icon" type="image/png" href="{{ asset('src/box_2.png') }}" /> --}}
+        <link rel="icon" type="image/png" href="{{ asset('src/logo/ico.png') }}" />
         <meta http-equiv="X-UA-Compatible" content="ie-edge"> 
         <title>{{ config('app.name') }} •{{-- 📦 --}} @yield('title')</title>        
     {{--      <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">

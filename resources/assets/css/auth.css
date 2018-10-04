@@ -1,0 +1,45 @@
+.p1-gradient-bg, .overlay-bg
+{
+    background-image: -moz-linear-gradient(0deg, #bdf6ff 0%, #2d71dc 100%);
+    background-image: -webkit-linear-gradient(0deg, #bdf6ff 0%, #2d71dc 100%);
+    background-image: -ms-linear-gradient(0deg, #bdf6ff 0%, #2d71dc 100%);
+}
+
+.overlay 
+{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.logoShort
+{
+	position: relative;
+	top: -7px;
+}
+
+.overlay-bg 
+{
+    opacity: .90;
+}
+
+.auth__wrapper
+{
+	height: 100vh;
+	z-index: 1000;
+}
+
+.row__wrapper:before
+{
+	content: '';
+    width: 70%;
+    position: absolute;
+    background-image: url(../src/textures/back_login.png);
+    height: 100vh;
+    right: 0;
+    background-size: cover;
+    background-position: unset;
+    background-repeat: no-repeat;
+}
