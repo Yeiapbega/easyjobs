@@ -3,5 +3,5 @@
 @section('content')
 <a href="{{ url('login') }}">Login</a>
 |
-<a href="{{ url('chat') }}">Chat</a>
+<a href="{{ url('register') }}">Register</a>
 @endsection

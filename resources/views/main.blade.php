@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         {{-- <link rel="icon" type="image/png" href="{{ asset('src/box_2.png') }}" /> --}}
-        <meta http-equiv="X-UA-Compatible" content="ie-edge"> 
-        <title>{{ config('app.name') }} •{{-- 📦 --}} @yield('title')</title>        
+        <meta http-equiv="X-UA-Compatible" content="ie-edge">
+        <title>{{ config('app.name') }} • @yield('title')</title>        
     {{--      <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
         <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
@@ -33,13 +33,13 @@
         <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}">
         @yield('styles')
     </head>
-    <body class="animated fadeIn">   
+    <body class="animated fadeIn">
     <div id="main-contain">
         @yield('content')
-    </div>         
+    </div>
     @yield('script')
     <script type="text/javascript" src="{{ asset('js/socket.io.js') }}"></script>
-    <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>       
+    <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
     @yield('scriptShow')
 </body>
 </html>
