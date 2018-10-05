@@ -18,17 +18,18 @@ class authSeeder extends Seeder
 
         User::create(
         [
-        	'dni' => '1234',
+        	'dni' => '12341234',
         	'fname' => 'Yeisson',
         	'sname' => 'Andres',
         	'flname' => 'Perez',
         	'slname' => 'Begambre',
         	'email' => 'asdas@gmail.com',
         	'phone' => '2312312313',
-        	'password' => bcrypt(1234),
+        	'password' => bcrypt(12345),
         	'photo' => asset("src/profile_photos/photo.png"),
         	'remember_token' => str_random(64),
             'dataPermission' => 'YES',
+            'ApiToken' => str_random(64),
         	'rol_id' => DB::table('rol')
                            ->select('id')
                            ->where('id', 1)
@@ -37,7 +38,7 @@ class authSeeder extends Seeder
 
         User::create(
         [
-        	'dni' => '12345',
+        	'dni' => '12345678',
         	'fname' => 'Adrian',
         	'sname' => 'David',
         	'flname' => 'Correa',
@@ -48,6 +49,7 @@ class authSeeder extends Seeder
         	'photo' => asset("src/profile_photos/photo.png"),
         	'remember_token' => str_random(64),
             'dataPermission' => 'YES',
+            'ApiToken' => str_random(64),
         	'rol_id' => DB::table('rol')
                            ->select('id')
                            ->where('id', 2)
@@ -56,17 +58,18 @@ class authSeeder extends Seeder
 
         User::create(
         [
-        	'dni' => '123456',
+        	'dni' => '123456789',
         	'fname' => 'Miguel',
         	'sname' => 'angel',
         	'flname' => 'viloria',
         	'slname' => 'sierra',
         	'email' => 'asdas@gmail.com',
         	'phone' => '2312312313',
-        	'password' => bcrypt(123456),
+        	'password' => bcrypt(12345),
         	'photo' => asset("src/profile_photos/photo.png"),
         	'remember_token' => str_random(64),
             'dataPermission' => 'YES',
+            'ApiToken' => str_random(64),
         	'rol_id' => DB::table('rol')
                            ->select('id')
                            ->where('id', 3)
@@ -75,17 +78,18 @@ class authSeeder extends Seeder
 
         User::create(
         [
-        	'dni' => '1234567',
+        	'dni' => '1234567890',
         	'fname' => 'Rene',
         	'sname' => 'orlando',
         	'flname' => 'vilora',
         	'slname' => 'Sierra',
         	'email' => 'asdas@gmail.com',
         	'phone' => '2312312313',
-        	'password' => bcrypt(1234567),
+        	'password' => bcrypt(12345),
         	'photo' => asset("src/profile_photos/photo.png"),
         	'remember_token' => str_random(64),
             'dataPermission' => 'YES',
+            'ApiToken' => str_random(64),
         	'rol_id' => DB::table('rol')
                            ->select('id')
                            ->where('id', 4)

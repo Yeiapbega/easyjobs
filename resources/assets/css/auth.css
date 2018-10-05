@@ -27,8 +27,10 @@
 
 .auth__wrapper
 {
-	height: 100vh;
+	height: 100%;
+	position: fixed;
 	z-index: 1000;
+	overflow-y: auto;
 }
 
 .row__wrapper:before
@@ -37,7 +39,7 @@
     width: 70%;
     position: absolute;
     background-image: url(../src/textures/back_login.png);
-    height: 100vh;
+    height: 100%;
     right: 0;
     background-size: cover;
     background-position: unset;

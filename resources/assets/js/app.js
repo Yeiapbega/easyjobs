@@ -32,41 +32,40 @@ function notLoadIcon(nameB, nameI)
     i.addClass("fa fa-"+nameI);
 }
 
-function isEmpty(nameForm)
-{
-    var text = ""
-    var i = 0
-    var k = 0      
-    $(nameForm+" .validEmpty").each(function(index)
-     {
-        $(this).parent().css({"border":"solid transparent 1px"}) 
-        k++;
-        i++;
-        var val = $(this).val();
-        var cual = $(this).attr('placeholder')      
-        if(val == "")
-        {
-            i--;     
-            $(this).parent().css({"border":"solid red 1px"})                         
-            //text += "Campo <b>"+cual+"</b> Vacio<br>";             
-        }
-     })
-     if(i == k)
-     {          
-         return true;
-     }
-     else
-     {
-        toastr.error('el formulario contiene campos vacios', '', {"closeButton": true,"timeOut": "4000", "preventDuplicates": true})
-     }
-}
+// function isEmpty(nameForm)
+// {
+//     var text = ""
+//     var i = 0
+//     var k = 0      
+//     $(nameForm+" .validEmpty").each(function(index)
+//      {         
+//         // $(this).parent().css({"border":"solid transparent 1px"}) 
+//         k++;
+//         i++;
+//         var val = $(this).val();
+//         var cual = $(this).attr('placeholder')      
+//         if(val == "")
+//         {
+//             i--;                                       
+//             text += "Campo <b>"+cual+"</b> Vacio<br>";             
+//         }
+//      })
+//      if(i == k)
+//      {          
+//          return true;
+//      }
+//      else
+//      {
+//         toastr.error('el formulario contiene campos vacios', '', {"closeButton": true,"timeOut": "4000", "preventDuplicates": true})
+//      }
+// }
 
 $('.input-easy').focus(function()
-{
+{    
     let icon = $(this).parent().find('.input-icon-easy');    
-    icon.css({'border-color':'#80bdff'}).find('span').css({'font-weight':'bold', 'color':'#80bdff'})
+    icon.css({'border-color':'#80bdff'}).find('i').css({'font-weight':'bold', 'color':'#80bdff'})
 }).focusout(function()
 {
     let icon = $(this).parent().find('.input-icon-easy');
-    icon.css({'border-color':'#ced4da'}).find('span').css({'font-weight':'normal', 'color':'#495057'})
+    icon.css({'border-color':'#ced4da'}).find('i').css({'font-weight':'normal', 'color':'#495057'})    
 })

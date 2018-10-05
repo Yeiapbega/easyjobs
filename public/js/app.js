@@ -1592,48 +1592,48 @@ function notLoadIcon(nameB, nameI)
     i.addClass("fa fa-"+nameI);
 }
 
-function isEmpty(nameForm)
-{
-    var text = ""
-    var i = 0
-    var k = 0      
-    $(nameForm+" .validEmpty").each(function(index)
-     {
-        $(this).parent().css({"border":"solid transparent 1px"}) 
-        k++;
-        i++;
-        var val = $(this).val();
-        var cual = $(this).attr('placeholder')      
-        if(val == "")
-        {
-            i--;     
-            $(this).parent().css({"border":"solid red 1px"})                         
-            //text += "Campo <b>"+cual+"</b> Vacio<br>";             
-        }
-     })
-     if(i == k)
-     {          
-         return true;
-     }
-     else
-     {
-        toastr.error('el formulario contiene campos vacios', '', {"closeButton": true,"timeOut": "4000", "preventDuplicates": true})
-     }
-}
+// function isEmpty(nameForm)
+// {
+//     var text = ""
+//     var i = 0
+//     var k = 0      
+//     $(nameForm+" .validEmpty").each(function(index)
+//      {         
+//         // $(this).parent().css({"border":"solid transparent 1px"}) 
+//         k++;
+//         i++;
+//         var val = $(this).val();
+//         var cual = $(this).attr('placeholder')      
+//         if(val == "")
+//         {
+//             i--;                                       
+//             text += "Campo <b>"+cual+"</b> Vacio<br>";             
+//         }
+//      })
+//      if(i == k)
+//      {          
+//          return true;
+//      }
+//      else
+//      {
+//         toastr.error('el formulario contiene campos vacios', '', {"closeButton": true,"timeOut": "4000", "preventDuplicates": true})
+//      }
+// }
 
 $('.input-easy').focus(function()
-{
+{    
     let icon = $(this).parent().find('.input-icon-easy');    
-    icon.css({'border-color':'#80bdff'}).find('span').css({'font-weight':'bold', 'color':'#80bdff'})
+    icon.css({'border-color':'#80bdff'}).find('i').css({'font-weight':'bold', 'color':'#80bdff'})
 }).focusout(function()
 {
     let icon = $(this).parent().find('.input-icon-easy');
-    icon.css({'border-color':'#ced4da'}).find('span').css({'font-weight':'normal', 'color':'#495057'})
+    icon.css({'border-color':'#ced4da'}).find('i').css({'font-weight':'normal', 'color':'#495057'})    
 })
 
 $('.select').niceSelect()
 $("button[name=submitAuth]").click(function(e)
 {
+
     $(this).attr('disabled', true)
     $.ajaxSetup(
     {
@@ -1642,7 +1642,14 @@ $("button[name=submitAuth]").click(function(e)
         }
     });
     e.preventDefault();
-    var form = $("form[name=login]").serialize();
+    // var data = 
+    // {
+    //     _token:  $('meta[name="csrf-token"]').attr('content'),
+    //     dni: $("input[name='dni']").val(),
+    //     remember: r,
+    //     pass:  $("input[name='pass']").val()
+    // }
+    // console.log(data)    
     $.ajax(
     {
         url: "/login",
@@ -1650,12 +1657,13 @@ $("button[name=submitAuth]").click(function(e)
         data: {
             _token:  $('meta[name="csrf-token"]').attr('content'),
             dni: $("input[name='dni']").val(),
+            remember: $('input[name=remember]').is(":checked"),
             pass:  $("input[name='pass']").val()
         },
         beforeSend: function()
         {
-            $(".form-auth-input").attr('disabled', true)
-            loadIcon('submitAuth', 'paper-plane')
+            $(".input-easy").attr('disabled', true)
+            loadIcon('submitAuth', 'fa-sign-in-alt')
             $("input[name='dni']").removeClass('is-invalid')
             $(".dniInvalid").html('')
             $("input[name='pass']").removeClass('is-invalid')
@@ -1664,8 +1672,8 @@ $("button[name=submitAuth]").click(function(e)
         error: function(jqXHR, textStatus, errorThrown)
         {
             // Handle errors here
-            notLoadIcon('submitAuth', 'send')
-            $(".form-auth-input").attr('disabled', false)
+            notLoadIcon('submitAuth', 'fa-sign-in-alt')
+            $(".input-easy").attr('disabled', false)
             $('button[name=submitAuth]').attr('disabled', false)
             alert('ERRORS: ' + textStatus + " - " + errorThrown);
             // STOP LOADING SPINNER
@@ -1675,22 +1683,22 @@ $("button[name=submitAuth]").click(function(e)
     {
         $('button[name=submitAuth]').attr('disabled', false)
         $("errors > div.card").removeClass('bg-info').addClass('bg-danger')
-        $(".form-auth-input").attr('disabled', true)
-        notLoadIcon('submitAuth', 'paper-plane')
+        $(".input-easy").attr('disabled', true)
+        notLoadIcon('submitAuth', 'fa-sign-in-alt')
         if(data.errors)
         {
-            var text = '<ul class="mb-0 px-3 mx-0">';
-            if(data.errors.dni != null)
-            {
-                $("input[name='dni']").addClass('is-invalid')
-                text += '<li>'+data.errors.dni+'</li>'
-            }
+            var text = '<ul class="mb-0 px-3 mx-0">';            
             if(data.errors.pass != null)
             {
-                $("input[name='pass']").addClass('is-invalid')
+                $("input[name='pass']").focus()
                 text += '<li>'+data.errors.pass+'</li>'
             }
-            $(".form-auth-input").attr('disabled', false)
+            if(data.errors.dni != null)
+            {
+                $("input[name='dni']").focus()
+                text += '<li>'+data.errors.dni+'</li>'
+            }
+            $(".input-easy").attr('disabled', false)
             text += '</ul>'
             $("errors > div.card > .card-body").html(text).parent().parent().addClass('animated fadeIn')
             $('errors').show()
@@ -1701,14 +1709,14 @@ $("button[name=submitAuth]").click(function(e)
             $("errors > div.card").removeClass('bg-danger').addClass('bg-info')
             $("errors > div.card > .card-body").html(data.message).parent().addClass('animated fadeIn')
             $('errors').show()
-            $(".form-auth-input").attr('disabled', false)
+            $(".input-easy").attr('disabled', false)
         }
         if(data.type == "check")
         {
             $("errors > div.card > .card-title").html('<i class="fa fa-check"></i> Info')
             $("errors > div.card").removeClass('bg-danger bg-info').addClass('bg-success')
             $("errors > div.card > .card-body").html(data.message).parent().addClass('animated fadeIn')
-            $(".form-auth-input").attr('disabled', false)
+            $(".input-easy").attr('disabled', false)
             $('errors').show()
         }
     })
@@ -1736,14 +1744,14 @@ $('button[name="submReg"]').click(function(e){
           slname: $("input[name='slname']").val(),
           phone: $("input[name='phone']").val(),
           email: $("input[name='email']").val(),
-          tyc:  $("input[name='tyc']").val(),
-          rol:  $("input[name='rol']").val(),
+          tyc: $("input[name='tyc']").val(),
+          rol: $("input[name='rol']").val(),
           password:  $("input[name='password']").val(),
           password_conf: $("input[name='password_confirmation']").val(),
       },
       beforeSend: function()
       {
-          $(".form-auth-input").attr('disabled', true)
+          $(".input-easy").attr('disabled', true)
           loadIcon('submitAuth', 'paper-plane')
           $("input[name='dni']").removeClass('is-invalid')
           $(".dniInvalid").html('')
@@ -1754,7 +1762,7 @@ $('button[name="submReg"]').click(function(e){
       {
           // Handle errors here
           notLoadIcon('submitAuth', 'send')
-          $(".form-auth-input").attr('disabled', false)
+          $(".input-easy").attr('disabled', false)
           $('button[name=submitAuth]').attr('disabled', false)
           alert('ERRORS: ' + textStatus + " - " + errorThrown);
           // STOP LOADING SPINNER

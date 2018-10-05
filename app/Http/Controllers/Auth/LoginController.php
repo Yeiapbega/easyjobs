@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+// use Illuminate\Support\MessageBag;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Models\Rol;
 
 class LoginController extends Controller
 {
@@ -20,15 +26,18 @@ class LoginController extends Controller
         if($ajax->ajax())
         {
             $request = $ajax->all();
+            $dni = $request['dni'];
             $data = Validator::make($request, 
             [
-                'dni' => 'required|min:6',        
-                'pass' => 'required|min:2',
+                'dni' => 'required|min:8',        
+                'pass' => 'required|min:3',
                 '_token' => 'required'    
             ],
             [
-                'dni.required' => 'El campo dni no puede estar vacio',
-                'pass.required' => 'El campo password no puede estar vacio',
+                'dni.required' => 'El campo identificacion no puede estar vacio',
+                'dni.min' => 'Identificacion MAX 4 caracteres',
+                'pass.required' => 'El campo contraseña no puede estar vacio',
+                'pass.min' => 'Contraseña MAX 8 caracteres',
                 '_token.required' => 'token vacio'
             ]); 
             if ($data->fails()) 
@@ -40,19 +49,27 @@ class LoginController extends Controller
               $this->fireLockoutEvent($ajax);
               return $this->sendLockoutResponse($ajax);
             }   
-            //dd($request->all());
-            // if (Auth::viaRemember()) 
-            // {
-            //     return 'cookie';
-            // }            
-            if(Auth::attempt(['dni' => $request["dni"], 'password' => $request['pass']], false)) 
-            {           
+            $remember = $request['remember'];            
+            if (Auth::viaRemember()) 
+            {
+                session(['remember' => 'recordado']);
+            }            
+            if(Auth::attempt(['dni' => $request["dni"], 'password' => $request['pass']], $remember)) 
+            {   
                // $datos = DB::table('auth')
-               //             ->select('dni as user_dni', 'email as user_email','fname as nombre','flname as apellido','phone')
-               //             ->where('dni', $request["dni"])
-               //             ->get()
-               //             ->toArray();
-               // //dd($datos->toArray());
+               //          ->join('rol', function ($join) 
+               //          {
+               //              $join->on('auth.rol_id', '=', 'rol.id')
+               //                   ->where([
+               //                      ['rol.id', '=', 'auth.rol_id'],
+               //                      ['auth.dni', '=', $dni]
+               //                    ]);
+               //          })
+               //          ->select('rol.name as rol')
+               //          ->get();
+               $datos = Rol::find(Auth::user()->rol_id)->name;
+               session(['Rol' => $datos]);
+               // dd($datos);
                // foreach ($datos[0] as $key => $value) 
                // {
                //      session([$key => $value]);
@@ -76,6 +93,6 @@ class LoginController extends Controller
     {
         Auth::logout();
         session()->flush();
-        return redirect('');
+        return redirect('/');
     }
 }

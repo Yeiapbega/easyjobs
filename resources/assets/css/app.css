@@ -74,11 +74,10 @@ input[type=number] { -moz-appearance:textfield; }
 {
   background: transparent !important;
   border-right: none;
-  transition: all .5s ease;
-  padding-right: 0px;
+  transition: all .5s ease;  
 }
 
-.input-icon-easy > span
+.input-icon-easy > i
 {
   transition: all .5s;
 }
@@ -93,7 +92,7 @@ input[type=number] { -moz-appearance:textfield; }
 {
   color: #495057;
   background-color: #fff;
-  border-color: #80bdff;
+  border-color: #80bdff !important;
   outline: 0;
   box-shadow: none; 
   transition: all .5s ease;
@@ -102,6 +101,7 @@ input[type=number] { -moz-appearance:textfield; }
 .input-easy
 {
   font-size: 17px;
+  padding-left: 0px;
   border-left: none;
 }
 
@@ -113,4 +113,9 @@ input[type=number] { -moz-appearance:textfield; }
 a:hover
 {
   text-decoration: none;
+}
+
+.custom-control-label::before, .custom-file-label, .custom-select 
+{
+  transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
