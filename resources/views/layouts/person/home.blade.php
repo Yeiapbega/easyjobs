@@ -8,4 +8,7 @@
 {{ session()->get('Rol') }}
 {{ session()->get('remember') }}
 @endif
+{{-- @foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+@endforeach --}}
 @endsection

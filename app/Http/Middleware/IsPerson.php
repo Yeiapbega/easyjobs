@@ -16,9 +16,20 @@ class IsPerson
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->rol_id == '3')
+        if(Auth::user()->rol_id == 3)
         {
             return $next($request);
-        }   
+        }
+        else
+        {
+            if ($request->ajax())
+            {
+                return response('Unauthorized.', 401);
+            }
+            
+            $url = url()->previous();
+            return redirect($url)
+                        ->withErrors(['notPermission' => 'no tienes permitido acceder a esta ruta']);
+        }      
     }
 }

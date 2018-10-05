@@ -17,24 +17,24 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-         if(Auth::check())
+        if(Auth::check())
         {
-            if (Auth::user()->rol_id == '1') 
+            if (Auth::user()->rol_id == 1) 
             {
                 return redirect('/admin/home');
             }
 
-            if (Auth::user()->rol_id == '2') 
+            if (Auth::user()->rol_id == 2) 
             {
                 return redirect('/c/home');
             }
 
-            if (Auth::user()->rol_id == '3') 
+            if (Auth::user()->rol_id == 3) 
             {
                 return redirect('/p/home');
             }
 
-            if (Auth::user()->rol_id == '4') 
+            if (Auth::user()->rol_id == 4) 
             {
                 return redirect('/cp/home');
             }

@@ -35,9 +35,9 @@ class LoginController extends Controller
             ],
             [
                 'dni.required' => 'El campo identificacion no puede estar vacio',
-                'dni.min' => 'Identificacion MAX 8 caracteres',
+                'dni.min' => 'Identificacion MIN 8 caracteres',
                 'pass.required' => 'El campo contraseña no puede estar vacio',
-                'pass.min' => 'Contraseña MAX 4 caracteres',
+                'pass.min' => 'Contraseña MIN 4 caracteres',
                 '_token.required' => 'token vacio'
             ]); 
             if ($data->fails()) 

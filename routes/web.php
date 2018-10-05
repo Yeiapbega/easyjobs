@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth', 'IsPerson'], 'prefix' => 'p'], function()
 	Route::get('/home', function ()
 	{
 	   return view('layouts.person.home');
-	});
+	})->name('homeP');
 });
 
 Route::group(['middleware' => ['auth', 'IsCompany'], 'prefix' => 'c'], function()

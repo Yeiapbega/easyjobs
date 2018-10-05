@@ -41,5 +41,17 @@
     <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
     @yield('script')
     @yield('scriptShow')
+    @if($errors->any()) 
+       <script type="text/javascript">
+            swal(
+            {
+              title: '',
+              type: 'warning',
+              position: 'bottom-right',
+              text: '{{ $errors->first('notPermission') }}',
+              confirmButtonText: 'Aceptar',  
+            })
+       </script>       
+    @endif
 </body>
 </html>
