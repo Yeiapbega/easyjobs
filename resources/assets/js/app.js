@@ -32,34 +32,6 @@ function notLoadIcon(nameB, nameI)
     i.addClass("fa fa-"+nameI);
 }
 
-// function isEmpty(nameForm)
-// {
-//     var text = ""
-//     var i = 0
-//     var k = 0      
-//     $(nameForm+" .validEmpty").each(function(index)
-//      {         
-//         // $(this).parent().css({"border":"solid transparent 1px"}) 
-//         k++;
-//         i++;
-//         var val = $(this).val();
-//         var cual = $(this).attr('placeholder')      
-//         if(val == "")
-//         {
-//             i--;                                       
-//             text += "Campo <b>"+cual+"</b> Vacio<br>";             
-//         }
-//      })
-//      if(i == k)
-//      {          
-//          return true;
-//      }
-//      else
-//      {
-//         toastr.error('el formulario contiene campos vacios', '', {"closeButton": true,"timeOut": "4000", "preventDuplicates": true})
-//      }
-// }
-
 $('.input-easy').focus(function()
 {    
     let icon = $(this).parent().find('.input-icon-easy');    

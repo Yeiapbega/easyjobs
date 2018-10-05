@@ -3,11 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="icon" type="image/png" href="{{ asset('src/logo/ico.png') }}" />
         <meta http-equiv="X-UA-Compatible" content="ie-edge">
-        <title>{{ config('app.name') }} • @yield('title')</title>
+        <title>EJ • @yield('title')</title>
     {{--      <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
         <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
@@ -35,11 +35,11 @@
     </head>
     <body class="animated fadeIn">
     <div id="main-contain">
-        @yield('content')
-    </div>
-    @yield('script')
+        @yield('content')        
+    </div>    
     <script type="text/javascript" src="{{ asset('js/socket.io.js') }}"></script>
     <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
+    @yield('script')
     @yield('scriptShow')
 </body>
 </html>

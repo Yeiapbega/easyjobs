@@ -88,7 +88,7 @@ input[type=number] { -moz-appearance:textfield; }
   top: 10%;
 }
 
-.form-control:focus 
+.form-control:focus
 {
   color: #495057;
   background-color: #fff;
@@ -96,6 +96,21 @@ input[type=number] { -moz-appearance:textfield; }
   outline: 0;
   box-shadow: none; 
   transition: all .5s ease;
+}
+
+.nice-select:active, .nice-select.open, .nice-select:focus 
+{
+  border-color: #80bdff;
+}
+
+.nice-select
+{
+  border-color: #ced4da;
+}
+
+.nice-select.open .list 
+{
+  width: 100%;
 }
 
 .input-easy

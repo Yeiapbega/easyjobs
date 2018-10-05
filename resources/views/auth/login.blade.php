@@ -1,13 +1,14 @@
 @extends('main')
 @section('title', 'Login')
-@section('content')
+@section('content')           
 <div class="section">
 	<div class="row row__wrapper mx-0">
 		<div class="col-lg-4 col-md-6 col-sm-12 auth__wrapper bg-white px-5 py-5">
 			<div class="middle">
-				<p class="text-center position-relative">
+				<p class="text-center position-relative mb-0">
 					<img src="{{ asset('src/logo/logoShort.png') }}" class="logoShort">
-					<span style="font-size: 30px;" class="dosis font-weight-bold">EasyJobs</span>
+					<span style="font-size: 25px;" class="dosis font-weight-bold">EasyJobs</span> • 
+					<span style="font-size: 22px;" class="quick">Login</span>
 				</p>
 				<hr>
 				<errors class="quick" style="display: none;zoom: .75;">
@@ -58,4 +59,7 @@
 		<div class="overlay-bg overlay"></div>
 	</div>
 </div>
+@endsection
+@section('script')
+<script type="text/javascript" src="{{ asset('resources/js/auth/auth.js') }}"></script>
 @endsection

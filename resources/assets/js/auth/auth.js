@@ -1,23 +1,15 @@
 $('.select').niceSelect();
+$.ajaxSetup(
+{
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
 $("button[name=submitAuth]").click(function(e)
 {
 
-    $(this).attr('disabled', true)
-    $.ajaxSetup(
-    {
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    e.preventDefault();
-    // var data = 
-    // {
-    //     _token:  $('meta[name="csrf-token"]').attr('content'),
-    //     dni: $("input[name='dni']").val(),
-    //     remember: r,
-    //     pass:  $("input[name='pass']").val()
-    // }
-    // console.log(data)    
+    $(this).attr('disabled', true)    
+    e.preventDefault();  
     $.ajax(
     {
         url: "/login",
@@ -95,7 +87,7 @@ $("button[name=submitAuth]").click(function(e)
          console.log('normal error')
         }
     })
-})
+});
 
 $('button[name="submReg"]').click(function(e)
 {
@@ -122,7 +114,8 @@ $('button[name="submReg"]').click(function(e)
       beforeSend: function()
       {
           $(".input-easy").attr('disabled', true)
-          loadIcon('submitAuth', 'paper-plane')
+          $("select[name='rol']").parent().find('.nice-select').addClass('disabled')
+          loadIcon('submReg', 'fa-paper-plane')
           $("input[name='dni']").removeClass('is-invalid')
           $(".dniInvalid").html('')
           $("input[name='pass']").removeClass('is-invalid')
@@ -131,11 +124,44 @@ $('button[name="submReg"]').click(function(e)
       error: function(jqXHR, textStatus, errorThrown)
       {
           // Handle errors here
-          notLoadIcon('submitAuth', 'send')
+          notLoadIcon('submReg', 'fa-paper-plane')
           $(".input-easy").attr('disabled', false)
+          $("select[name='rol']").parent().find('.nice-select').removeClass('disabled')
           $('button[name=submitAuth]').attr('disabled', false)
           alert('ERRORS: ' + textStatus + " - " + errorThrown);
           // STOP LOADING SPINNER
       }
+  }).done(function(data)
+  {
+    $(".input-easy").attr('disabled', false)
+    $("select[name='rol']").parent().find('.nice-select').removeClass('disabled')
+    notLoadIcon('submReg', 'fa-paper-plane')
+    if(data.errors)
+    {
+        var text = '<ul class="mb-0 px-3 mx-0">';            
+        $.each(data.errors, function( key, value ) 
+        {
+          text += '<li>'+value+'</li>'
+        });        
+        $(".input-easy").attr('disabled', false)
+        text += '</ul>'
+        $("errors > div.card > .card-body").html(text).parent().parent().addClass('animated fadeIn')
+        $('errors').show()
+        $('errors > div.card').addClass('animated fadeIn').show()
+    }
+    if(data.type == "check")
+    {
+        $("errors > div.card > .card-title").html('<i class="fa fa-check"></i> Info')
+        $("errors > div.card").removeClass('bg-danger bg-info').addClass('bg-success')
+        $("errors > div.card > .card-body").html(data.message).parent().addClass('animated fadeIn')
+        $(".input-easy").attr('disabled', false)
+        $('errors').show()
+        $('errors > div.card').addClass('animated fadeIn').show()
+    }
   })
+});
+
+$('errors').click(function()
+{
+  $(this).hide();
 })

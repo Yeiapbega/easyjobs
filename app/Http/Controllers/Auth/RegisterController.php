@@ -104,13 +104,12 @@ class RegisterController extends Controller
 
           if (!$query) {
             return response()->json(['message' => 'Error al registrar el usuario',
-                                  'errors' => 'query']);
+                              'errors' => 'query']);
           }
           else
           {
             return response()->json(['message' => "Registro realizado con exito",
-                              'errors' => false,
-                              'tyc' => $tyc_,
+                              'errors' => false,                              
                               'type' => 'check']);
           }
         }
