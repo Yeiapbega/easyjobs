@@ -30,6 +30,11 @@
 	height: 100%;
 	position: fixed;
 	z-index: 1000;
+	overflow-y: hidden;
+}
+
+.auth__wrapper:hover
+{
 	overflow-y: auto;
 }
 
@@ -45,3 +50,12 @@
     background-position: unset;
     background-repeat: no-repeat;
 }
+
+/*@media screen and (min-width: 1430px)
+{
+	.middle
+	{
+		max-width: 500px;
+	}
+}*/
+

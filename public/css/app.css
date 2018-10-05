@@ -2858,6 +2858,14 @@ a:hover
 	height: 100%;
 	position: fixed;
 	z-index: 1000;
+<<<<<<< HEAD
+=======
+	overflow-y: hidden;
+}
+
+.auth__wrapper:hover
+{
+>>>>>>> bfbdccf3b7049d656b0fc80dfb1d1d96fee648cd
 	overflow-y: auto;
 }
 
@@ -2872,4 +2880,17 @@ a:hover
     background-size: cover;
     background-position: unset;
     background-repeat: no-repeat;
+<<<<<<< HEAD
 }
+=======
+}
+
+/*@media screen and (min-width: 1430px)
+{
+	.middle
+	{
+		max-width: 500px;
+	}
+}*/
+
+>>>>>>> bfbdccf3b7049d656b0fc80dfb1d1d96fee648cd
