@@ -63,6 +63,7 @@ class Kernel extends HttpKernel
         'IsPerson' =>  \App\Http\Middleware\IsPerson::class,
         'IsCompany' =>  \App\Http\Middleware\IsCompany::class,
         'IsCp' =>  \App\Http\Middleware\IsCp::class,
+        'RequestValidation' =>  \App\Http\Middleware\RequestValidation::class,
         // 'admin' =>  \App\Http\Middleware\IsAdmin::class,
     ];
 }

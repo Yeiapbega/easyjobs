@@ -60,12 +60,6 @@
 	</div>
 </div>
 @endsection
-<<<<<<< HEAD
 @section('script')
 {{-- <script type="text/javascript" src="{{ asset('resources/js/auth/auth.js') }}"></script> --}}
 @endsection
-=======
-{{-- @section('script')
-<script type="text/javascript" src="{{ asset('resources/js/auth/auth.js') }}"></script>
-@endsection --}}
->>>>>>> c3a431a6c58e42e4d2e44c32192efe57ba3ff5f8

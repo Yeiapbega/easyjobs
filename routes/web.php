@@ -1,5 +1,6 @@
 <?php
 // use Illuminate\Support\Facades\DB;
+use App\Http\Middleware\RequestValidation;
 
 Route::group(['middleware' => 'guest'], function()
 {
