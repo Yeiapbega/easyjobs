@@ -57,12 +57,12 @@ class LoginController extends Controller
             {
               $remember = true;
             }
-            
+
             if(Auth::attempt(['dni' => $request["dni"], 'password' => $request['pass']], $remember)) 
             {                  
                $datos = Rol::find(Auth::user()->rol_id)->name;
                session(['Rol' => $datos]);
-               return response()->json(['message' => "Has sido conectado al servidor", 
+               return response()->json(['message' => "Has sido conectado al servidor <br> Ingresando... <strong class='counter'></strong>", 
                                  'errors' => false, 
                                  'type' => 'check']);               
             }

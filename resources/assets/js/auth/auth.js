@@ -78,6 +78,16 @@ $("button[name=submitAuth]").click(function(e)
             $("errors > div.card > .card-body").html(data.message).parent().addClass('animated fadeIn')
             $(".input-easy").attr('disabled', false)
             $('errors').show()
+            let i = 4;
+            let counter = setInterval(function()
+            {
+              i--;
+              $('strong.counter').html(i)
+              if(i == 0)
+              {
+                location.reload();
+              }
+            }, 1000)
         }
     })
     .fail(function(jqXHR, textStatus, errorThrown)
@@ -157,6 +167,15 @@ $('button[name="submReg"]').click(function(e)
         $(".input-easy").attr('disabled', false)
         $('errors').show()
         $('errors > div.card').addClass('animated fadeIn').show()
+        let i = 2;
+        let counter = setInterval(function()
+        {
+          i--;
+          if(i == 0)
+          {
+            location.replace('/login');
+          }
+        }, 1000)        
     }
   })
 });
