@@ -1,7 +1,5 @@
 <?php
 // use Illuminate\Support\Facades\DB;
-use App\Http\Middleware\RequestValidation;
-
 Route::group(['middleware' => 'guest'], function()
 {
 	Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -34,6 +32,11 @@ Route::group(['middleware' => 'auth'], function()
 		{
 		   return view('layouts.person.home');
 		})->name('homeP');
+
+		Route::post('/request', function ()
+		{
+		   return view('layouts.person.home');
+		})->middleware('RequestValidation');
 	});
 
 	Route::group(['middleware' => ['IsCompany'], 'prefix' => 'c'], function()

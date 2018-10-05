@@ -17,9 +17,17 @@ class RequestValidation
      */
     public function handle($request, Closure $next)
     {
-      if(Auth::user()->ApiToken == DB::table('auth')->select('ApiToken')->where('dni', Auth::user()->dni)->get())
+      $var = DB::table('auth')->where('dni', Auth::user()->dni)->value('ApiToken');
+      if($request->ajax())
       {
-          return $next($request);
+          if((session()->get('ApiToken') == $var) && ($var != ""))
+          {
+              return $next($request);
+          }
+          else
+          {
+            return response()->json(['Unauthorized' => 401]);
+          }
       }
       else
       {

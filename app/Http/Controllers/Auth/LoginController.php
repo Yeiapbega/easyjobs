@@ -62,6 +62,16 @@ class LoginController extends Controller
             {                  
                $datos = Rol::find(Auth::user()->rol_id)->name;
                session(['Rol' => $datos]);
+
+               $datos = DB::table('auth')
+                           ->select('dni as user_dni', 'email as user_email','fname as nombre','flname as apellido','phone', 'ApiToken')
+                           ->where('dni', $request["dni"])
+                           ->get()
+                           ->toArray();               
+               foreach ($datos[0] as $key => $value) 
+               {
+                    session([$key => $value]);
+               }
                return response()->json(['message' => "Has sido conectado al servidor <br> Ingresando... <strong class='counter'></strong>", 
                                  'errors' => false, 
                                  'type' => 'check']);               
