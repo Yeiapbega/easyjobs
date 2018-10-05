@@ -14,11 +14,11 @@ let mix = require('laravel-mix');
 mix.scripts(
 [
 	'public/js/jquery.js',
-	'public/js/particles.js',
+	// 'public/js/particles.js',
 	'public/bootstrap/js/popper.js',
 	'public/bootstrap/js/bootstrap.min.js',
 	'public/js/sweetAlert.js',
-	'public/js/jquery.nice-select.min.js',		
+	'public/js/jquery.nice-select.min.js',
 	'resources/assets/js/app.js',
 	'resources/assets/js/auth/auth.js'
 ], 'public/js/app.js').version();
