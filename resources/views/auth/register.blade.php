@@ -3,7 +3,7 @@
 @section('content')
 <div class="section">
     <div class="row row__wrapper mx-0">        
-        <div class="col-lg-4 col-md-6 animated fadeInLeft col-sm-12 auth__wrapper bg-white px-5 pt-5 pb-4">
+        <div class="col-lg-4 col-xl-4 col-md-6 animated fadeInLeft col-sm-12 auth__wrapper bg-white px-5 pt-4 pb-3">
             <errors class="quick" style="display: none;zoom: .75;cursor: pointer;">
                 <div class="card py-2 px-3 bg-danger text-white mb-3 mt-2">
                     <h5 class="mb-1 card-title relaway"><i class="fa fa-exclamation-triangle"></i> Errores</h5>
@@ -40,7 +40,7 @@
                       <div class="input-group mb-2">
                             <div class="input-group-prepend">
                               <div class="input-group-text input-icon-easy">
-                                <i class="lnr lnr-lock"></i>
+                                <i class="lnr lnr-envelope"></i>
                               </div>
                             </div>
                             <input type="email" placeholder="E-Mail" class="form-control form-control-lg input-easy" name="email" value="{{ old('email') }}" required>
@@ -48,7 +48,7 @@
                       <div class="input-group mb-2">
                             <div class="input-group-prepend">
                               <div class="input-group-text input-icon-easy">
-                                <i class="lnr lnr-lock"></i>
+                                <i class="lnr lnr-smartphone"></i>
                               </div>
                             </div>
                             <input type="number" placeholder="Telefono" class="form-control form-control-lg input-easy" name="phone" value="{{ old('phone') }}" required>
