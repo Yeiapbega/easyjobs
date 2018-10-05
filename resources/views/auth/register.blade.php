@@ -3,7 +3,7 @@
 @section('content')
 <div class="section">
     <div class="row row__wrapper mx-0">        
-        <div class="col-lg-4 col-md-6 col-sm-12 auth__wrapper bg-white px-5 pt-5 pb-4">
+        <div class="col-lg-4 col-md-6 animated fadeInLeft col-sm-12 auth__wrapper bg-white px-5 pt-5 pb-4">
             <errors class="quick" style="display: none;zoom: .75;cursor: pointer;">
                 <div class="card py-2 px-3 bg-danger text-white mb-3 mt-2">
                     <h5 class="mb-1 card-title relaway"><i class="fa fa-exclamation-triangle"></i> Errores</h5>
@@ -82,7 +82,7 @@
                         <label class="custom-control-label" for="tyc">Aceptas los <a href="#!" class="font-weight-bold">Terminos y Condiciones</a></label>
                       </div>
                       <p>
-                        <button type="button" name="submReg" class="btn btn-primary btn-block">Ingresar <i class="fa fa-paper-plane ml-1"></i></button>
+                        <button type="button" name="submReg" class="btn btn-primary btn-block">Registrar <i class="fa fa-paper-plane ml-1"></i></button>
                       </p>
                       <p class="grey-text text-right">
                         Ya estas registrado? 

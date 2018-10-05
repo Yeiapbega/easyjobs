@@ -49,43 +49,29 @@ class LoginController extends Controller
               $this->fireLockoutEvent($ajax);
               return $this->sendLockoutResponse($ajax);
             }   
-            $remember = $request['remember'];            
-            if (Auth::viaRemember()) 
+            $remember = $request['remember'];
+            if($remember == 'false')
             {
-                session(['remember' => 'recordado']);
-            }            
+              $remember = false;                                   
+            }else
+            {
+              $remember = true;
+            }
+            
             if(Auth::attempt(['dni' => $request["dni"], 'password' => $request['pass']], $remember)) 
-            {   
-               // $datos = DB::table('auth')
-               //          ->join('rol', function ($join) 
-               //          {
-               //              $join->on('auth.rol_id', '=', 'rol.id')
-               //                   ->where([
-               //                      ['rol.id', '=', 'auth.rol_id'],
-               //                      ['auth.dni', '=', $dni]
-               //                    ]);
-               //          })
-               //          ->select('rol.name as rol')
-               //          ->get();
+            {                  
                $datos = Rol::find(Auth::user()->rol_id)->name;
                session(['Rol' => $datos]);
-               // dd($datos);
-               // foreach ($datos[0] as $key => $value) 
-               // {
-               //      session([$key => $value]);
-               // }
-               
                return response()->json(['message' => "Has sido conectado al servidor", 
                                  'errors' => false, 
-                                 'type' => 'check']);
-               //redirect('/home');
+                                 'type' => 'check']);               
             }
             else
             {
                return response()->json(['message' => "Las credenciales no fueron encontradas en nuestros registros", 
-                                 'errors' => false, 
+                                 'errors' => false,                                                                   
                                  'type' => 'notCredential']);
-            }     
+            } 
         }
     }
 

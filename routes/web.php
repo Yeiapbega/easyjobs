@@ -25,27 +25,30 @@ Route::group(['middleware' => 'guest'], function()
 });
 
 
-Route::group(['middleware' => ['auth', 'IsPerson'], 'prefix' => 'p'], function()
+Route::group(['middleware' => 'auth'], function()
 {
-	Route::get('/home', function ()
+	Route::group(['middleware' => ['IsPerson'], 'prefix' => 'p'], function()
 	{
-	   return view('layouts.person.home');
-	})->name('homeP');
-});
-
-Route::group(['middleware' => ['auth', 'IsCompany'], 'prefix' => 'c'], function()
-{
-	Route::get('/home', function ()
-	{
-	   return view('layouts.company.home');
+	    Route::get('/home', function ()
+		{
+		   return view('layouts.person.home');
+		})->name('homeP');
 	});
-});
 
-Route::group(['middleware' => ['auth', 'IsCp'], 'prefix' => 'cp'], function()
-{
-	Route::get('/home', function ()
+	Route::group(['middleware' => ['IsCompany'], 'prefix' => 'c'], function()
 	{
-	   return view('layouts.cp.home');
+		Route::get('/home', function ()
+		{
+		   return view('layouts.company.home');
+		});
+	});
+
+	Route::group(['middleware' => ['IsCp'], 'prefix' => 'cp'], function()
+	{
+		Route::get('/home', function ()
+		{
+		   return view('layouts.cp.home');
+		});
 	});
 });
 

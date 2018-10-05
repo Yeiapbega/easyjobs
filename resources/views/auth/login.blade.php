@@ -3,7 +3,7 @@
 @section('content')           
 <div class="section">
 	<div class="row row__wrapper mx-0">
-		<div class="col-lg-4 col-md-6 col-sm-12 auth__wrapper bg-white px-5 py-5">
+		<div class="col-lg-4 animated fadeInLeft col-md-6 col-sm-12 auth__wrapper bg-white px-5 py-5">
 			<div class="middle">
 				<p class="text-center position-relative mb-0">
 					<img src="{{ asset('src/logo/logoShort.png') }}" class="logoShort">
@@ -11,7 +11,7 @@
 					<span style="font-size: 22px;" class="quick">Login</span>
 				</p>
 				<hr>
-				<errors class="quick" style="display: none;zoom: .75;">
+				<errors class="quick" style="display: none;zoom: .75;cursor:pointer;">
 					<div class="card py-2 px-3 bg-danger text-white mb-2 mt-2">
 						<h5 class="mb-1 card-title relaway"><i class="fa fa-exclamation-triangle"></i> Errores</h5>
 						<div class="card-body px-1 py-1">
@@ -60,6 +60,6 @@
 	</div>
 </div>
 @endsection
-@section('script')
+{{-- @section('script')
 <script type="text/javascript" src="{{ asset('resources/js/auth/auth.js') }}"></script>
-@endsection
+@endsection --}}
