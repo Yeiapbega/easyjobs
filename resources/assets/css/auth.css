@@ -11,13 +11,23 @@
     left: 0;
     right: 0;
     top: 0;
+    z-index: 0;
+    bottom: 0;
+}
+
+.overlay_n 
+{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
     bottom: 0;
 }
 
 .logoShort
 {
 	position: relative;
-	top: -7px;
+	top: -5px;
 }
 
 .overlay-bg 
@@ -27,8 +37,10 @@
 
 .auth__wrapper
 {
-	height: 100%;
-	position: fixed;
+	/*height: 100%;*/
+	/*position: fixed;*/
+	position: relative;
+	height: 100vh;
 	z-index: 1000;
 	overflow-y: hidden;
 }
@@ -38,24 +50,61 @@
 	overflow-y: auto;
 }
 
-.row__wrapper:before
+.wrapper_social
 {
-	content: '';
-    width: 70%;
-    position: absolute;
-    background-image: url(../src/textures/back_login.png);
-    height: 100%;
-    right: 0;
-    background-size: cover;
-    background-position: unset;
-    background-repeat: no-repeat;
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	z-index: 100;
 }
 
-/*@media screen and (min-width: 1430px)
+.wrapper_social > ul
 {
-	.middle
+	list-style: none;
+}
+
+.wrapper_social > ul.icon__social > li > a
+{
+	color:#fff !important;
+	font-size: 25px;	
+	position: relative;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+ul.icon__social > li > a
+{
+	color:#000 !important;
+	font-size: 25px;	
+	position: relative;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+@media screen and (max-width: 355px)
+{
+	.nice-select > span
 	{
-		max-width: 500px;
+		font-size: 12px;
 	}
-}*/
+}
+
+@media screen and (max-width: 768px)
+{
+	.auth__wrapper
+	{
+		overflow-y: scroll;
+	}
+}
+
+.particles-js-canvas-el
+{
+	width: 100vw !important;
+	position: absolute;
+	left: 0;
+	z-index: 1;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+}
 

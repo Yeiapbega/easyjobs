@@ -6,7 +6,10 @@
         <div class="col-lg-4 col-xl-4 col-md-6 animated fadeInLeft col-sm-12 auth__wrapper bg-white px-5 pt-4 pb-3">
             <errors class="quick" style="display: none;zoom: .75;cursor: pointer;">
                 <div class="card py-2 px-3 bg-danger text-white mb-3 mt-2">
-                    <h5 class="mb-1 card-title relaway"><i class="fa fa-exclamation-triangle"></i> Errores</h5>
+                    <h5 class="mb-1 card-title relaway"><i class="fa fa-exclamation-triangle"></i> 
+                        Errores
+                        <i class="fa fa-times close-errors float-right"></i>
+                    </h5>
                     <div class="card-body px-1 py-1">
                         
                     </div>
@@ -17,6 +20,12 @@
                     <img src="{{ asset('src/logo/logoShort.png') }}" class="logoShort">
                     <span style="font-size: 25px;" class="dosis font-weight-bold">EasyJobs</span> • 
                     <span style="font-size: 22px;" class="quick">Register</span>
+                </p>
+                <hr>
+                <p class="d-flex justify-content-center">
+                    <button class="btn btn-outline-danger mx-3"><i class="fa fa-google-plus"></i> Google</button>
+                    <strong class="pt-1">ó</strong>
+                    <button class="btn btn-outline-info mx-3"><i class="fa fa-facebook-square"></i> Facebook</button>
                 </p>
                 <hr>
                 <div class="form__wrapper">
@@ -96,8 +105,14 @@
                 </div>
             </div>
         </div>
-        <div class="overlay-bg overlay"></div>
+        @include('includes.authRegister')        
     </div>
 </div>
-
+@endsection
+@section('scriptShow')
+<script type="text/javascript">
+    $("body").attr("id", "body");
+    $("body").addClass("my-0 mx-0");
+    particlesJS.load('body','{{ asset('js/particles.cfg.json') }}');    
+</script>
 @endsection

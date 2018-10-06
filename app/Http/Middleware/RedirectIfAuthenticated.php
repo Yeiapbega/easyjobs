@@ -21,22 +21,22 @@ class RedirectIfAuthenticated
         {
             if (Auth::user()->rol_id == 1) 
             {
-                return redirect('/admin/home');
+                return redirect('/');
             }
 
             if (Auth::user()->rol_id == 2) 
             {
-                return redirect('/c/home');
+                return redirect('/');
             }
 
             if (Auth::user()->rol_id == 3) 
             {
-                return redirect('/p/home');
+                return redirect('/');
             }
 
             if (Auth::user()->rol_id == 4) 
             {
-                return redirect('/cp/home');
+                return redirect('/');
             }
         }
 

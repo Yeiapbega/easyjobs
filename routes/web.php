@@ -16,13 +16,14 @@ Route::group(['middleware' => 'guest'], function()
 	// 	{
 	// 		return dd($value);
 	// 	}
-	// });
-	Route::get('/', function ()
-	{
-	    return view('home');
-	});
+	// });	
 });
 
+Route::get('/', function ()
+{
+    return view('home');
+
+});
 
 Route::group(['middleware' => 'auth'], function()
 {

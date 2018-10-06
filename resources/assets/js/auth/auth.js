@@ -23,7 +23,7 @@ $("button[name=submitAuth]").click(function(e)
         beforeSend: function()
         {
             $(".input-easy").attr('disabled', true)
-            loadIcon('submitAuth', 'fa-sign-in-alt')
+            loadIcon('submitAuth', 'sign-in')
             $("input[name='dni']").removeClass('is-invalid')
             $(".dniInvalid").html('')
             $("input[name='pass']").removeClass('is-invalid')
@@ -32,7 +32,7 @@ $("button[name=submitAuth]").click(function(e)
         error: function(jqXHR, textStatus, errorThrown)
         {
             // Handle errors here
-            notLoadIcon('submitAuth', 'fa-sign-in-alt')
+            notLoadIcon('submitAuth', 'sign-in')
             $(".input-easy").attr('disabled', false)
             $('button[name=submitAuth]').attr('disabled', false)
             alert('ERRORS: ' + textStatus + " - " + errorThrown);
@@ -44,7 +44,7 @@ $("button[name=submitAuth]").click(function(e)
         $('button[name=submitAuth]').attr('disabled', false)
         $("errors > div.card").removeClass('bg-info').addClass('bg-danger')
         $(".input-easy").attr('disabled', true)
-        notLoadIcon('submitAuth', 'fa-sign-in-alt')
+        notLoadIcon('submitAuth', 'sign-in')
         if(data.errors)
         {
             var text = '<ul class="mb-0 px-3 mx-0">';            
@@ -125,7 +125,7 @@ $('button[name="submReg"]').click(function(e)
       {
           $(".input-easy").attr('disabled', true)
           $("select[name='rol']").parent().find('.nice-select').addClass('disabled')
-          loadIcon('submReg', 'fa-paper-plane')
+          loadIcon('submReg', 'paper-plane')
           $("input[name='dni']").removeClass('is-invalid')
           $(".dniInvalid").html('')
           $("input[name='pass']").removeClass('is-invalid')
@@ -134,7 +134,7 @@ $('button[name="submReg"]').click(function(e)
       error: function(jqXHR, textStatus, errorThrown)
       {
           // Handle errors here
-          notLoadIcon('submReg', 'fa-paper-plane')
+          notLoadIcon('submReg', 'paper-plane')
           $(".input-easy").attr('disabled', false)
           $("select[name='rol']").parent().find('.nice-select').removeClass('disabled')
           $('button[name=submitAuth]').attr('disabled', false)
@@ -145,9 +145,10 @@ $('button[name="submReg"]').click(function(e)
   {
     $(".input-easy").attr('disabled', false)
     $("select[name='rol']").parent().find('.nice-select').removeClass('disabled')
-    notLoadIcon('submReg', 'fa-paper-plane')
+    notLoadIcon('submReg', 'paper-plane')
     if(data.errors)
     {
+        $('.auth__wrapper').animate({ scrollTop: ($('errors').offset().top)}, 500, 'linear');        
         var text = '<ul class="mb-0 px-3 mx-0">';            
         $.each(data.errors, function( key, value ) 
         {
@@ -165,9 +166,10 @@ $('button[name="submReg"]').click(function(e)
         $("errors > div.card").removeClass('bg-danger bg-info').addClass('bg-success')
         $("errors > div.card > .card-body").html(data.message).parent().addClass('animated fadeIn')
         $(".input-easy").attr('disabled', false)
+        $('.auth__wrapper').animate({ scrollTop: ($('errors').offset().top)}, 500, 'linear');        
         $('errors').show()
         $('errors > div.card').addClass('animated fadeIn').show()
-        let i = 2;
+        let i = e;
         let counter = setInterval(function()
         {
           i--;
@@ -184,3 +186,9 @@ $('errors').click(function()
 {
   $(this).hide();
 })
+
+let width = $(window).width();
+if(width <= 330)
+{
+  $('.auth__wrapper').removeClass('px-5').addClass('px-4')
+}

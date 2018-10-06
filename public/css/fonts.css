@@ -112,6 +112,24 @@
 	font-family: 'Raleway';
 	font-style: normal;
 	font-weight: lighter;
+	src: local('Raleway'), url('../font/Raleway/Raleway-Bold.ttf');
+	src: url('../font/Raleway/Raleway-Bold.ttf') format('truetype');
+}
+
+@font-face 
+{
+	font-family: 'Raleway';
+	font-style: normal;
+	font-weight: lighter;
+	src: local('Raleway'), url('../font/Raleway/Raleway-Black.ttf');
+	src: url('../font/Raleway/Raleway-Black.ttf') format('truetype');
+}
+
+@font-face 
+{
+	font-family: 'Raleway';
+	font-style: normal;
+	font-weight: lighter;
 	src: local('Raleway'), url('../font/Raleway/Raleway-Thin.ttf');
 	src: url('../font/Raleway/Raleway-Thin.ttf') format('truetype');
 }

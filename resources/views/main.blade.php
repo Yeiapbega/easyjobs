@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ app()->getLocale() }}" class="no-js">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,6 +31,7 @@
         <meta name="googlebot" content="all" />
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport' /> --}}
         <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}">
+        {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/fontawesome.min.css') }}"> --}}
         @yield('styles')
     </head>
     <body class="animated fadeIn">
@@ -38,8 +39,8 @@
         @yield('content')        
     </div>    
     <script type="text/javascript" src="{{ asset('js/socket.io.js') }}"></script>
-    <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
     @yield('script')
+    <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>    
     @yield('scriptShow')
     @if($errors->any()) 
        <script type="text/javascript">
