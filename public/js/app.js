@@ -1578,6 +1578,7 @@ window.particlesJS.load = function(tag_id, path_config_json, callback){
 // });
 
 $('[data-toggle="tooltip"]').tooltip();
+$('.dropdown-toggle').dropdown();
 
 console.log('%c Hello World ', 'font-size:25px;color:#fff;text-shadow:0 1px 0#ccc,0 2px 0  #c9c9c9 ,0 3px 0  #bbb ,0 4px 0  #b9b9b9 ,0 5px 0  #aaa ,0 6px 1px rgba(0,0,0,.1),0 0 5px rgba(0,0,0,.1),0 1px 3px rgba(0,0,0,.3),0 3px 5px rgba(0,0,0,.2),0 5px 10px rgba(0,0,0,.25),0 10px 10px rgba(0,0,0,.2),0 20px 20px rgba(0,0,0,.15);');
 console.log("%c APP desarrollada por: %c A&Y ","background: #fff; padding: 2px auto; border-radius: 3px 0 0 3px;border:solid 1px #14141e; color: #14141e",'background:#14141e;color:#fff;padding: 2px auto; border-radius: 0 3px 3px 0;border:solid 1px #000;');
@@ -1609,7 +1610,8 @@ $('.input-easy').focus(function()
     icon.css({'border-color':'#ced4da'}).find('i').css({'font-weight':'normal', 'color':'#495057'})    
 })
 
-$('.carusel-beta').owlCarousel({
+$('.carusel-beta').owlCarousel(
+{
     items:3,
     loop:true,
     margin: 30,
@@ -1632,6 +1634,26 @@ $('.carusel-beta').owlCarousel({
         }            
     }
 });
+
+$("#notificationLink").click(function()
+{
+    $("#notificationContainer").fadeToggle(300);
+    $("#notification_count").fadeOut("slow");
+    return false;
+});
+
+$(document).click(function()
+{
+    $("#notificationContainer").hide();
+});
+
+$("#notificationContainer").click(function()
+{
+    return false;
+});
+
+
+
 $('.select').niceSelect();
 $.ajaxSetup(
 {
