@@ -10,8 +10,7 @@
                         Errores
                         <i class="fa fa-times close-errors float-right"></i>
                     </h5>
-                    <div class="card-body px-1 py-1">
-                        
+                    <div class="card-body px-1 py-1">                    
                     </div>
                 </div>
             </errors>
@@ -23,9 +22,9 @@
                 </p>
                 <hr>
                 <p class="d-flex justify-content-center">
-                    <button class="btn btn-outline-danger mx-3"><i class="fa fa-google-plus"></i> Google</button>
+                    <button class="btn btn-outline-danger mx-3 btn_handler" handler="google/register"><i class="fa fa-google-plus"></i> Google</button>
                     <strong class="pt-1">ó</strong>
-                    <button class="btn btn-outline-info mx-3"><i class="fa fa-facebook-square"></i> Facebook</button>
+                    <button class="btn btn-outline-info mx-3 btn_handler" handler="facebook"><i class="fa fa-facebook-square"></i> Facebook</button>
                 </p>
                 <hr>
                 <div class="form__wrapper">

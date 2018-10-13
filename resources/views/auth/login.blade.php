@@ -63,7 +63,7 @@
 				    </p>				    
 			    	<ul class="icon__social px-0 mb-0 text-center d-lg-none d-md-none" style="list-style: none;">
 						<li>
-							<a href="#!"><i class="fa fa-facebook-square" data-toggle="tooltip" data-placement="bottom" title="Escribenos en Facebook!"></i></a>
+							<a href="#!" data-toggle="tooltip" data-placement="bottom" title="Escribenos en Facebook!"><i class="fa fa-facebook-square"></i></a>
 							<a href="#!"><i class="fa fa-instagram" data-toggle="tooltip" data-placement="bottom" title="Siguenos en Instagram!"></i></a>
 							<a href="#!"><i class="fa fa-youtube-play" data-toggle="tooltip" data-placement="bottom" title="Miranos en YouTube!"></i></a>
 						</li>

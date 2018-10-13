@@ -1,5 +1,4 @@
 <?php
-
 return [
 
     /*
@@ -13,6 +12,8 @@ return [
     | to have a conventional place to find your various credentials.
     |
     */
+   
+    'redirect' => 'nada',
 
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
@@ -33,6 +34,12 @@ return [
         'model' => App\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
+    ],
+
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => '',
     ],
 
 ];

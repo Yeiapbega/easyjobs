@@ -192,3 +192,9 @@ if(width <= 330)
 {
   $('.auth__wrapper').removeClass('px-5').addClass('px-4')
 }
+
+$('button.btn_handler').click(function()
+{
+  let h = $(this).attr('handler');
+  window.open('http://127.0.0.1:8000/auth/'+h, 'Auth::'+h, 'width=670,height=624')
+})

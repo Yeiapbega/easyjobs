@@ -19,7 +19,8 @@
     "lodash": "^4.17.4"
   },
   "dependencies": {
-    "express": "^4.15.2",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.4",
     "socket.io": "^2.1.1"
   },
   "name": "easyjobs",

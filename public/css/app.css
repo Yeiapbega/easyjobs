@@ -4158,6 +4158,7 @@ border-bottom-right-radius: 5px !important;
 {
 	position: relative;
 	top: -5px;
+	width: 50px;
 }
 
 .overlay-bg 

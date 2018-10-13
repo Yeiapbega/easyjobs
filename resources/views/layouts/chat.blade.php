@@ -7,6 +7,7 @@
       <input type="text" class="form-control w-50" placeholder="Message" name="message">
       <div class="input-group-append" id="button-addon4">       
         <button class="btn btn-outline-secondary" name="submitMessage">Enviar</button>
+        <button class="btn btn-outline-secondary" name="submitGEO">Enviar Geolocalizacion</button>
       </div>
     </div>
 </div>

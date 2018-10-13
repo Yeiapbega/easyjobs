@@ -7,16 +7,12 @@ Route::group(['middleware' => 'guest'], function()
 
 	Route::get('/register', 'Auth\RegisterController@ShowRegisterForm')->name('register');
 	Route::post('register', 'Auth\RegisterController@RegisterForm');
-	// Route::get('/login/{id?}', function($id = null)
-	// {
-	// 	$a = $users = DB::table('auth')->select('fname', 'email as user_email', 'dni')
-	// 	->where('id', '=', $id)
-	// 	->get();
-	// 	foreach ($a as $key => $value)
-	// 	{
-	// 		return dd($value);
-	// 	}
-	// });	
+	Route::group(['prefix' => 'auth'], function () 
+	{	 
+	    Route::get('/{provider}/{where}', 'Auth\LoginController@redirectToProvider')->name('social.auth');
+	    Route::get('/{provider}/callback', 'Auth\LoginController@handleProviderCallback');	    
+	    Route::get('/{provider}/callback/register', 'Auth\LoginController@handleProviderCallbackR');	    
+	});
 });
 
 Route::get('/', function ()
@@ -58,3 +54,8 @@ Route::group(['middleware' => 'auth'], function()
 });
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::get('/chat', function()
+{
+	return view('layouts.chat');
+});

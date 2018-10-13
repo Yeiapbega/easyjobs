@@ -35,7 +35,7 @@
 		<div class="row">
 			<div class="col-lg-3 col-md-6 mb-2">
 				<div class="single-feature">
-					<h5 class="dosis">Searching</h5>
+					<h5 class="dosis">Busqueda</h5>
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipisicing.
 					</p>
@@ -43,7 +43,7 @@
 			</div>
 			<div class="col-lg-3 col-md-6 mb-2">
 				<div class="single-feature">
-					<h5 class="dosis">Applying</h5>
+					<h5 class="dosis">Aplicación</h5>
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipisicing.
 					</p>
@@ -51,7 +51,7 @@
 			</div>
 			<div class="col-lg-3 col-md-6">
 				<div class="single-feature">
-					<h5 class="dosis">Security</h5>
+					<h5 class="dosis">Seguridad</h5>
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipisicing.
 					</p>
@@ -59,7 +59,7 @@
 			</div>
 			<div class="col-lg-3 col-md-6">
 				<div class="single-feature">
-					<h5 class="dosis">Notifications</h5>
+					<h5 class="dosis">Notificación</h5>
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipisicing.
 					</p>

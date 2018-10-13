@@ -103,7 +103,8 @@ class RegisterController extends Controller
             'ApiToken' => str_random(64)
           ]);
 
-          if (!$query) {
+          if (!$query) 
+          {
             return response()->json(['message' => 'Error al registrar el usuario',
                               'errors' => 'query']);
           }
@@ -111,7 +112,7 @@ class RegisterController extends Controller
           {
             return response()->json(['message' => "Registro realizado con exito",
                               'errors' => false,                              
-                              'type' => 'check']);
+                              'type' => 'check'], 200);
           }
         }
     }

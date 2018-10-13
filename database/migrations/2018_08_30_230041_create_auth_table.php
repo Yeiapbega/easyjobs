@@ -23,9 +23,10 @@ class CreateAuthTable extends Migration
             $table->string('slname', 100);
             $table->string('email', 100);
             $table->string('phone', 100);
-            $table->string('password', 100);
+            $table->string('password', 100)->nullable();
             $table->string('dataPermission', 3);                             
             $table->string('photo', 200)->default("src/profile_photos/photo.png");
+            $table->string('social_id', 40)->nullable();
             $table->rememberToken();
             //$table->timestamps();
         });      
