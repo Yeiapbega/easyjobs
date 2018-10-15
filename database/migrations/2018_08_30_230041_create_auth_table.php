@@ -17,16 +17,16 @@ class CreateAuthTable extends Migration
         {
             $table->increments('id');
             $table->string('dni', 30)->unique();
-            $table->string('fname', 100);
-            $table->string('sname', 100);
-            $table->string('flname', 100);
-            $table->string('slname', 100);
+            $table->string('fsname', 200);            
+            $table->string('flname', 100)->nullable();
+            $table->string('slname', 100)->nullable();
             $table->string('email', 100);
             $table->string('phone', 100);
             $table->string('password', 100)->nullable();
             $table->string('dataPermission', 3);                             
             $table->string('photo', 200)->default("src/profile_photos/photo.png");
             $table->string('social_id', 40)->nullable();
+            $table->string('provider', 50)->nullable();
             $table->rememberToken();
             //$table->timestamps();
         });      

@@ -1,11 +1,11 @@
 {{-- {!! Auth::user()->toJSON(JSON_PRETTY_PRINT) !!} --}}
 <button type="button" id="mobile-nav-toggle"><i class="lnr lnr-menu"></i></button>
-<header id="header" class="">
+<header id="header" class="{{ str_contains(url()->current(), '/home') ? 'bg-dark' : ''}}">
     <div class="container container-nav">
     	<div class="row align-items-center justify-content-between d-flex">
 	      <div id="logo">
 	        <a href="{{ url('/') }}" class="dosis text-white font-weight-bold" style="font-size: 25px;">
-	        	@if(Auth::check())<img src="{{ asset(Auth::user()->photo) }}" class="img-thumbnail img-fluid rounded-circle logoShort" style="width: 45px">
+	        	@if(Auth::check())<img src="{{ asset(Auth::user()->photo) }}" class="img-thumbnail img-fluid rounded-circle logoShort" style="width: 45px;top: 0px;">
 	        	@else<img src="{{ asset('src/logo/logoShort.png') }}" alt="" title="" class="logoShort">
 	        	@endif
 	        	 EasyJobs <small class="relaway name-user-nav">@if(Auth::check()) • {{ Auth::user()->fname }} @endif</small>
@@ -16,8 +16,10 @@
 	        	<li class="menu-active"><a href="{{ url('/') }}" class="relaway">Inicio</a></li> 
 	            @if(!Auth::check())	              
 	              <li><a href="" class="relaway">Conocenos</a></li>
-				  <li><a class="relaway btn btn-sm btn-outline-light" href="{{ url('register') }}">Signup</a></li>
-	          	  <li><a class="relaway btn btn-sm btn-outline-light" href="{{ url('login') }}">Login</a></li>	          	 
+	               @if(!str_contains(url()->current(), ['login', 'register']))
+					  <li><a class="relaway btn btn-sm btn-outline-light" href="{{ url('register') }}">Signup</a></li>
+		          	  <li><a class="relaway btn btn-sm btn-outline-light" href="{{ url('login') }}">Login</a></li>	      
+		           @endif    	 
 	            @else
 	            <li><a class="font-weight-bold px-2 btn btn-sm btn-outline-light py-1" style="font-size: 17px;" data-toggle="tooltip" data-placement="bottom" title="Ranking Global" href="#"><i class="lnr lnr-earth"></i></a></li>
 	            <li><a class="font-weight-bold px-2 btn btn-sm btn-outline-light py-1" style="font-size: 17px;" data-toggle="tooltip" data-placement="bottom" title="Nivel de Confianza" href="#"><i class="lnr lnr-star"></i></a></li>
@@ -59,8 +61,11 @@
 							<a href="#" class="relaway btn btn-sm btn-outline-light px-2">See All</a>
 						</div>
 					</div>
-	            </li>	          		          	
-	          	<li><a class="font-weight-bold px-2 btn btn-sm btn-outline-light py-1" style="font-size: 17px;" data-toggle="tooltip" data-placement="bottom" title="Configuraciones de Perfil" href="#"><i class="lnr lnr-cog"></i></a></li>	          	
+	            </li>
+	            @if(!str_contains(url()->current(), '/home'))
+	          	<li><a class="font-weight-bold px-2 btn btn-sm btn-outline-light py-1" style="font-size: 17px;" data-toggle="tooltip" data-placement="bottom" title="Panel Principal" href="{{ session()->get('url') }}"><i class="lnr lnr-home"></i></a></li>	 
+	          	@endif
+	          	<li><a class="font-weight-bold px-2 btn btn-sm btn-outline-light py-1" style="font-size: 17px;" data-toggle="tooltip" data-placement="bottom" title="Salir" href="{{ url('/logout') }}"><i class="lnr lnr-exit"></i></a></li>         	
 	          @endif				          				          
 	        </ul>
 	      </nav><!-- #nav-menu-container -->		    		

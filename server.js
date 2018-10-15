@@ -22,7 +22,7 @@ io.of('/chat', function(socket)
 {  
 	console.log('chat'); 
 	socket.emit('wMessage', generateMessage('Admin', 'Welcome to Chat'))
-	// socket.broadcast.emit('wMessage', generateMessage('Admin', 'new user joined'))	
+	// socket.broadcast.emit('wMessage', generateMessage('Admin', 'new user joined'))
 	socket.on('newMessage', (message) =>
 	{
 		console.log('Message: ', message)
@@ -43,7 +43,7 @@ io.of('/chat', function(socket)
 
 io.on('connection', function(socket)
 {
-	console.log('new user connected');	
+	// console.log('new user connected');	
   	socket.on('disconnect', function()
 	{
 	   console.log('user disconnected');

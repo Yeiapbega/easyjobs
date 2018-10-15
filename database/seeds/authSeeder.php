@@ -19,8 +19,7 @@ class authSeeder extends Seeder
         User::create(
         [
         	'dni' => '12341234',
-        	'fname' => 'Yeisson',
-        	'sname' => 'Andres',
+        	'fsname' => 'Yeisson',
         	'flname' => 'Perez',
         	'slname' => 'Begambre',
         	'email' => 'asdas@gmail.com',
@@ -39,8 +38,7 @@ class authSeeder extends Seeder
         User::create(
         [
         	'dni' => '12345678',
-        	'fname' => 'Adrian',
-        	'sname' => 'David',
+        	'fsname' => 'Adrian',
         	'flname' => 'Correa',
         	'slname' => 'Mass',
         	'email' => 'asdas@gmail.com',
@@ -59,8 +57,7 @@ class authSeeder extends Seeder
         User::create(
         [
         	'dni' => '123456789',
-        	'fname' => 'Miguel',
-        	'sname' => 'angel',
+        	'fsname' => 'Miguel',
         	'flname' => 'viloria',
         	'slname' => 'sierra',
         	'email' => 'asdas@gmail.com',
@@ -79,8 +76,7 @@ class authSeeder extends Seeder
         User::create(
         [
         	'dni' => '1234567890',
-        	'fname' => 'Rene',
-        	'sname' => 'orlando',
+        	'fsname' => 'Rene',
         	'flname' => 'vilora',
         	'slname' => 'Sierra',
         	'email' => 'asdas@gmail.com',

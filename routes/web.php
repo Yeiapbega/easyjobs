@@ -1,5 +1,4 @@
 <?php
-// use Illuminate\Support\Facades\DB;
 Route::group(['middleware' => 'guest'], function()
 {
 	Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -41,7 +40,7 @@ Route::group(['middleware' => 'auth'], function()
 		Route::get('/home', function ()
 		{
 		   return view('layouts.company.home');
-		});
+		})->name('homeC');
 	});
 
 	Route::group(['middleware' => ['IsCp'], 'prefix' => 'cp'], function()
@@ -49,7 +48,7 @@ Route::group(['middleware' => 'auth'], function()
 		Route::get('/home', function ()
 		{
 		   return view('layouts.cp.home');
-		});
+		})->name('homeCP');
 	});
 });
 

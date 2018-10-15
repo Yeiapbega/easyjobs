@@ -33,9 +33,10 @@
         <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}">
         {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/fontawesome.min.css') }}"> --}}
         @yield('styles')
-    </head>
+    </head>    
+    @include('includes.menu')    
     <body class="animated fadeIn">
-    <div id="main-contain">
+    <div id="main-contain">    
         @yield('content')        
     </div>    
     <script type="text/javascript" src="{{ asset('js/socket.io.js') }}"></script>

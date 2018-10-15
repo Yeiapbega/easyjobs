@@ -1790,9 +1790,10 @@ $("button[name=submitAuth]").click(function(e)
               i--;
               $('strong.counter').html(i)
               if(i == 0)
-              {
+              {                
+                clearInterval(counter)
                 location.reload();
-              }
+              }              
             }, 1000)
         }
     })
@@ -1816,8 +1817,7 @@ $('button[name="submReg"]').click(function(e)
       data: {
           _token:  $('meta[name="csrf-token"]').attr('content'),
           dni: $("input[name='dni']").val(),
-          name: $("input[name='name']").val(),
-          sname: $("input[name='sname']").val(),
+          name: $("input[name='name']").val(),          
           flname: $("input[name='flname']").val(),
           slname: $("input[name='slname']").val(),
           phone: $("input[name='phone']").val(),
@@ -1864,7 +1864,7 @@ $('button[name="submReg"]').click(function(e)
         text += '</ul>'
         $("errors > div.card > .card-body").html(text).parent().parent().addClass('animated fadeIn')
         $('errors').show()
-        $('errors > div.card').addClass('animated fadeIn').show()
+        $('errors > div.card').removeClass('bg-success bg-info').addClass('animated fadeIn bg-danger').show()
     }
     if(data.type == "check")
     {
@@ -1880,9 +1880,10 @@ $('button[name="submReg"]').click(function(e)
         {
           i--;
           if(i == 0)
-          {
-            location.replace('/login');
-          }
+          {            
+            clearInterval(counter)
+            location.replace('/login');            
+          }          
         }, 1000)        
     }
   })
@@ -1902,5 +1903,5 @@ if(width <= 330)
 $('button.btn_handler').click(function()
 {
   let h = $(this).attr('handler');
-  window.open('http://127.0.0.1:8000/auth/'+h, 'Auth::'+h, 'width=670,height=624')
+  window.open('https://easyjobs.com/auth/'+h, 'Auth::'+h, 'width=670,height=624')
 })

@@ -44,7 +44,7 @@ class RegisterController extends Controller
               'flname' => 'required',
               'slname' => 'required',
               'email' => 'required|unique:auth|email',
-              'tyc' => 'required',
+              'tyc' => 'accepted',
               'rol' => 'required',
               'password' => 'required|min:4',
               'password_conf' => 'required|same:password',
@@ -59,14 +59,14 @@ class RegisterController extends Controller
               'password.min' => 'La contraseña debe tener minimo 4 caracteres',
               'password_conf.required' => 'Por favor confirme su contraseña',
               'password_conf.same' => 'Las contraseñas no coinciden, intente de nuevo',
-              'name.required' => 'El campo Nombre no puede estar vacio',
+              'name.required' => 'El campo Nombres no puede estar vacio',
               'flname.required' => 'El campo Primer Apellido no puede estar vacio',
               'slname.required' => 'El campo Segundo Apellido no puede estar vacio',
               'email.required' => 'El campo E-mail no puede estar vacio',
               'email.email' => ' Ingrese un E-Mail valido',
               'email.unique' => 'Su dirección de correo ya se encuentra en nuestra base de datos',
               'rol.required' => 'El Campo Rol es obligatorio',
-              'tyc.required' => 'Debes aceptar los terminos y condiciones para registrarte',
+              'tyc.accepted' => 'Debes aceptar los terminos y condiciones para registrarte',
               '_token.required' => 'token vacio'
           ]);
           if ($data->fails())
@@ -90,8 +90,7 @@ class RegisterController extends Controller
           $query = User::create([
             'id' => '',
             'dni' => $request['dni'],
-            'fname' => $request['name'],
-            'sname' => $request['sname'],
+            'fsname' => $request['name'],            
             'flname' => $request['flname'],
             'slname' => $request['slname'],
             'email' => $request['email'],

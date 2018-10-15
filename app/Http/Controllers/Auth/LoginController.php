@@ -23,11 +23,11 @@ class LoginController extends Controller
     {      
         if($where == 'register')
         {
-          Config::set('services.'.$provider.'.redirect', 'http://127.0.0.1:8000/auth/'.$provider.'/callback/register');          
+          Config::set('services.'.$provider.'.redirect', env('APP_URL').'/auth/'.$provider.'/callback/register');          
         }
         else
         {
-          Config::set('services.'.$provider.'.redirect', 'http://127.0.0.1:8000/auth/'.$provider.'/callback');          
+          Config::set('services.'.$provider.'.redirect', env('APP_URL').'/auth/'.$provider.'/callback');          
         }        
         return Socialite::driver($provider)->redirect();                    
     }
@@ -39,14 +39,14 @@ class LoginController extends Controller
 
     public function handleProviderCallbackR($provider)
     {        
-        Config::set('services.'.$provider.'.redirect', 'http://127.0.0.1:8000/auth/'.$provider.'/callback/register'); 
+        Config::set('services.'.$provider.'.redirect', env('APP_URL').'/auth/'.$provider.'/callback/register'); 
         $social_user = Socialite::driver($provider)->user();
         dd($social_user);   
     }
 
     public function handleProviderCallback($provider)
     {                
-        Config::set('services.'.$provider.'.redirect', 'http://127.0.0.1:8000/auth/'.$provider.'/callback');
+        Config::set('services.'.$provider.'.redirect', env('APP_URL').'/auth/'.$provider.'/callback');
         $social_user = Socialite::driver($provider)->user();    
         dd('auth');     
         // if(Auth::attempt(['email' => $social_user->email])) 
@@ -136,14 +136,26 @@ class LoginController extends Controller
 
             if(Auth::attempt(['dni' => $request["dni"], 'password' => $request['pass']], $remember)) 
             {                  
-               $datos = Rol::find(Auth::user()->rol_id)->name;
-               session(['Rol' => $datos]);
+               $datos_ = Rol::find(Auth::user()->rol_id)->name;
+               session(['Rol' => $datos_]);
 
                $datos = DB::table('auth')
-                           ->select('dni as user_dni', 'email as user_email','fname as nombre','flname as apellido','phone', 'ApiToken')
+                           ->select('dni as user_dni', 'email as user_email','fsname as nombre','flname as apellido','phone', 'ApiToken')
                            ->where('dni', $request["dni"])
                            ->get()
-                           ->toArray();               
+                           ->toArray();     
+               if($datos_ == 'PERSON')
+               {
+                  session(['url' => 'p/home']);
+               }          
+               if($datos_ == 'COMPANY')
+               {
+                  session(['url' => 'c/home']);
+               }          
+               if($datos_ == 'C-P')
+               {
+                  session(['url' => 'cp/home']);
+               }          
                foreach ($datos[0] as $key => $value) 
                {
                     session([$key => $value]);

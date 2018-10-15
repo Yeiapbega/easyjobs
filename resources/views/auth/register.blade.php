@@ -24,7 +24,7 @@
                 <p class="d-flex justify-content-center">
                     <button class="btn btn-outline-danger mx-3 btn_handler" handler="google/register"><i class="fa fa-google-plus"></i> Google</button>
                     <strong class="pt-1">ó</strong>
-                    <button class="btn btn-outline-info mx-3 btn_handler" handler="facebook"><i class="fa fa-facebook-square"></i> Facebook</button>
+                    <button class="btn btn-outline-info mx-3 btn_handler" handler="facebook/register"><i class="fa fa-facebook-square"></i> Facebook</button>
                 </p>
                 <hr>
                 <div class="form__wrapper">
@@ -32,14 +32,18 @@
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
                               <div class="input-group-text input-icon-easy">
-                                <i class="lnr lnr-user"></i>
+                                <i class="lnr lnr-license"></i>
                               </div>
                             </div>
                             <input type="number" placeholder="Identificacion" class="form-control form-control-lg input-easy" name="dni" value="{{ old('dni') }}" min="10">
                       </div>
                       <div class="input-group mb-2">
-                            <input type="text" placeholder="Nombre" class="border-left pl-2 form-control form-control-lg input-easy" name="name" value="{{ old('name') }}" required>                           
-                            <input type="text" placeholder="Segundo Nombre" class="border-left pl-2 form-control form-control-lg input-easy" name="sname" value="{{ old('sname') }}" required>
+                            <div class="input-group-prepend">
+                              <div class="input-group-text input-icon-easy">
+                                <i class="lnr lnr-user"></i>
+                              </div>
+                            </div>
+                            <input type="text" placeholder="Nombres" class="form-control form-control-lg input-easy" name="name" value="{{ old('name') }}" required>                                                       
                       </div>
                       <div class="input-group mb-2">
                             <input type="text" placeholder="Apellido" class="border-left pl-2 form-control form-control-lg input-easy" name="flname" value="{{ old('flname') }}" required>

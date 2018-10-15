@@ -15,7 +15,6 @@
 </style>
 @endsection
 @section('content')
-@include('includes.menu')
 <section class="banner-area relative" id="banner-area">	
 	<div class="overlay overlay-bg"></div>
 	<div class="container">
