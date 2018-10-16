@@ -9,7 +9,7 @@ Route::group(['middleware' => 'guest'], function()
 	Route::group(['prefix' => 'auth'], function () 
 	{	 
 	    Route::get('/{provider}/{where}', 'Auth\LoginController@redirectToProvider')->name('social.auth');
-	    Route::get('/{provider}/callback', 'Auth\LoginController@handleProviderCallback');	    
+	    Route::get('/{provider}', 'Auth\LoginController@handleProviderCallback');	    
 	    Route::get('/{provider}/callback/register', 'Auth\LoginController@handleProviderCallbackR');	    
 	});
 });

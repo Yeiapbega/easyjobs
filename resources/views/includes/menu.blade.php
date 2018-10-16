@@ -8,7 +8,9 @@
 	        	@if(Auth::check())<img src="{{ asset(Auth::user()->photo) }}" class="img-thumbnail img-fluid rounded-circle logoShort" style="width: 45px;top: 0px;">
 	        	@else<img src="{{ asset('src/logo/logoShort.png') }}" alt="" title="" class="logoShort">
 	        	@endif
-	        	 EasyJobs <small class="relaway name-user-nav">@if(Auth::check()) • {{ Auth::user()->fsname }} @endif</small>
+	        	 EasyJobs <small class="relaway name-user-nav">	        	 	
+	        	 	@if(Auth::check()) <?php $nam = explode(" ", Auth::user()->fsname) ?> • {!! $nam[0] !!} @endif
+	        	 </small>
 	        </a>
 	      </div>
 	      <nav id="nav-menu-container">
@@ -17,7 +19,7 @@
 	            @if(!Auth::check())	              
 	              <li><a href="" class="relaway">Conocenos</a></li>
 	               @if(!str_contains(url()->current(), ['login', 'register']))
-					  <li><a class="relaway btn btn-sm btn-outline-light" href="{{ url('register') }}">Signup</a></li>
+					  <li><a class="relaway btn btn-sm btn-outline-light" href="{{ url('register') }}">Sign-up</a></li>
 		          	  <li><a class="relaway btn btn-sm btn-outline-light" href="{{ url('login') }}">Login</a></li>	      
 		           @endif    	 
 	            @else
@@ -41,16 +43,17 @@
 						</p>
 						<div id="notificationsBody" class="px-0 py-2">
 							<div class="row mx-0">								
-								<div class="cont col-12 row mx-0 px-3 notification">
+								<div class="cont col-12 row mx-0 px-3 pt-1 notification hoverable">
 									<div class="col-2 px-0">									
 										<img src="{{ asset(Auth::user()->photo) }}" class="img-thumbnail img-fluid rounded-circle float-left">		
 									</div>
 									<div class="col-10">
-										<p class="mb-0 relaway">
-											<strong>{{ Auth::user()->fsname }}</strong> quiere contactar contigo
+										<p class="mb-0 quick" style="font-size:12px;">
+											<strong>{{ Auth::user()->fsname }}</strong> <br>
+											quiere contactar contigo
 										</p>
-										<p>
-											<a class="black-text px-0" href="tel:{{ Auth::user()->phone }}"><span class="lnr lnr-phone text-info"></span> {{ Auth::user()->phone }}</a>
+										<p class="mb-0">
+											<a class="black-text px-0 pt-0" href="tel:{{ Auth::user()->phone }}"><span class="lnr lnr-phone text-info"></span> {{ Auth::user()->phone }}</a>
 										</p>
 									</div>
 								</div>

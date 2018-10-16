@@ -28,7 +28,7 @@ class LoginController extends Controller
         }
         else
         {
-          Config::set('services.'.$provider.'.redirect', env('APP_URL').'/auth/'.$provider.'/callback');          
+          Config::set('services.'.$provider.'.redirect', env('APP_URL').'/auth/'.$provider.'');          
         }        
         return Socialite::driver($provider)->redirect();                    
     }
@@ -43,7 +43,10 @@ class LoginController extends Controller
         Config::set('services.'.$provider.'.redirect', env('APP_URL').'/auth/'.$provider.'/callback/register'); 
         $social_user = Socialite::driver($provider)->user();
         // dd($social_user);
-        RegisterController::RegisterSocial($social_user, $provider);
+        if(RegisterController::RegisterSocial($social_user, $provider))
+        {
+          return redirect('/');
+        }
         // return redirect('/register')->with('form', 'Profile updated!');
         // return response()->json(array('content' => view('includes.afterRegisterProvider')
                            // ->render(), 'data' => $social_user), 200);   
@@ -51,55 +54,17 @@ class LoginController extends Controller
 
     public function handleProviderCallback($provider)
     {                
-        Config::set('services.'.$provider.'.redirect', env('APP_URL').'/auth/'.$provider.'/callback');
+        Config::set('services.'.$provider.'.redirect', env('APP_URL').'/auth/'.$provider.'');
         $social_user = Socialite::driver($provider)->user();    
-        // dd('auth');     
-        // if(Auth::attempt(['email' => $social_user->email])) 
-        // { 
-        //     $datos = Rol::find(Auth::user()->rol_id)->name;
-        //      session(['Rol' => $datos]);
-
-        //      $datos = DB::table('auth')
-        //                  ->select('dni as user_dni', 'email as user_email','fname as nombre','flname as apellido','phone', 'ApiToken')
-        //                  ->where('dni', $request["dni"])
-        //                  ->get()
-        //                  ->toArray();               
-        //      foreach ($datos[0] as $key => $value) 
-        //      {
-        //           session([$key => $value]);
-        //      }
-        // }
-        // else 
-        // {              
-        //     $query = User::create([
-        //     'id' => '',
-        //     'dni' => ,
-        //     'fname' => ,
-        //     'sname' => ,
-        //     'flname' => ,
-        //     'slname' => ,
-        //     'email' => ,
-        //     'phone' => ,
-        //     'password' => '',
-        //     'rol_id' => ,
-        //     'social_id' => 
-        //     'dataPermission' => $tyc_,
-        //     'remember_token' => str_random(64),
-        //     'ApiToken' => str_random(64)
-        //   ]);
-
-        //   if (!$query) 
-        //   {
-        //     return response()->json(['message' => 'Error al registrar el usuario',
-        //                       'errors' => 'query']);
-        //   }
-        //   else
-        //   {
-        //     return response()->json(['message' => "Registro realizado con exito",
-        //                       'errors' => false,                              
-        //                       'type' => 'check'], 200);
-        //   }            
-        // }
+        if(RegisterController::authSocial($social_user->id))
+        {
+          return redirect('/');
+        }
+        else
+        {
+          return redirect('/login')
+                    ->withErrors(['errorLogin' => 'Debes registrarte primero']);
+        }
     }
 
     public function login(Request $ajax) 

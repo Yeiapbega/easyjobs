@@ -294,6 +294,11 @@ border-bottom-right-radius: 5px !important;
   color:#343a40;
 }
 
+.swal2-popup .swal2-title
+{
+  font-size: 1.2em;
+}
+
 
 
 
@@ -707,4 +712,10 @@ border-bottom-right-radius: 5px !important;
 .single-popular-post .btns:hover {
   background-color: #1e2235;
   color: #49e4fa;
+}
+
+.notification
+{
+  height: 65px;
+  cursor: pointer;
 }

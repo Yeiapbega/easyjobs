@@ -13,9 +13,9 @@
 				</p>
 				<hr>
 				<p class="d-flex justify-content-center">
-                    <button class="btn btn-outline-danger mx-3"><i class="fa fa-google-plus"></i> Google</button>
+                    <button class="btn btn-outline-danger btn_handlerC mx-3" handler="google"><i class="fa fa-google-plus"></i> Google</button>
                     <strong class="pt-1">ó</strong>
-                    <button class="btn btn-outline-info mx-3"><i class="fa fa-facebook-square"></i> Facebook</button>
+                    <button class="btn btn-outline-info btn_handlerC mx-3" handler="facebook"><i class="fa fa-facebook-square"></i> Facebook</button>
                 </p>
                 <hr>
 				<errors class="quick" style="display: none;zoom: .75;cursor: pointer;">
@@ -83,4 +83,18 @@
     $("body").addClass("my-0 mx-0");
     particlesJS.load('body','{{ asset('js/particles.cfg.json') }}');    
 </script>
+@if($errors->has('errorLogin')) 
+   <script type="text/javascript">
+        swal(
+        {
+          title: 'Info [LOGIN_ACCESS_LOST]',
+          type: 'info',
+          position: 'center',
+          animation: false,
+          customClass: 'animated fadeIn',
+          text: '{{ $errors->first('errorLogin') }}',
+          confirmButtonText: 'Aceptar',  
+        })
+   </script>       
+@endif
 @endsection

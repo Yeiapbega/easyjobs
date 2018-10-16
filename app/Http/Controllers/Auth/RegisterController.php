@@ -7,10 +7,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Validator;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use File; 
-
+use App\Models\Rol;
 
 class RegisterController extends Controller
 {
@@ -26,6 +27,8 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+
+    // protected $guard = 'social';
 
     public function ShowRegisterForm()
     {
@@ -125,49 +128,96 @@ class RegisterController extends Controller
       //To show picture 
       // $picture = public_path('uploads/profile/' . $user->getId() . ".jpg");
       // dd($data->avatar_original);  
-      
-     if(auth($request['id']))
-     {
-        return redirect('/');
-     }
-     else
-     {
-        $email = null;
-        if(isset($request["email"]))
-        {
-          $email = $request["email"];
-        }
-        $fileContents = file_get_contents($request->avatar_original);      
-        File::put(public_path() . '/src/profile_photos/' . $request->id . ".jpg", $fileContents);
-        $avatar = public_path() . '/src/profile_photos/' . $request->id . ".jpg";
-        $query = User::create(
-        [
-            'id' => '',
-            'dni' => '',
-            'fsname' => $request['name'],                
-            'email' => $email,
-            'dataPermission' => 'YES',
-            'remember_token' => str_random(64),
-            'ApiToken' => str_random(64),
-            'social_id'=> $request['id'],
-            'provider' => $provider,
-            'photo' => $avatar,
-            'dataComplete' => '0'
-          ]);
-
-          if (!$query) 
-          {
-            return redirect('/')
-              ->withErrors(['errorRegister' => 'Error al registrar']);
-          }
-          else
-          {
-            if(auth($request['id']))
+      if($provider == 'google')
+      {
+        if(RegisterController::authSocial($request['id']))
+         {
+            return true;
+         }
+         else
+         {
+            $email = null;
+            if(isset($request->email))
             {
-              return redirect('/');
+              $email = $request->email;
             }
-          }
-     }
+            $fileContents = file_get_contents($request->avatar_original);      
+            File::put(public_path() . '/src/profile_photos/' . $request->id . ".jpg", $fileContents);
+            $avatar = '/src/profile_photos/' . $request->id . ".jpg";
+            $query = User::create(
+            [
+                'id' => '',
+                'dni' => null,
+                'fsname' => $request->name,                
+                'email' => $email,
+                'dataPermission' => 'YES',
+                'remember_token' => str_random(64),
+                'ApiToken' => str_random(64),
+                'social_id'=> $request['id'],
+                'provider' => $provider,
+                'photo' => '/src/profile_photos/' . $request->id . ".jpg",
+                'dataComplete' => '0'
+            ]);
+
+            if (!$query) 
+            {
+              redirect('/')
+                ->withErrors(['errorRegister' => 'Error al registrar']);
+            }
+            else
+            {
+              if(RegisterController::authSocial($request['id']))
+              {
+                return true;
+              }
+            }
+         }
+      }
+      else
+      {
+         if(RegisterController::authSocial($request['id']))
+         {
+            return true;
+         }
+         else
+         {
+            $email = null;
+            if(isset($request["email"]))
+            {
+              $email = $request["email"];
+            }
+            $fileContents = file_get_contents($request->avatar_original);      
+            File::put(public_path() . '/src/profile_photos/' . $request->id . ".jpg", $fileContents);
+            $avatar = '/src/profile_photos/' . $request->id . ".jpg";
+            $query = User::create(
+            [
+                'id' => '',
+                'dni' => null,
+                'fsname' => $request['name'],                
+                'email' => $email,
+                'dataPermission' => 'YES',
+                'remember_token' => str_random(64),
+                'ApiToken' => str_random(64),
+                'social_id'=> $request['id'],
+                'provider' => $provider,
+                'photo' => '/src/profile_photos/' . $request->id . ".jpg",
+                'dataComplete' => '0'
+            ]);
+
+            if (!$query) 
+            {
+              redirect('/')
+                ->withErrors(['errorRegister' => 'Error al registrar']);
+            }
+            else
+            {
+              if(RegisterController::authSocial($request['id']))
+              {
+                return true;
+              }
+            }
+         }
+      }
       
     }
 
@@ -175,32 +225,46 @@ class RegisterController extends Controller
     {
       $w = User::find(Auth::user()->id)->dataComplete;
       // dd($w);
-      return redirect('/')
-              ->withErrors(['notComplete' => 'por favor, completa todos los datos']);
+      if($w == 0)
+      {
+        return true;
+      }
+      return false;
     }
 
-    public function auth($social)
+    public static function authSocial($social)
     {
-      if(Auth::attempt(['social_id' => $request['id']])) 
-      { 
-          $datos = Rol::find(Auth::user()->rol_id)->name;
-           session(['Rol' => $datos]);
-
-           $datos = DB::table('auth')
-                       ->select('id', 'dni as user_dni', 'email as user_email','fname as nombre','flname as apellido','phone', 'ApiToken')
-                       ->where('social_id', $request['id'])
-                       ->get()
-                       ->toArray();               
-           foreach ($datos[0] as $key => $value) 
-           {
-                session([$key => $value]);
-           }
-        return true;          
-      }
-      else
+      $id = DB::table('auth')           
+           ->where('social_id', $social)
+           ->value('id'); 
+      // dd($id);
+      if(empty($id))
       {
         return false;
       }
+      else
+      {
+        // dd($id);
+        if(Auth::loginUsingId($id)) 
+        {             
+             // session(['Rol' => $datos]);
+
+             $datos = DB::table('auth')
+                         ->select('id', 'dni as user_dni', 'email as user_email','fsname as nombre','flname as apellido','phone', 'ApiToken')
+                         ->where('social_id', $social)
+                         ->get()
+                         ->toArray();               
+             foreach ($datos[0] as $key => $value) 
+             {
+                  session([$key => $value]);
+             }
+          return true;      
+        }
+        else
+        {
+          return false;
+        }
+      }      
     }
 
 }

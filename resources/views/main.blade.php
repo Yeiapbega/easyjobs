@@ -50,7 +50,7 @@
                   title: '',
                   type: 'warning',
                   position: 'bottom-right',
-                  text: '',
+                  text: 'Rellenar datos',
                   confirmButtonText: 'Aceptar',  
                 })
            </script>       

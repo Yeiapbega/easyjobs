@@ -2,8 +2,6 @@
 
 return [
 
-     'table' => 'auth',
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
@@ -16,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'social',
-        'passwords' => 'auth',
+        'guard' => 'web',
+        'passwords' => 'users',
     ],
 
     /*
@@ -47,11 +45,6 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
-
-        'social' => [
-            'driver' => 'session',
-            'provider' => 'social',
-        ],
     ],
 
     /*
@@ -77,10 +70,10 @@ return [
             'model' => App\User::class,
         ],
 
-        'social' => [
-            'driver' => 'database',
-            'table' => 'auth',
-        ],
+        // 'users' => [
+        //     'driver' => 'database',
+        //     'table' => 'users',
+        // ],
     ],
 
     /*

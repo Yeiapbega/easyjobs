@@ -16,7 +16,7 @@ class CreateAuthTable extends Migration
         Schema::create('auth', function (Blueprint $table) 
         {
             $table->increments('id');
-            $table->string('dni', 30)->unique();
+            $table->string('dni', 30)->unique()->nullable();
             $table->string('fsname', 200);            
             $table->string('flname', 100)->nullable();
             $table->string('slname', 100)->nullable();

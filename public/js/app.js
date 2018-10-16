@@ -1904,5 +1904,12 @@ $('button.btn_handler').click(function()
 {
   let h = $(this).attr('handler');
   // window.open('https://easyjobs.com/auth/'+h, 'Auth::'+h, 'width=670,height=624')
-  location.replace('https://easyjobs.com/auth/'+h);
+  location.replace('https://easyjobs.uk/auth/'+h);
+})
+
+$('button.btn_handlerC').click(function()
+{
+  let h = $(this).attr('handler');
+  // window.open('https://easyjobs.com/auth/'+h, 'Auth::'+h, 'width=670,height=624')
+  location.replace('https://easyjobs.uk/auth/'+h+'/call');
 })
