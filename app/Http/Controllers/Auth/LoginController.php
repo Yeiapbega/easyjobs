@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
+use App\Http\Controllers\Auth\RegisterController;
 use App\User;
 use App\Models\Rol;
 use Socialite;
@@ -41,14 +42,18 @@ class LoginController extends Controller
     {        
         Config::set('services.'.$provider.'.redirect', env('APP_URL').'/auth/'.$provider.'/callback/register'); 
         $social_user = Socialite::driver($provider)->user();
-        dd($social_user);   
+        // dd($social_user);
+        RegisterController::RegisterSocial($social_user, $provider);
+        // return redirect('/register')->with('form', 'Profile updated!');
+        // return response()->json(array('content' => view('includes.afterRegisterProvider')
+                           // ->render(), 'data' => $social_user), 200);   
     }
 
     public function handleProviderCallback($provider)
     {                
         Config::set('services.'.$provider.'.redirect', env('APP_URL').'/auth/'.$provider.'/callback');
         $social_user = Socialite::driver($provider)->user();    
-        dd('auth');     
+        // dd('auth');     
         // if(Auth::attempt(['email' => $social_user->email])) 
         // { 
         //     $datos = Rol::find(Auth::user()->rol_id)->name;

@@ -197,5 +197,6 @@ if(width <= 330)
 $('button.btn_handler').click(function()
 {
   let h = $(this).attr('handler');
-  window.open('https://easyjobs.com/auth/'+h, 'Auth::'+h, 'width=670,height=624')
+  // window.open('https://easyjobs.com/auth/'+h, 'Auth::'+h, 'width=670,height=624')
+  location.replace('https://easyjobs.com/auth/'+h);
 })

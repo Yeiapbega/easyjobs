@@ -1,6 +1,7 @@
 @extends('main')
 @section('title', 'home')
 @section('styles')
+@include('includes.menu')
 <style type="text/css">
 .particles-js-canvas-el
 {
@@ -100,7 +101,32 @@
 <script type="text/javascript">    
     particlesJS.load('banner-area','{{ asset('js/particles2.cfg.json') }}');    
 </script>
+@if($errors->has('notPermission')) 
+   <script type="text/javascript">
+        swal(
+        {
+          title: '',
+          type: 'warning',
+          position: 'bottom-right',
+          text: '{{ $errors->first('notPermission') }}',
+          confirmButtonText: 'Aceptar',  
+        })
+   </script>       
+@endif
+{{-- @if($errors->has('notComplete')) 
+   <script type="text/javascript">
+        swal(
+        {
+          title: '',
+          type: 'warning',
+          position: 'bottom-right',
+          text: '{{ $errors->first('notPermission') }}',
+          confirmButtonText: 'Aceptar',  
+        })
+   </script>       
+@endif --}}
 @endsection
+
 {{-- @section('script')
 <script type="text/javascript" src="{{ asset('js/carrousel.js') }}"></script>
 @endsection --}}

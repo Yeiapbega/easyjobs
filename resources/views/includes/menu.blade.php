@@ -8,7 +8,7 @@
 	        	@if(Auth::check())<img src="{{ asset(Auth::user()->photo) }}" class="img-thumbnail img-fluid rounded-circle logoShort" style="width: 45px;top: 0px;">
 	        	@else<img src="{{ asset('src/logo/logoShort.png') }}" alt="" title="" class="logoShort">
 	        	@endif
-	        	 EasyJobs <small class="relaway name-user-nav">@if(Auth::check()) • {{ Auth::user()->fname }} @endif</small>
+	        	 EasyJobs <small class="relaway name-user-nav">@if(Auth::check()) • {{ Auth::user()->fsname }} @endif</small>
 	        </a>
 	      </div>
 	      <nav id="nav-menu-container">
@@ -47,7 +47,7 @@
 									</div>
 									<div class="col-10">
 										<p class="mb-0 relaway">
-											<strong>{{ Auth::user()->fname }}</strong> quiere contactar contigo
+											<strong>{{ Auth::user()->fsname }}</strong> quiere contactar contigo
 										</p>
 										<p>
 											<a class="black-text px-0" href="tel:{{ Auth::user()->phone }}"><span class="lnr lnr-phone text-info"></span> {{ Auth::user()->phone }}</a>

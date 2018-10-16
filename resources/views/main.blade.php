@@ -33,8 +33,7 @@
         <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}">
         {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/fontawesome.min.css') }}"> --}}
         @yield('styles')
-    </head>    
-    @include('includes.menu')    
+    </head>            
     <body class="animated fadeIn">
     <div id="main-contain">    
         @yield('content')        
@@ -43,17 +42,19 @@
     @yield('script')
     <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>    
     @yield('scriptShow')
-    @if($errors->any()) 
-       <script type="text/javascript">
-            swal(
-            {
-              title: '',
-              type: 'warning',
-              position: 'bottom-right',
-              text: '{{ $errors->first('notPermission') }}',
-              confirmButtonText: 'Aceptar',  
-            })
-       </script>       
-    @endif
+    @if(Auth::check())
+        @if(App\Http\Controllers\Auth\RegisterController::isComplete(Auth::user()->id))
+             <script type="text/javascript">
+                swal(
+                {
+                  title: '',
+                  type: 'warning',
+                  position: 'bottom-right',
+                  text: '',
+                  confirmButtonText: 'Aceptar',  
+                })
+           </script>       
+        @endif
+    @endif    
 </body>
 </html>

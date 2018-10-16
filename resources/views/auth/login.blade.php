@@ -1,5 +1,6 @@
 @extends('main')
 @section('title', 'Login')
+@include('includes.menu')
 @section('content')
 <div class="section">
 	<div class="row row__wrapper mx-0">

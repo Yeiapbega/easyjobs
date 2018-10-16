@@ -15,7 +15,7 @@ class AddRolToAuth extends Migration
     {
         Schema::table('auth', function (Blueprint $table)
         {
-            $table->unsignedInteger('rol_id');
+            $table->unsignedInteger('rol_id')->nullable();
             $table->foreign('rol_id')->references('id')->on('rol')->onDelete('cascade')->onUpdate('cascade'); 
         });
     }
