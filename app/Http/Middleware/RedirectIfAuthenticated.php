@@ -38,6 +38,11 @@ class RedirectIfAuthenticated
             {
                 return redirect('/');
             }
+
+            if(empty(Auth::user()->rol_id))
+            {
+                return redirect('/');   
+            }
         }
 
         return $next($request);

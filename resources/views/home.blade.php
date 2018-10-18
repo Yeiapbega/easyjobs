@@ -13,6 +13,10 @@
 	top: 50%;
 	transform: translateY(-50%);
 }
+#main-contain
+{
+  padding-top: 0px;
+}
 </style>
 @endsection
 @section('content')

@@ -38,23 +38,56 @@
     <div id="main-contain">    
         @yield('content')        
     </div>    
+    @if(Auth::check())
+        @if(App\Http\Controllers\Auth\RegisterController::isComplete(Auth::user()->id))        
+            <div class="modal fade" id="fistLoginSocial" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document" style="max-width: 650px;">
+                <div class="modal-content rounded-0">
+                  <div class="modal-header">
+                    <h4 class="dosis modal-title colorT" id="fistLoginSocialTitle">Ya casi has terminado!</h4>
+                    <button type="button" class="close" style="outline:none;">
+                      <span aria-hidden="true">
+                          <i class="lnr lnr-flag"></i>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p class="colorT">Necesitamos que completes estos campos para mejorar tu experiencia en <b class="dosis">EasyJobs</b></p>
+                    <form autocomplete="off" name="firstSocialLogin">
+                        <div class="row mx-0">
+                            <div class="input-group mb-2 col-lg-6 px-1 col-sm-12">
+                                <div class="input-group-prepend">
+                                  <div class="input-group-text input-icon-easy">
+                                    <i class="lnr lnr-user"></i>
+                                  </div>
+                                </div>
+                                <input type="number" name="dni" class="validEmpty form-control form-control-lg input-easy" placeholder="Identificacion">
+                            </div>
+                            <div class="input-group mb-2 col-lg-6 px-1 col-sm-12">
+                                <select class="select w-100" name="rol" id="rol">
+                                    <option selected disabled>Planeas Usar La Plataforma Para</option>
+                                    <option value="2">Contratar</option>
+                                    <option value="3">Ser Contratado</option>
+                                    <option value="4">Ambos</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">                    
+                    <button type="button" name="firstSocialLogin" class="btn btn-primary">Guardar <i class="lnr lnr-checkmark-circle"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>    
+            <script type="text/javascript">
+                $('.select').niceSelect();                
+            </script>             
+        @endif
+    @endif   
     <script type="text/javascript" src="{{ asset('js/socket.io.js') }}"></script>
     @yield('script')
     <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>    
-    @yield('scriptShow')
-    @if(Auth::check())
-        @if(App\Http\Controllers\Auth\RegisterController::isComplete(Auth::user()->id))
-             <script type="text/javascript">
-                swal(
-                {
-                  title: '',
-                  type: 'warning',
-                  position: 'bottom-right',
-                  text: 'Rellenar datos',
-                  confirmButtonText: 'Aceptar',  
-                })
-           </script>       
-        @endif
-    @endif    
+    @yield('scriptShow')    
 </body>
 </html>

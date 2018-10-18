@@ -1,5 +1,8 @@
 @extends('main')
 @section('title', 'home')
+@section('styles')
+@include('includes.menu')
+@endsection
 @section('content')
 @if(Auth::check())
 <a href="{{ url('logout') }}">Logout</a>

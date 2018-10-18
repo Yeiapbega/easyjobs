@@ -1,6 +1,14 @@
 @extends('main')
 @section('title', 'Login')
 @include('includes.menu')
+@section('styles')
+<style type="text/css">
+#main-contain
+{
+  padding-top: 0px;
+}
+</style>
+@endsection
 @section('content')
 <div class="section">
 	<div class="row row__wrapper mx-0">
@@ -31,7 +39,7 @@
 	            </errors>
 				<div class="form__wrapper">
 					<form autocomplete="off" name="login">
-						<div class="input-group mb-2">
+					  <div class="input-group mb-2">
 					        <div class="input-group-prepend">
 					          <div class="input-group-text input-icon-easy">
 					          	<i class="lnr lnr-user"></i>

@@ -6,6 +6,11 @@ body
 	/*padding-left: 5px;*/
 }
 
+#main-contain
+{
+  padding-top: 80px;
+}
+
 .bold
 {
   font-weight: bold !important;
@@ -299,6 +304,10 @@ border-bottom-right-radius: 5px !important;
   font-size: 1.2em;
 }
 
+.colorT
+{
+  color:#343a40;
+}
 
 
 
