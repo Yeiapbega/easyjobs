@@ -48,6 +48,7 @@ class RegisterController extends Controller
               'name' => 'required',
               'flname' => 'required',
               'slname' => 'required',
+              'phone' => 'unique:auth',
               'email' => 'required|unique:auth|email',
               'tyc' => 'accepted',
               'rol' => 'required',
@@ -68,6 +69,7 @@ class RegisterController extends Controller
               'flname.required' => 'El campo Primer Apellido no puede estar vacio',
               'slname.required' => 'El campo Segundo Apellido no puede estar vacio',
               'email.required' => 'El campo E-mail no puede estar vacio',
+              'phone.unique' => 'El teléfono ya está registrado en la base de datos',
               'email.email' => ' Ingrese un E-Mail valido',
               'email.unique' => 'Su dirección de correo ya se encuentra en nuestra base de datos',
               'rol.required' => 'El Campo Rol es obligatorio',
@@ -81,7 +83,7 @@ class RegisterController extends Controller
           $tyc = $request['tyc'];
           if ($request['phone'] == "")
           {
-            $request['phone'] = 0;
+            $request['phone'] = null;
           }
           if($tyc == 'false')
           {
@@ -283,12 +285,18 @@ class RegisterController extends Controller
       if($ajax->ajax())
       {
         $request = $ajax->all();
+        $datos = DB::table('auth')
+                     ->select('id')
+                     ->where('email', $request['email'])
+                     ->get()
+                     ->toArray();          
         $data = Validator::make($request,
         [
             'dni' => 'required|min:8|max:10|unique:auth',          
-            'email' => 'required|unique:auth|email',
+            'email' => 'required|email',
             'tyc' => 'accepted',
-            'rol' => 'required',            
+            'rol' => 'required',
+            'phone' => 'unique:auth',            
             '_token' => 'required'
         ],
         [
@@ -296,9 +304,9 @@ class RegisterController extends Controller
             'dni.min' => 'La Identificación minimo debe tener 8 digitos',
             'dni.max' => 'La Identificación maximo debe tener 10 digitos',
             'dni.unique' => 'La Identificación ya está registrada en la base de datos',                            
+            'phone.unique' => 'El teléfono ya está registrado en la base de datos',
             'email.required' => 'El campo E-mail no puede estar vacio',
             'email.email' => ' Ingrese un E-Mail valido',
-            'email.unique' => 'Su dirección de correo ya se encuentra en nuestra base de datos',
             'rol.required' => 'El Campo Rol es obligatorio',
             'tyc.accepted' => 'Debes aceptar los terminos y condiciones para registrarte',
             '_token.required' => 'token vacio'
@@ -320,12 +328,16 @@ class RegisterController extends Controller
             $tyc_ = "YES";
           }
           $update = User::find(Auth::user()->id);
-            $update->dni = $request['dni'];
-            $update->phone = $request['phone'];
+          if(empty($datos[0]->id))
+          {
             $update->email = $request['email'];
-            $update->rol_id = $request['rol'];
-            $update->dataPermission = $tyc_;
-            $update->dataComplete = 1;
+            // return response()->json(['errors' => 'Error al registrar informacion']);
+          }          
+          $update->dni = $request['dni'];
+          $update->phone = $request['phone'];          
+          $update->rol_id = $request['rol'];
+          $update->dataPermission = $tyc_;
+          $update->dataComplete = 1;
           if($update->save())
           {            
             session(['Rol' => $request['rol']]);

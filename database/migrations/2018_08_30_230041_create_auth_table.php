@@ -21,7 +21,7 @@ class CreateAuthTable extends Migration
             $table->string('flname', 100)->nullable();
             $table->string('slname', 100)->nullable();
             $table->string('email', 100)->nullable()->unique();
-            $table->string('phone', 100)->default(0);
+            $table->string('phone', 100)->nullable();
             $table->string('password', 100)->nullable();
             $table->string('dataPermission', 3);                             
             $table->string('photo', 200)->default("src/profile_photos/photo.png");
