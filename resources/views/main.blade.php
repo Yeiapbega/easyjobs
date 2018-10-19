@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link rel="icon" type="image/png" href="{{ asset('src/logo/ico.png') }}" />
+        <link rel="icon" type="image/png" href="{{ asset('src/logo/logoShort.png') }}" />
         <meta http-equiv="X-UA-Compatible" content="ie-edge">
         <title>EJ • @yield('title')</title>
     {{--      <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
