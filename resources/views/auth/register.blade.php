@@ -1,5 +1,13 @@
 @extends('main')
 @section('title', 'Register')
+@section('styles')
+<style type="text/css">
+#main-contain
+{
+  padding-top: 0px;
+}
+</style>
+@endsection
 @include('includes.menu')
 @section('content')
 <div class="section">

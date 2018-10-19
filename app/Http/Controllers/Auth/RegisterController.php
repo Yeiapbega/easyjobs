@@ -195,7 +195,7 @@ class RegisterController extends Controller
                 'dni' => null,
                 'fsname' => $request['name'],                
                 'email' => $email,
-                'dataPermission' => 'YES',
+                'dataPermission' => 'NO',
                 'remember_token' => str_random(64),
                 'ApiToken' => str_random(64),
                 'social_id'=> $request['id'],
@@ -247,17 +247,28 @@ class RegisterController extends Controller
         // dd($id);
         if(Auth::loginUsingId($id)) 
         {             
-             // session(['Rol' => $datos]);
-
-             $datos = DB::table('auth')
-                         ->select('id', 'dni as user_dni', 'email as user_email','fsname as nombre','flname as apellido','phone', 'ApiToken')
-                         ->where('social_id', $social)
-                         ->get()
-                         ->toArray();               
-             foreach ($datos[0] as $key => $value) 
-             {
-                  session([$key => $value]);
-             }
+          // session(['Rol' => $datos]);            
+          $datos = DB::table('auth')
+                     ->select('id', 'rol_id', 'dni as user_dni', 'email as user_email','fsname as nombre','flname as apellido','phone', 'ApiToken')
+                     ->where('social_id', $social)
+                     ->get()
+                     ->toArray();               
+          foreach ($datos[0] as $key => $value) 
+          {
+              session([$key => $value]);
+          }
+          if($datos[0]->rol_id == 3)
+          {
+            session(['url' => 'p/home']);
+          }          
+          if($datos[0]->rol_id == 2)
+          {
+            session(['url' => 'c/home']);
+          }          
+          if($datos[0]->rol_id == 4)
+          {
+            session(['url' => 'cp/home']);
+          }
           return true;      
         }
         else
@@ -267,4 +278,82 @@ class RegisterController extends Controller
       }      
     }
 
+    public static function FirstLoginRegisterForm(Request $ajax)
+    {
+      if($ajax->ajax())
+      {
+        $request = $ajax->all();
+        $data = Validator::make($request,
+        [
+            'dni' => 'required|min:8|max:10|unique:auth',          
+            'email' => 'required|unique:auth|email',
+            'tyc' => 'accepted',
+            'rol' => 'required',            
+            '_token' => 'required'
+        ],
+        [
+            'dni.required' => 'El campo Identificación no puede estar vacio',
+            'dni.min' => 'La Identificación minimo debe tener 8 digitos',
+            'dni.max' => 'La Identificación maximo debe tener 10 digitos',
+            'dni.unique' => 'La Identificación ya está registrada en la base de datos',                            
+            'email.required' => 'El campo E-mail no puede estar vacio',
+            'email.email' => ' Ingrese un E-Mail valido',
+            'email.unique' => 'Su dirección de correo ya se encuentra en nuestra base de datos',
+            'rol.required' => 'El Campo Rol es obligatorio',
+            'tyc.accepted' => 'Debes aceptar los terminos y condiciones para registrarte',
+            '_token.required' => 'token vacio'
+        ]);           
+
+        if ($data->fails())
+        {
+          return response()->json(['errors' => $data->errors()]);
+        }
+        else
+        {
+          $tyc = $request['tyc'];
+          if($tyc == 'false')
+          {
+            $tyc_ = "NO";
+          }
+          else
+          {
+            $tyc_ = "YES";
+          }
+          $update = User::find(Auth::user()->id);
+            $update->dni = $request['dni'];
+            $update->phone = $request['phone'];
+            $update->email = $request['email'];
+            $update->rol_id = $request['rol'];
+            $update->dataPermission = $tyc_;
+            $update->dataComplete = 1;
+          if($update->save())
+          {            
+            session(['Rol' => $request['rol']]);
+            if($request['rol'] == 3)
+            {
+              session(['url' => 'p/home']);
+            }          
+            if($request['rol'] == 2)
+            {
+              session(['url' => 'c/home']);
+            }          
+            if($request['rol'] == 4)
+            {
+              session(['url' => 'cp/home']);
+            }
+            return response()->json(['message' => "Registro realizado con exito",
+                                'errors' => false,                              
+                                'type' => 'check',
+                                'url' => session()->get('url')], 200);
+          }
+          else
+          {
+            return response()->json(['errors' => 'Error al registrar informacion']);
+          }
+          
+        }
+       
+        // return response()->json([$request], 200);
+      }
+    }
 }

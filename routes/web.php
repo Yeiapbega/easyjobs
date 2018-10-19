@@ -22,6 +22,7 @@ Route::get('/', function ()
 
 Route::group(['middleware' => 'auth'], function()
 {
+	Route::post('firstLoginForm', 'Auth\RegisterController@FirstLoginRegisterForm');
 	Route::group(['middleware' => ['IsPerson'], 'prefix' => 'p'], function()
 	{
 	    Route::get('/home', function ()

@@ -66,7 +66,7 @@
 					</div>
 	            </li>
 	            @if(!str_contains(url()->current(), '/home'))
-	          	<li><a class="font-weight-bold px-2 btn btn-sm btn-outline-light py-1" style="font-size: 17px;" data-toggle="tooltip" data-placement="bottom" title="Panel Principal" href="{{ session()->get('url') }}"><i class="lnr lnr-home"></i></a></li>	 
+	          	<li><a class="dashboard font-weight-bold px-2 btn btn-sm btn-outline-light py-1" style="font-size: 17px;" data-toggle="tooltip" data-placement="bottom" title="Panel Principal" href="{{ session()->get('url') }}"><i class="lnr lnr-home"></i></a></li>	 
 	          	@endif
 	          	<li><a class="font-weight-bold px-2 btn btn-sm btn-outline-light py-1" style="font-size: 17px;" data-toggle="tooltip" data-placement="bottom" title="Salir" href="{{ url('/logout') }}"><i class="lnr lnr-exit"></i></a></li>         	
 	          @endif				          				          
