@@ -151,3 +151,18 @@ $('.input-easy').focus(function()
     let icon = $(this).parent().find('.input-icon-easy');
     icon.css({'border-color':'#ced4da'}).find('i').css({'font-weight':'normal', 'color':'#495057'})    
 })
+
+var lastScrollTop = 0;
+$(window).scroll(function()
+{       
+    windowHeight = $(window).scrollTop();       
+    if(windowHeight > lastScrollTop)
+    {
+        $('#header').css({'background':'#000000e6'}).addClass('z-depth-2');
+    }
+    if(windowHeight == 0)
+    {
+        $('#header').css({'background':'transparent'}).removeClass('z-depth-2');
+    }
+    lastScrollTop = windowHeight;
+})

@@ -73,33 +73,165 @@
 	</div>	
 </section>
 <br>
-{{-- <div class="container">
+<div class="container mt-3">
+	{{-- <h1 class="font-weight-bold text-center p1-gradient-color relaway text-uppercase mt-1 mb-3">Trabajos Recientes</h1> --}}
 	<div class="carusel-beta">
-		<!-- <div class="single-testimonial item">
-			<img class="mx-auto" src="img/t2.png" alt="">
-			<p class="desc">
-				Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware and more. laptop accessory
-			</p>
-			<h4>Mark Alviro Wiens</h4>
-			<p>
-				CEO at Google
-			</p>
-		</div> -->
-		<div class="single-post d-flex justify-content-between">
-			<div class="thumb">
-				<img src="{{ asset('src/logo/logoShort.png') }}" alt="">
-				<a class="btns text-uppercase" href="#">view job post</a>
+		<div class="single-testimonial item card rounded">							
+			<div class="card-body">
+				<h5 class="text-dark bold">
+					<span class="lnr lnr-briefcase"></span> Job Tessting
+				</h5>
+				<hr class="mb-1">
+				{{-- <img class="mx-auto" src="img/t2.png" alt=""> --}}
+				<p class="desc-job text-justify mb-1">					
+					Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware and more. laptop accessory
+				</p>	
+				{{-- <hr class="my-1"> --}}
+				<ul class="info-job list-unstyled mb-0">
+					{{-- @if(Auth::check()) --}}
+						<li>
+							<small>
+								<span class="lnr lnr-smartphone"></span> 555-555-55-55
+							</small>
+						</li>
+						<li>
+							<small>
+								<span class="lnr lnr-map-marker"></span> Cra. 7 #24-43 B/ adadas asdasdasd
+							</small>
+						</li>
+					{{-- @endif --}}
+					<li>
+						<small>
+							<span class="lnr lnr-tag"></span>
+							<a href="#!"><span class="badge badge-dark">Diseño</span></a>
+							<a href="#!"><span class="badge badge-dark">Arte</span></a>
+							<a href="#!"><span class="badge badge-dark">Tecnologia</span></a>
+						</small>
+					</li>
+				</ul>
+				<p class="mb-0 text-right">
+					<button class="btn-outline-primary btn"><span class="lnr lnr-heart"></span></button>
+					<button class="btn-outline-primary btn">Aplicar</button>
+				</p>			
 			</div>
-			<div class="details">
-				<a href="#"><h4>Creative Designer</h4></a>
-				<h6>Los Angeles</h6>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.
-				</p>
+		</div>
+		<div class="single-testimonial item card rounded">							
+			<div class="card-body">
+				<h5 class="text-dark bold">
+					<span class="lnr lnr-briefcase"></span> Job Tessting
+				</h5>
+				<hr class="mb-1">
+				{{-- <img class="mx-auto" src="img/t2.png" alt=""> --}}
+				<p class="desc-job text-justify mb-1">					
+					Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware and more. laptop accessory
+				</p>	
+				{{-- <hr class="my-1"> --}}
+				<ul class="info-job list-unstyled mb-0">
+					{{-- @if(Auth::check()) --}}
+						<li>
+							<small>
+								<span class="lnr lnr-smartphone"></span> 555-555-55-55
+							</small>
+						</li>
+						<li>
+							<small>
+								<span class="lnr lnr-map-marker"></span> Cra. 7 #24-43 B/ adadas asdasdasd
+							</small>
+						</li>
+					{{-- @endif --}}
+					<li>
+						<small>
+							<span class="lnr lnr-tag"></span>
+							<a href="#!"><span class="badge badge-dark">Diseño</span></a>
+							<a href="#!"><span class="badge badge-dark">Arte</span></a>
+							<a href="#!"><span class="badge badge-dark">Tecnologia</span></a>
+						</small>
+					</li>
+				</ul>
+				<p class="mb-0 text-right">
+					<button class="btn-outline-primary btn"><span class="lnr lnr-heart"></span></button>
+					<button class="btn-outline-primary btn">Aplicar</button>
+				</p>			
+			</div>
+		</div>
+		<div class="single-testimonial item card rounded">							
+			<div class="card-body">
+				<h5 class="text-dark bold">
+					<span class="lnr lnr-briefcase"></span> Job Tessting
+				</h5>
+				<hr class="mb-1">
+				{{-- <img class="mx-auto" src="img/t2.png" alt=""> --}}
+				<p class="desc-job text-justify mb-1">					
+					Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware and more. laptop accessory
+				</p>	
+				{{-- <hr class="my-1"> --}}
+				<ul class="info-job list-unstyled mb-0">
+					{{-- @if(Auth::check()) --}}
+						<li>
+							<small>
+								<span class="lnr lnr-smartphone"></span> 555-555-55-55
+							</small>
+						</li>
+						<li>
+							<small>
+								<span class="lnr lnr-map-marker"></span> Cra. 7 #24-43 B/ adadas asdasdasd
+							</small>
+						</li>
+					{{-- @endif --}}
+					<li>
+						<small>
+							<span class="lnr lnr-tag"></span>
+							<a href="#!"><span class="badge badge-dark">Diseño</span></a>
+							<a href="#!"><span class="badge badge-dark">Arte</span></a>
+							<a href="#!"><span class="badge badge-dark">Tecnologia</span></a>
+						</small>
+					</li>
+				</ul>
+				<p class="mb-0 text-right">
+					<button class="btn-outline-primary btn"><span class="lnr lnr-heart"></span></button>
+					<button class="btn-outline-primary btn">Aplicar</button>
+				</p>			
 			</div>
 		</div>																												
 	</div>
-</div> --}}
+</div>
+<div class="container mt-5 mb-2">
+	<h2 class="text-dark mb-4 text-uppercase relaway font-weight-bold text-center">
+		<span class="bg-primary px-2 py-2 rounded text-white lnr lnr-tag"></span> Categorias de Trabajos		
+	</h2>
+	<div class="row mx-0 mt-3 d-flex justify-content-center">
+		<div class="col-lg-2 col-md-4 col-12 mb-3">
+			<div class="single-jcat">				
+					<img src="{{ asset('icon/src/i (5).png') }}" alt="">				
+				<p class="colorT">Desarrollo</p>
+			</div>
+		</div>
+		<div class="col-lg-2 col-md-4 col-6 mb-3">
+			<div class="single-jcat">				
+					<img src="{{ asset('icon/src/i (3).png') }}" alt="">				
+				<p class="colorT">Diseño</p>
+			</div>
+		</div>
+		<div class="col-lg-2 col-md-4 col-6 mb-3">
+			<div class="single-jcat">				
+					<img src="{{ asset('icon/src/i (4).png') }}" alt="">				
+				<p class="colorT">Electronica</p>
+			</div>
+		</div>
+		<div class="col-lg-2 col-md-6 col-6 mb-3">
+			<div class="single-jcat">				
+					<img src="{{ asset('icon/src/i (6).png') }}" alt="">				
+				<p class="colorT">Seguridad</p>
+			</div>
+		</div>
+		<div class="col-lg-2 col-md-6 col-6 mb-3">
+			<div class="single-jcat">				
+					<img src="{{ asset('icon/src/i (2).png') }}" alt="">				
+				<p class="colorT">Servicios</p>
+			</div>
+		</div>
+	</div>
+</div>
 @endsection
 @section('scriptShow')
 <script type="text/javascript">    
