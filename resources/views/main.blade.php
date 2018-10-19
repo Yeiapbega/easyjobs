@@ -53,6 +53,17 @@
                   </div>
                   <div class="modal-body">
                     <p class="colorT">Necesitamos que completes estos campos para mejorar tu experiencia en <b class="dosis">EasyJobs</b></p>
+                    <errors class="quick" style="display: none;zoom: .75;cursor: pointer;">
+                        <div class="card py-2 px-3 bg-danger text-white mb-3 mt-2">
+                            <h5 class="mb-1 card-title relaway"><i class="fa fa-exclamation-triangle"></i> 
+                                Errores
+                                <i class="fa fa-times close-errors float-right"></i>
+                            </h5>
+                            <div class="card-body px-1 py-1">
+                                
+                            </div>
+                        </div>
+                    </errors>
                     <form autocomplete="off" name="firstSocialLogin">
                         <div class="row mx-0">
                             <div class="input-group mb-2 col-lg-6 px-1 col-sm-12">
@@ -71,18 +82,37 @@
                                     <option value="4">Ambos</option>
                                 </select>
                             </div>
+                            <div class="input-group mb-2 col-lg-6 col-sm-12 px-1 col-sm-12">
+                                <div class="input-group-prepend">
+                                  <div class="input-group-text input-icon-easy">
+                                    <i class="lnr lnr-envelope"></i>
+                                  </div>
+                                </div>
+                                <input type="mail" name="email" class="validEmpty form-control form-control-lg input-easy" placeholder="E-Mail de contacto">
+                            </div>
+                            <div class="input-group mb-2 col-lg-6 px-1 col-sm-12">
+                                <div class="input-group-prepend">
+                                  <div class="input-group-text input-icon-easy">
+                                    <i class="lnr lnr-smartphone"></i>
+                                  </div>
+                                </div>
+                                <input type="number" name="phone" class="validEmpty form-control form-control-lg input-easy" placeholder="Telefono">
+                            </div>
+                            <div class="input-group pt-1 col-lg-12">
+                                <div class="custom-control custom-checkbox mb-3 pl-3">
+                                    <input type="checkbox" class="custom-control-input" name="tyc" id="tyc">
+                                    <label class="custom-control-label" for="tyc">Aceptas los <a href="#!" class="font-weight-bold">Terminos y Condiciones</a></label>
+                                </div>
+                            </div>
                         </div>
                     </form>
                   </div>
                   <div class="modal-footer">                    
-                    <button type="button" name="firstSocialLogin" class="btn btn-primary">Guardar <i class="lnr lnr-checkmark-circle"></i></button>
+                    <button type="button" name="firstSocialLogin" class="btn btn-primary">Guardar <i class="fa fa-check-circle"></i></button>
                   </div>
                 </div>
               </div>
-            </div>    
-            <script type="text/javascript">
-                $('.select').niceSelect();                
-            </script>             
+            </div>              
         @endif
     @endif   
     <script type="text/javascript" src="{{ asset('js/socket.io.js') }}"></script>

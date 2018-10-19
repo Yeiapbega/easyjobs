@@ -207,3 +207,65 @@ $('button.btn_handlerC').click(function()
   // window.open('https://easyjobs.com/auth/'+h, 'Auth::'+h, 'width=670,height=624')
   location.replace('https://easyjobs.uk/auth/'+h+'/call');
 })
+
+$("button[name=firstSocialLogin]").click(function()
+{
+  $.ajax(
+  {
+      url: "/firstLoginForm",
+      method: "POST",
+      data: 
+      {
+          _token:  $('meta[name="csrf-token"]').attr('content'),
+          dni: $("form[name=firstSocialLogin] input[name='dni']").val(),
+          phone: $("form[name=firstSocialLogin] input[name='phone']").val(),
+          rol:  $("form[name=firstSocialLogin] select[name='rol']").val(),
+          tyc:  $("form[name=firstSocialLogin] input[name='tyc']").is(":checked"),
+          email: $("form[name=firstSocialLogin] input[name='email']").val()
+      },
+      beforeSend: function()
+      {
+          $("select[name='rol']").parent().find('.nice-select').addClass('disabled')
+          $(".input-easy").attr('disabled', true)
+          loadIcon('firstSocialLogin', 'check-circle')          
+      },
+      error: function(jqXHR, textStatus, errorThrown)
+      {
+          // Handle errors here
+          notLoadIcon('firstSocialLogin', 'check-circle')
+          $("select[name='rol']").parent().find('.nice-select').removeClass('disabled')
+          $(".input-easy").attr('disabled', false)
+          $('button[name=submitAuth]').attr('disabled', false)
+          alert('ERRORS: ' + textStatus + " - " + errorThrown);
+          // STOP LOADING SPINNER
+      }
+  })
+  .done(function(data)
+  {
+    notLoadIcon('firstSocialLogin', 'check-circle')
+    $(".input-easy").attr('disabled', false)
+    $("select[name='rol']").parent().find('.nice-select').removeClass('disabled')    
+    if(data.errors)
+    {            
+        var text = '<ul class="mb-0 px-3 mx-0">';            
+        $.each(data.errors, function( key, value ) 
+        {
+          text += '<li>'+value+'</li>'
+        });                
+        text += '</ul>'
+        $("#fistLoginSocial .modal-body errors > div.card > .card-body").html(text).parent().parent().addClass('animated fadeIn')
+        $('#fistLoginSocial .modal-body errors').show()
+        $('#fistLoginSocial .modal-body errors > div.card').removeClass('bg-success bg-info').addClass('animated fadeIn bg-danger').show()
+    }
+    if(data.type == "check")
+    {
+        $("#fistLoginSocial .modal-body  errors > div.card > .card-title").html('<i class="fa fa-check"></i> Info')
+        $("#fistLoginSocial .modal-body  errors > div.card").removeClass('bg-danger bg-info').addClass('bg-success')
+        $("#fistLoginSocial .modal-body  errors > div.card > .card-body").html(data.message).parent().addClass('animated fadeIn')                
+        $('#fistLoginSocial .modal-body errors').show()
+        $('#fistLoginSocial .modal-body errors > div.card').addClass('animated fadeIn').show()
+        $('#fistLoginSocial').modal('hide');  
+        $('.dashboard').attr('href', data.url)      
+    }
+  })  
+})
