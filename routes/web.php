@@ -6,11 +6,11 @@ Route::group(['middleware' => 'guest'], function()
 
 	Route::get('/register', 'Auth\RegisterController@ShowRegisterForm')->name('register');
 	Route::post('register', 'Auth\RegisterController@RegisterForm');
-	Route::group(['prefix' => 'auth'], function () 
-	{	 
+	Route::group(['prefix' => 'auth'], function ()
+	{
 	    Route::get('/{provider}/{where}', 'Auth\LoginController@redirectToProvider')->name('social.auth');
-	    Route::get('/{provider}', 'Auth\LoginController@handleProviderCallback');	    
-	    Route::get('/{provider}/callback/register', 'Auth\LoginController@handleProviderCallbackR');	    
+	    Route::get('/{provider}', 'Auth\LoginController@handleProviderCallback');
+	    Route::get('/{provider}/callback/register', 'Auth\LoginController@handleProviderCallbackR');
 	});
 });
 
@@ -42,6 +42,11 @@ Route::group(['middleware' => 'auth'], function()
 		{
 		   return view('layouts.company.home');
 		})->name('homeC');
+
+		Route::get('/register', function ()
+		{
+		   return view('layouts.company.register');
+		})->name('registerC');
 	});
 
 	Route::group(['middleware' => ['IsCp'], 'prefix' => 'cp'], function()

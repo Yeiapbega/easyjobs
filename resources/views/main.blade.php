@@ -33,13 +33,13 @@
         <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}">
         {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/fontawesome.min.css') }}"> --}}
         @yield('styles')
-    </head>            
+    </head>
     <body class="animated fadeIn">
-    <div id="main-contain">    
-        @yield('content')        
-    </div>    
+    <div id="main-contain">
+        @yield('content')
+    </div>
     @if(Auth::check())
-        @if(App\Http\Controllers\Auth\RegisterController::isComplete(Auth::user()->id))        
+        @if(App\Http\Controllers\Auth\RegisterController::isComplete(Auth::user()->id))
             <div class="modal fade" id="fistLoginSocial" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
               <div class="modal-dialog" role="document" style="max-width: 650px;">
                 <div class="modal-content rounded-0">
@@ -55,12 +55,12 @@
                     <p class="colorT">Necesitamos que completes estos campos para mejorar tu experiencia en <b class="dosis">EasyJobs</b></p>
                     <errors class="quick" style="display: none;zoom: .75;cursor: pointer;">
                         <div class="card py-2 px-3 bg-danger text-white mb-3 mt-2">
-                            <h5 class="mb-1 card-title relaway"><i class="fa fa-exclamation-triangle"></i> 
+                            <h5 class="mb-1 card-title relaway"><i class="fa fa-exclamation-triangle"></i>
                                 Errores
                                 <i class="fa fa-times close-errors float-right"></i>
                             </h5>
                             <div class="card-body px-1 py-1">
-                                
+
                             </div>
                         </div>
                     </errors>
@@ -107,17 +107,19 @@
                         </div>
                     </form>
                   </div>
-                  <div class="modal-footer">                    
+                  <div class="modal-footer">
                     <button type="button" name="firstSocialLogin" class="btn btn-primary">Guardar <i class="fa fa-check-circle"></i></button>
                   </div>
                 </div>
               </div>
-            </div>              
+            </div>
         @endif
-    @endif   
+    @endif
     <script type="text/javascript" src="{{ asset('js/socket.io.js') }}"></script>
+    <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
     @yield('script')
-    <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>    
-    @yield('scriptShow')    
+    <script type="text/javascript">
+      @yield('scriptShow')
+    </script>
 </body>
 </html>

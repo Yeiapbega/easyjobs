@@ -13,9 +13,10 @@ class CreateJobsTable extends Migration
      */
     public function up()
     {
-        Schema::create('jobs', function (Blueprint $table) 
+        Schema::create('jobs', function (Blueprint $table)
         {
             $table->increments('id');
+            $table->string('token')->unique();
             $table->string('title', 100);
             $table->text('description');
             $table->string('images', 100)->default(asset("src/textures/job_defaults.png"));
@@ -24,9 +25,8 @@ class CreateJobsTable extends Migration
             $table->dateTime('publicate_date');
             $table->dateTime('finish_date');
             $table->string('state', 2);
-            $table->text('tags');
             $table->string('offerter', 30);
-            $table->foreign('offerter')->references('dni')->on('auth')->onDelete('cascade')->onUpdate('cascade'); 
+            $table->foreign('offerter')->references('dni')->on('auth')->onDelete('cascade')->onUpdate('cascade');
             //$table->timestamps();
         });
     }
