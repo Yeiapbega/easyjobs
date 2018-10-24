@@ -4,8 +4,8 @@
     <div class="container container-nav">
     	<div class="row align-items-center justify-content-between d-flex">
 	      <div id="logo">
-	        <a href="{{ url('/') }}" class="dosis text-white font-weight-bold" style="font-size: 25px;">
-	        	@if(Auth::check())<img src="{{ asset(Auth::user()->photo) }}" class="img-thumbnail img-fluid rounded-circle logoShort" style="width: 45px;top: 0px;">
+	        <a href="{{ url('/') }}" class="dosis text-white font-weight-bold" style="font-size: 22px;">
+	        	@if(Auth::check())<img src="{{ asset(Auth::user()->photo) }}" class="img-thumbnail img-fluid rounded-circle logoShort" style="width: 35px;top: 0px;">
 	        	@else<img src="{{ asset('src/logo/logoShort.png') }}" alt="" title="" class="logoShort">
 	        	@endif
 	        	 EasyJobs <small class="relaway name-user-nav">	        	 	
