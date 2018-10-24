@@ -197,14 +197,16 @@ if(width <= 330)
 $('button.btn_handler').click(function()
 {
   let h = $(this).attr('handler');
-  // window.open('https://easyjobs.com/auth/'+h, 'Auth::'+h, 'width=670,height=624')
+  $('button.btn_handler, button.btn_handlerC').addClass('disabled');  
+  $(".input-easy").attr('disabled', true)
   location.replace('https://easyjobs.uk/auth/'+h);
 })
 
 $('button.btn_handlerC').click(function()
 {
   let h = $(this).attr('handler');
-  // window.open('https://easyjobs.com/auth/'+h, 'Auth::'+h, 'width=670,height=624')
+  $('button.btn_handler, button.btn_handlerC').addClass('disabled');  
+  $(".input-easy").attr('disabled', true)
   location.replace('https://easyjobs.uk/auth/'+h+'/call');
 })
 

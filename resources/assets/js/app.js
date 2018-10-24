@@ -1,64 +1,64 @@
-loc = location.protocol+'//'+location.hostname+':8888'+location.pathname;
-var socket = io(loc);
+// loc = location.protocol+'//'+location.hostname+':8888'+location.pathname;
+// var socket = io(loc);
 
-socket.on('connect', function()
-{
-    console.log('connected to server')
-})
+// socket.on('connect', function()
+// {
+//     console.log('connected to server')
+// })
 
-socket.on('disconnect', function()
-{
-    console.log('disconnected to server')
-})
+// socket.on('disconnect', function()
+// {
+//     console.log('disconnected to server')
+// })
 
-$('button[name=submitMessage]').click(function()
-{
-    socket.emit('newMessage',
-    {
-        from: $('input[name=nick]').val(),
-        text: $('input[name=message]').val()
-    })
-})
+// $('button[name=submitMessage]').click(function()
+// {
+//     socket.emit('newMessage',
+//     {
+//         from: $('input[name=nick]').val(),
+//         text: $('input[name=message]').val()
+//     })
+// })
 
-socket.on('wMessage', function(resp)
-{
-    var text = '<p class="border-bottom border-light"><strong>'+resp.from+'</strong>: '+resp.text+'</p>'
-    $('#cont').append(text)
-})
+// socket.on('wMessage', function(resp)
+// {
+//     var text = '<p class="border-bottom border-light"><strong>'+resp.from+'</strong>: '+resp.text+'</p>'
+//     $('#cont').append(text)
+// })
 
-$('button[name=submitGEO]').click(function()
-{
-    console.log('geo')
-    if(!navigator.geolocation)
-    {
-        alert('no soporta GEO tu pc')
-    }
+// $('button[name=submitGEO]').click(function()
+// {
+//     console.log('geo')
+//     if(!navigator.geolocation)
+//     {
+//         alert('no soporta GEO tu pc')
+//     }
 
-    navigator.geolocation.getCurrentPosition(function(position)
-    {
-        socket.emit('createLocationMessage', 
-        {
-            from: $('input[name=nick]').val(),
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude
-        })
-    }, function()
-    {
-        alert('no se pudo leer tu GEO')
-    })
-})
+//     navigator.geolocation.getCurrentPosition(function(position)
+//     {
+//         socket.emit('createLocationMessage', 
+//         {
+//             from: $('input[name=nick]').val(),
+//             latitude: position.coords.latitude,
+//             longitude: position.coords.longitude
+//         })
+//     }, function()
+//     {
+//         alert('no se pudo leer tu GEO')
+//     })
+// })
 
-socket.on('newMessage', function(resp)
-{
-    var text = '<p class="border-bottom border-light"><strong>'+resp.from+'</strong>: '+resp.text+'</p>'
-    $('#cont').append(text)
-})
+// socket.on('newMessage', function(resp)
+// {
+//     var text = '<p class="border-bottom border-light"><strong>'+resp.from+'</strong>: '+resp.text+'</p>'
+//     $('#cont').append(text)
+// })
 
-socket.on('createLocationMessage', function(resp)
-{
-    var text = '<p class="border-bottom border-light"><strong>'+resp.from+'</strong>: <a class="btn btn-outline-primary btn-sm" href="'+resp.url+'" target="_blank">posicion actual <i class="fa fa-map-marker"></i></a></p>'
-    $('#cont').append(text)
-})
+// socket.on('createLocationMessage', function(resp)
+// {
+//     var text = '<p class="border-bottom border-light"><strong>'+resp.from+'</strong>: <a class="btn btn-outline-primary btn-sm" href="'+resp.url+'" target="_blank">posicion actual <i class="fa fa-map-marker"></i></a></p>'
+//     $('#cont').append(text)
+// })
 
 $('[data-toggle="tooltip"]').tooltip();
 $('.dropdown-toggle').dropdown();
@@ -92,6 +92,31 @@ $('.input-easy').focus(function()
     let icon = $(this).parent().find('.input-icon-easy');
     icon.css({'border-color':'#ced4da'}).find('i').css({'font-weight':'normal', 'color':'#495057'})    
 })
+
+$('.carusel-users-top').owlCarousel(
+{
+    items:2,
+    loop:true,
+    margin: 30,
+    dots: true,
+    autoplayHoverPause: true,
+    smartSpeed:150,         
+    autoplay:true,    
+   responsive: {
+        0: {
+            items: 1
+        },
+        480: {
+            items: 1,
+        },
+        768: {
+            items: 1,
+        },
+        961: {
+            items: 1,
+        }            
+    }
+});
 
 $('.carusel-beta').owlCarousel(
 {
@@ -150,4 +175,19 @@ $('.input-easy').focus(function()
 {
     let icon = $(this).parent().find('.input-icon-easy');
     icon.css({'border-color':'#ced4da'}).find('i').css({'font-weight':'normal', 'color':'#495057'})    
+})
+
+var lastScrollTop = 0;
+$(window).scroll(function()
+{       
+    windowHeight = $(window).scrollTop();       
+    if(windowHeight > lastScrollTop)
+    {
+        $('#header').css({'background':'#000000e6'}).addClass('z-depth-2');
+    }
+    if(windowHeight == 0)
+    {
+        $('#header').css({'background':'transparent'}).removeClass('z-depth-2');
+    }
+    lastScrollTop = windowHeight;
 })

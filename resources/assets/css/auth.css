@@ -24,13 +24,6 @@
     bottom: 0;
 }
 
-.logoShort
-{
-	position: relative;
-	top: -5px;
-	width: 50px;
-}
-
 .overlay-bg 
 {
     opacity: .90;
