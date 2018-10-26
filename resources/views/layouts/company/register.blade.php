@@ -6,13 +6,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 @endsection
 @section('scriptShow')
-  $(document).ready(function() {
-    $('.js-example-basic-single').select2({
-      placeholder:'Seleccione una opcion',
-      width:'15%',
-      allowClear: true
-    });
+<script type="text/javascript">
+$(document).ready(function() {
+  $('.js-example-basic-single').select2({
+    placeholder:'Seleccione una opcion',
+    width:'15%',
+    allowClear: true
+  });
 });
+</script>
 @endsection
 @section('styles')
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
@@ -26,7 +28,7 @@
       <option value="">P</option>
       <option value="">S</option>
       <option value="">T</option>
-    </optgroup>]
+    </optgroup>
 
   </select>
 </form>

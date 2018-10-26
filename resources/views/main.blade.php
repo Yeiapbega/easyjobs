@@ -118,8 +118,6 @@
     <script type="text/javascript" src="{{ asset('js/socket.io.js') }}"></script>
     <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
     @yield('script')
-    <script type="text/javascript">
-      @yield('scriptShow')
-    </script>
+    @yield('scriptShow')
 </body>
 </html>

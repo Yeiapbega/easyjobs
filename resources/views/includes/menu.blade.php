@@ -1,6 +1,6 @@
 {{-- {!! Auth::user()->toJSON(JSON_PRETTY_PRINT) !!} --}}
 <button type="button" id="mobile-nav-toggle"><i class="lnr lnr-menu"></i></button>
-<header id="header" class="{{ str_contains(url()->current(), '/home') ? 'bg-dark' : ''}}">
+<header id="header" class="@if(url()->current() != config('app.url')) {!! 'bg-dark' !!} @endif">
     <div class="container container-nav">
     	<div class="row align-items-center justify-content-between d-flex">
 	      <div id="logo">
