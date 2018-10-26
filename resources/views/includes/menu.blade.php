@@ -23,7 +23,7 @@
 		          	  <li><a class="relaway btn btn-sm btn-outline-light" href="{{ url('login') }}">Login</a></li>	      
 		           @endif    	 
 	            @else
-	            <li><a class="font-weight-bold px-2 btn btn-sm btn-outline-light py-1" style="font-size: 17px;" data-toggle="tooltip" data-placement="bottom" title="Ranking Global" href="#"><i class="lnr lnr-earth"></i></a></li>
+	            <li><a class="font-weight-bold px-2 btn btn-sm btn-outline-light py-1" style="font-size: 17px;" data-toggle="tooltip" data-placement="bottom" title="Mensajes" href="#"><i class="lnr lnr-bubble"></i></a></li>
 	            <li><a class="font-weight-bold px-2 btn btn-sm btn-outline-light py-1" style="font-size: 17px;" data-toggle="tooltip" data-placement="bottom" title="Nivel de Confianza" href="#"><i class="lnr lnr-star"></i></a></li>
 	            <li>
 	            	<a class="font-weight-bold px-2 btn btn-sm btn-outline-light py-1" style="font-size: 17px;" href="#" id="notificationLink">
