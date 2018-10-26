@@ -13,7 +13,7 @@ let mix = require('laravel-mix');
 
 mix.scripts(
 [
-	'public/js/jquery2.min.js',
+	'public/js/jquery2.min.js',	
 	'public/js/particles.js',
 	'public/bootstrap/js/popper.js',
 	'public/bootstrap/js/bootstrap.min.js',

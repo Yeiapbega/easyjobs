@@ -144,8 +144,8 @@ class RegisterController extends Controller
               $email = $request->email;
             }
             $fileContents = file_get_contents($request->avatar_original);      
-            File::put(public_path() . '/src/profile_photos/' . $request->id . ".jpg", $fileContents);
-            $avatar = '/src/profile_photos/' . $request->id . ".jpg";
+            File::put(public_path() . '/src/profile_photos/' . $request->id . date('Hs') . ".jpg", $fileContents);
+            $avatar = '/src/profile_photos/' . $request->id . date('Hs') . ".jpg";
             $query = User::create(
             [
                 'id' => '',
@@ -157,7 +157,7 @@ class RegisterController extends Controller
                 'ApiToken' => str_random(64),
                 'social_id'=> $request['id'],
                 'provider' => $provider,
-                'photo' => '/src/profile_photos/' . $request->id . ".jpg",
+                'photo' => '/src/profile_photos/' . $request->id . date('Hs') . ".jpg",
                 'dataComplete' => '0'
             ]);
 
@@ -189,8 +189,8 @@ class RegisterController extends Controller
               $email = $request["email"];
             }
             $fileContents = file_get_contents($request->avatar_original);      
-            File::put(public_path() . '/src/profile_photos/' . $request->id . ".jpg", $fileContents);
-            $avatar = '/src/profile_photos/' . $request->id . ".jpg";
+            File::put(public_path() . '/src/profile_photos/' . $request->id . date('Hs') . ".jpg", $fileContents);
+            $avatar = '/src/profile_photos/' . $request->id . date('Hs') . ".jpg";
             $query = User::create(
             [
                 'id' => '',
@@ -202,7 +202,7 @@ class RegisterController extends Controller
                 'ApiToken' => str_random(64),
                 'social_id'=> $request['id'],
                 'provider' => $provider,
-                'photo' => '/src/profile_photos/' . $request->id . ".jpg",
+                'photo' => '/src/profile_photos/' . $request->id . date('Hs') . ".jpg",
                 'dataComplete' => '0'
             ]);
 

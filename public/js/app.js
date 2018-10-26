@@ -1756,6 +1756,41 @@ $(window).scroll(function()
     }
     lastScrollTop = windowHeight;
 })
+
+$('input[name=searchEasy]').keyup(function()
+{
+    // $('.wrapper_search > div.s > i.icon-s').attr('hidden', true)
+    if($(this).val() != '')
+    {
+        $('.wrapper_search > div > div.s > i.icon-c').attr('hidden', false)
+    }
+    else
+    {
+        $('.wrapper_search > div > div.s > i.icon-c').attr('hidden', true)
+    }
+})
+
+$('.wrapper_search > div > div.s > i.icon-c').click(function()
+{
+    $(this).attr('hidden', true)
+    $('input[name=searchEasy]').val('')     
+})
+
+// var colorThief = new ColorThief();
+// sourceImage = $('.profile-img').get(0)
+// let c = colorThief.getPalette(sourceImage,2);
+// console.table(c)
+// let text = '';
+// $('.back_color > div').each(function(key, value) 
+// {
+//   $(this).css({'background':'rgb('+c[key]+')'})
+// }); 
+// console.log(text)
+// $.each(c, function(key, value) 
+// {
+//   text += '<li>'+value+'</li>'
+// }); 
+// $('.back_color').css({'background':'rgb('+c['0']+','+c['1']+','+c['2']+')'})
 $('.select').niceSelect();
 $.ajaxSetup(
 {

@@ -8,8 +8,8 @@
 }
 </style>
 @endsection
-@include('includes.menu')
 @section('content')
+@include('includes.menu')
 <div class="section">
     <div class="row row__wrapper mx-0">        
         <div class="col-lg-4 col-xl-4 col-md-6 animated fadeInLeft col-sm-12 auth__wrapper bg-white px-5 pt-4 pb-3">

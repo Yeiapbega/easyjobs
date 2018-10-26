@@ -1,6 +1,5 @@
 @extends('main')
 @section('title', 'Login')
-@include('includes.menu')
 @section('styles')
 <style type="text/css">
 #main-contain
@@ -10,6 +9,7 @@
 </style>
 @endsection
 @section('content')
+@include('includes.menu')
 <div class="section">
 	<div class="row row__wrapper mx-0">
 		<div class="col-lg-4 animated fadeInLeft col-md-6 col-sm-12 auth__wrapper bg-white px-5 py-5">
@@ -95,7 +95,7 @@
    <script type="text/javascript">
         swal(
         {
-          title: 'Info [LOGIN_ACCESS_LOST]',
+          title: '',
           type: 'info',
           position: 'center',
           animation: false,
