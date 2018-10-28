@@ -368,4 +368,10 @@ class RegisterController extends Controller
         // return response()->json([$request], 200);
       }
     }
+
+    public function hola($id, $di)
+    {
+      $suma = $id + $di;
+      return $suma;
+    }
 }

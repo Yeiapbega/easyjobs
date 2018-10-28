@@ -43,10 +43,13 @@ Route::group(['middleware' => 'auth'], function()
 		   return view('layouts.company.home');
 		})->name('homeC');
 
-		Route::get('/register', function ()
+		Route::get('/register/job', function ()
 		{
 		   return view('layouts.company.register');
 		})->name('registerC');
+
+		Route::post('/register/job', 'JobsController@ShowRegisterJobForm')->middleware('RequestValidation');
+		Route::post('/update/user', 'UserController@ShowUpdateForm')->middleware('RequestValidation');
 	});
 
 	Route::group(['middleware' => ['IsCp'], 'prefix' => 'cp'], function()

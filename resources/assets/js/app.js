@@ -167,6 +167,7 @@ $('#fistLoginSocial').modal(
     backdrop: 'static',
     focus: true
 })
+
 $('.input-easy').focus(function()
 {    
     let icon = $(this).parent().find('.input-icon-easy');    
@@ -207,22 +208,6 @@ $('input[name=searchEasy]').keyup(function()
 
 $('.wrapper_search > div > div.s > i.icon-c').click(function()
 {
-    $(this).attr('hidden', true)
+    $(this).attr('hidden', false)
     $('input[name=searchEasy]').val('')     
 })
-
-// var colorThief = new ColorThief();
-// sourceImage = $('.profile-img').get(0)
-// let c = colorThief.getPalette(sourceImage,2);
-// console.table(c)
-// let text = '';
-// $('.back_color > div').each(function(key, value) 
-// {
-//   $(this).css({'background':'rgb('+c[key]+')'})
-// }); 
-// console.log(text)
-// $.each(c, function(key, value) 
-// {
-//   text += '<li>'+value+'</li>'
-// }); 
-// $('.back_color').css({'background':'rgb('+c['0']+','+c['1']+','+c['2']+')'})

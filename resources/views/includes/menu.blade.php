@@ -1,6 +1,6 @@
 {{-- {!! Auth::user()->toJSON(JSON_PRETTY_PRINT) !!} --}}
 <button type="button" id="mobile-nav-toggle"><i class="lnr lnr-menu"></i></button>
-<header id="header" class="@if(url()->current() != config('app.url')) {!! 'bg-dark' !!} @endif">
+<header id="header" class="@if( (url()->current() != config('app.url')) && (url()->current() != config('app.url').'/login') && (url()->current() != config('app.url').'/register') ) {!! 'bg-dark' !!} @endif">
     <div class="container container-nav">
     	<div class="row align-items-center justify-content-between d-flex">
 	      <div id="logo">
@@ -41,9 +41,9 @@
 						<p class="mb-0 w-100 new-noti px-3 quick py-1">
 							NEW
 						</p>
-						<div id="notificationsBody" class="px-0 py-2">
+						<div id="notificationsBody" class="px-0 pb-2 pt-0">
 							<div class="row mx-0">								
-								<div class="cont col-12 row mx-0 px-3 pt-1 notification hoverable">
+								<div class="cont col-12 row mx-0 px-3 pt-1 notification">
 									<div class="col-2 px-0">									
 										<img src="{{ asset(Auth::user()->photo) }}" class="img-thumbnail img-fluid rounded-circle float-left">		
 									</div>
@@ -66,7 +66,7 @@
 					</div>
 	            </li>
 	            @if(!str_contains(url()->current(), '/home'))
-	          	<li><a class="dashboard font-weight-bold px-2 btn btn-sm btn-outline-light py-1" style="font-size: 17px;" data-toggle="tooltip" data-placement="bottom" title="Panel Principal" href="{{ session()->get('url') }}"><i class="lnr lnr-home"></i></a></li>	 
+	          	<li><a class="dashboard font-weight-bold px-2 btn btn-sm btn-outline-light py-1" style="font-size: 17px;" data-toggle="tooltip" data-placement="bottom" title="Panel Principal" href="{{ asset(session()->get("url")) }}"><i class="lnr lnr-home"></i></a></li>	 
 	          	@endif
 	          	<li><a class="font-weight-bold px-2 btn btn-sm btn-outline-light py-1" style="font-size: 17px;" data-toggle="tooltip" data-placement="bottom" title="Salir" href="{{ url('/logout') }}"><i class="lnr lnr-exit"></i></a></li>         	
 	          @endif				          				          

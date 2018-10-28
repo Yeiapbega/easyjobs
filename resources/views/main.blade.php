@@ -38,6 +38,7 @@
     <div id="main-contain">
         @yield('content')
     </div>
+    @yield('modal')
     @if(Auth::check())
         @if(App\Http\Controllers\Auth\RegisterController::isComplete(Auth::user()->id))
             <div class="modal fade" id="fistLoginSocial" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

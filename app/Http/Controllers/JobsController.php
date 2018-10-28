@@ -10,7 +10,8 @@ class JobsController extends Controller
 {
   public function ShowRegisterJobForm()
   {
-    return view('layouts.company.register');
+    return response()->json(   
+        array('status' => 'ok','form' => view('layouts.company.register')->render()), 200);
   }
 
   public function RegisterJobForm(Request $ajax)

@@ -3668,7 +3668,8 @@ z-index: -1;
 display: none; 
 border-radius: 5px;
 }
-#notificationContainer:before {
+#notificationContainer:before 
+{
 content: '';
 display: block;
 position: absolute;
@@ -3680,6 +3681,19 @@ border-color: transparent transparent #343a40;
 margin-top: -20px;
 margin-left: 178px;
 }
+
+@media screen and (max-width: 768px)
+{
+  #notificationContainer 
+  {
+  margin-left: -180px;
+  }
+  #notificationContainer:before
+  {
+    margin-left: 187px;
+  }
+}
+
 #notificationTitle
 {
 font-weight: bold;
@@ -3872,9 +3886,9 @@ border-bottom-right-radius: 5px !important;
   position: absolute !important;
 }*/
 
-.back_color > div.col-4
+.back_color > div > div.col-4
 {
-  height: 20vh;
+  height: 23vh;
 }
 
 .div-img-user
@@ -3904,6 +3918,18 @@ border-bottom-right-radius: 5px !important;
   }
 }
 
+@media screen and (max-height: 600px)
+{
+  .profile-img
+  {
+    width: 22vh;
+  }
+  .div-img-user
+  {
+    top: 10vh;
+  }
+}
+
 input[name=searchEasy]
 {
   width: 100%;
@@ -3925,7 +3951,7 @@ input[name=searchEasy]
 {
   font-size: 20px;
   position: absolute;
-  right: 10px;
+  right: 20px;
   cursor: pointer;
   background: none;  
   display: flex;
@@ -3991,7 +4017,7 @@ input[name=searchEasy]:focus
     margin-top:10px;
 }
 
-.middle {
+.statics .middle {
     margin-top:10px;
     float: left;
     width: 70%;
@@ -4019,7 +4045,7 @@ input[name=searchEasy]:focus
 
 /* Responsive layout - make the columns stack on top of each other instead of next to each other */
 @media (max-width: 400px) {
-    .side, .middle {
+    .side, .statics .middle {
         width: 100%;
     }
     .right {
@@ -4037,7 +4063,7 @@ input[name=searchEasy]:focus
 .controls-profile:hover
 {
   cursor: pointer;
-  background: #d0f8f861;
+  /*background: #d0f8f861;*/
   border-color: rgb(100,100,110) !important;
   transform: scale(1.05);
 }
@@ -4053,9 +4079,85 @@ input[name=searchEasy]:focus
   cursor: help;  
 }
 
+.change-photo
+{
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  color: #fff;  
+  height: 0px;
+  display: flex;
+  justify-content: center;
+  /*overflow: hidden;*/
+  opacity: 1;
+  align-items: center;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;  
+}
 
+.p-img:hover .change-photo
+{
+  opacity: 1;
+  height: 10px;
+}
 
+.p-img
+{
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  margin-bottom: 25px;
+}
 
+.change-photo i
+{
+  background: #35bfc9;
+  font-size: 1em;
+  border: solid #fff 4px;
+  cursor: pointer;
+  box-shadow: 0px 0px 40px 0px rgba(132, 144, 255, 0.2);
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove
+{
+  font-size: 20px;
+  position: relative;
+  top: 0px;
+  color: #000 !important;
+  margin-right: 5px !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice 
+{
+  background-color: #35bfc9 !important;
+  padding: 0px 8px !important;
+  border: 1px solid #2a959d !important;
+  border-radius: 10em !important;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); 
+  color: #fff !important;
+  font-weight: bold !important;
+}
+
+.select2-container .select2-selection--multiple .select2-selection__rendered
+{
+  overflow: initial !important;
+}
+
+.morphing-button-profile
+{
+  width: 100vw;
+  position: fixed;
+  height: 100vh;
+  padding-top: 60px !important;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
 
 
 
@@ -4077,7 +4179,7 @@ input[name=searchEasy]:focus
     background-size: cover;
     background-attachment: fixed;
 }
-#header {
+/*#header {
     padding: 14px 0;
     position: fixed;
     left: 0;
@@ -4085,7 +4187,7 @@ input[name=searchEasy]:focus
     right: 0;
     transition: all 0.5s;
     z-index: 997;
-}
+}*/
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
@@ -4103,7 +4205,7 @@ input[name=searchEasy]:focus
   top: 0;
   right: 0;
   transition: all 0.5s;
-  z-index: 997;
+  z-index: 1000;
 }
 
 #header.header-scrolled {
@@ -4482,7 +4584,17 @@ input[name=searchEasy]:focus
 {
   height: 65px;
   cursor: pointer;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
 }
+
+.notification:hover
+{
+  background: #f1f1f1;
+}
+
 
 /*a
 {

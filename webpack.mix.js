@@ -21,7 +21,8 @@ mix.scripts(
 	'public/js/carrousel.js',
 	'public/js/jquery.nice-select.min.js',	
 	'resources/assets/js/app.js',
-	'resources/assets/js/auth/auth.js'
+	'resources/assets/js/auth/auth.js',
+	'resources/assets/js/company/app.js'
 ], 'public/js/app.js').version();
 
 mix.styles(
