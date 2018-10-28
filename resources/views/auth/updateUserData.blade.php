@@ -52,13 +52,3 @@
       </div>
     </form>
 </div>
-<script type="text/javascript">
-$('.input-easy').focus(function()
-{    
-    let icon = $(this).parent().find('.input-icon-easy');    
-    icon.css({'border-color':'#80bdff'}).find('i').css({'font-weight':'bold', 'color':'#80bdff'})
-}).focusout(function()
-{
-    let icon = $(this).parent().find('.input-icon-easy');
-    icon.css({'border-color':'#ced4da'}).find('i').css({'font-weight':'normal', 'color':'#495057'})    
-})

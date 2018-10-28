@@ -332,26 +332,7 @@
 				Categorias
 				</h5>
 				<ul class="list-group categoy-list">
-				  <a href="#category" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-				    Desarrollo
-				    <span class="">14</span>
-				  </a>
-				  <a href="#category" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-				    Tecnologia
-				    <span class="">2</span>
-				  </a>
-				  <a href="#category" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-				    Diseño
-				    <span class="">1</span>
-				  </a>
-				  <a href="#category" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-				    Electronica
-				    <span class="">1</span>
-				  </a>
-				  <a href="#category" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-				    Seguridad
-				    <span class="">1</span>
-				  </a>
+				  {!! App\Http\Controllers\TagController::viewTags() !!}
 				</ul>
 			</div>
 			<div class="bg-light py-4 px-4">

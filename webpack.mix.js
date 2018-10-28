@@ -22,6 +22,8 @@ mix.scripts(
 	'public/js/jquery.nice-select.min.js',	
 	'resources/assets/js/app.js',
 	'resources/assets/js/auth/auth.js',
+	'public/js/select2.min.js',
+	'public/js/es.js',
 	'resources/assets/js/company/app.js'
 ], 'public/js/app.js').version();
 
@@ -36,4 +38,5 @@ mix.styles(
    'public/css/owl.carousel.css',
    'resources/assets/css/app.css',   
    'resources/assets/css/auth.css',
+   'public/css/select2.min.css',
 ], 'public/css/app.css').version();

@@ -724,18 +724,38 @@ input[name=searchEasy]:focus
   overflow: initial !important;
 }
 
-.morphing-button-profile
+.loadModal.active
 {
-  width: 100vw;
-  position: fixed;
-  height: 100vh;
-  padding-top: 60px !important;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
+  top: 80px;   
 }
+
+.loadModal
+{
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s; 
+  top: -40px;
+  z-index: 1001;
+}
+
+.loadModal div
+{
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+}
+
+.loadModal div > i
+{
+  font-size: 25px;
+}
+
+
+
+
+
+
 
 
 
@@ -1219,4 +1239,40 @@ a:hover
 .single-jcat img
 {
   width: 80px;
+}
+
+
+
+.input-number,
+.input-number-decrement,
+.input-number-increment {
+  border: 1px solid #ccc;
+  height: 40px;
+  user-select: none;
+}
+
+.input-number-decrement,
+.input-number-increment {
+  display: inline-block;
+  width: 45px;
+  line-height: 38px;
+  background: #fff;
+  color: #444;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+.input-number-decrement:active,
+.input-number-increment:active {
+  background: #ddd;
+}
+
+.input-number-decrement {
+  border-right: none;
+  border-radius: .25em 0 0 .25em;
+}
+
+.input-number-increment {
+  border-left: none;
+  border-radius: 0 .25em .25em 0;
 }

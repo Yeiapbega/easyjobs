@@ -35,6 +35,11 @@
         @yield('styles')
     </head>
     <body class="animated fadeIn">
+    <div class="loadModal position-fixed w-100 d-flex justify-content-center align-items-center">
+        <div class="position-absolute mx-auto px-3 z-depth-1-2 py-3 bg-white d-flex justify-content-center align-items-center">
+            <i class="fa fa-spinner fa-pulse text-dark"></i>
+        </div>
+    </div>
     <div id="main-contain">
         @yield('content')
     </div>
