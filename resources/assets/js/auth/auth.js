@@ -5,6 +5,18 @@ $.ajaxSetup(
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
+
+function showErrors(data)
+{
+  var text = '<ul class="mb-0 px-3 mx-0">';            
+  $.each(data, function( key, value ) 
+  {
+    text += '<li>'+value+'</li>'
+  });                
+  text += '</ul>'
+  return text;
+}
+
 $("button[name=submitAuth]").click(function(e)
 {
 
@@ -22,6 +34,7 @@ $("button[name=submitAuth]").click(function(e)
         },
         beforeSend: function()
         {
+            loading()
             $(".input-easy").attr('disabled', true)
             loadIcon('submitAuth', 'sign-in')
             $("input[name='dni']").removeClass('is-invalid')
@@ -32,6 +45,7 @@ $("button[name=submitAuth]").click(function(e)
         error: function(jqXHR, textStatus, errorThrown)
         {
             // Handle errors here
+            notLoading()
             notLoadIcon('submitAuth', 'sign-in')
             $(".input-easy").attr('disabled', false)
             $('button[name=submitAuth]').attr('disabled', false)
@@ -41,6 +55,7 @@ $("button[name=submitAuth]").click(function(e)
     })
     .done(function(data)
     {
+        notLoading()
         $('button[name=submitAuth]').attr('disabled', false)
         $("errors > div.card").removeClass('bg-info').addClass('bg-danger')
         $(".input-easy").attr('disabled', true)
@@ -123,6 +138,7 @@ $('button[name="submReg"]').click(function(e)
       },
       beforeSend: function()
       {
+          loading()
           $(".input-easy").attr('disabled', true)
           $("select[name='rol']").parent().find('.nice-select').addClass('disabled')
           loadIcon('submReg', 'paper-plane')
@@ -134,6 +150,7 @@ $('button[name="submReg"]').click(function(e)
       error: function(jqXHR, textStatus, errorThrown)
       {
           // Handle errors here
+          notLoading()
           notLoadIcon('submReg', 'paper-plane')
           $(".input-easy").attr('disabled', false)
           $("select[name='rol']").parent().find('.nice-select').removeClass('disabled')
@@ -149,13 +166,7 @@ $('button[name="submReg"]').click(function(e)
     if(data.errors)
     {
         $('.auth__wrapper').animate({ scrollTop: ($('errors').offset().top)}, 500, 'linear');        
-        var text = '<ul class="mb-0 px-3 mx-0">';            
-        $.each(data.errors, function( key, value ) 
-        {
-          text += '<li>'+value+'</li>'
-        });        
-        $(".input-easy").attr('disabled', false)
-        text += '</ul>'
+        var text = showErrors(data.errors)
         $("errors > div.card > .card-body").html(text).parent().parent().addClass('animated fadeIn')
         $('errors').show()
         $('errors > div.card').removeClass('bg-success bg-info').addClass('animated fadeIn bg-danger').show()
@@ -183,11 +194,6 @@ $('button[name="submReg"]').click(function(e)
   })
 });
 
-$('errors').click(function()
-{
-  $(this).hide();
-})
-
 let width = $(window).width();
 if(width <= 330)
 {
@@ -196,6 +202,7 @@ if(width <= 330)
 
 $('button.btn_handler').click(function()
 {
+  loading()
   let h = $(this).attr('handler');
   $('button.btn_handler, button.btn_handlerC').addClass('disabled');  
   $(".input-easy").attr('disabled', true)
@@ -204,6 +211,7 @@ $('button.btn_handler').click(function()
 
 $('button.btn_handlerC').click(function()
 {
+  loading()
   let h = $(this).attr('handler');
   $('button.btn_handler, button.btn_handlerC').addClass('disabled');  
   $(".input-easy").attr('disabled', true)
@@ -227,6 +235,7 @@ $("button[name=firstSocialLogin]").click(function()
       },
       beforeSend: function()
       {
+          loading()
           $("select[name='rol']").parent().find('.nice-select').addClass('disabled')
           $(".input-easy").attr('disabled', true)
           loadIcon('firstSocialLogin', 'check-circle')          
@@ -234,6 +243,7 @@ $("button[name=firstSocialLogin]").click(function()
       error: function(jqXHR, textStatus, errorThrown)
       {
           // Handle errors here
+          notLoading()
           notLoadIcon('firstSocialLogin', 'check-circle')
           $("select[name='rol']").parent().find('.nice-select').removeClass('disabled')
           $(".input-easy").attr('disabled', false)
@@ -244,29 +254,26 @@ $("button[name=firstSocialLogin]").click(function()
   })
   .done(function(data)
   {
+    notLoading()
     notLoadIcon('firstSocialLogin', 'check-circle')
     $(".input-easy").attr('disabled', false)
     $("select[name='rol']").parent().find('.nice-select').removeClass('disabled')    
     if(data.errors)
-    {            
-        var text = '<ul class="mb-0 px-3 mx-0">';            
-        $.each(data.errors, function( key, value ) 
-        {
-          text += '<li>'+value+'</li>'
-        });                
-        text += '</ul>'
-        $("#fistLoginSocial .modal-body errors > div.card > .card-body").html(text).parent().parent().addClass('animated fadeIn')
-        $('#fistLoginSocial .modal-body errors').show()
-        $('#fistLoginSocial .modal-body errors > div.card').removeClass('bg-success bg-info').addClass('animated fadeIn bg-danger').show()
+    {           
+        ///////// NUEVA FUNCION ERRORES
+        var text = showErrors(data.errors)
+        $("#firstLoginSocial .modal-body errors > div.card > .card-body").html(text).parent().parent().addClass('animated fadeIn')
+        $('#firstLoginSocial .modal-body errors').show()
+        $('#firstLoginSocial .modal-body errors > div.card').removeClass('bg-success bg-info').addClass('animated fadeIn bg-danger').show()
     }
     if(data.type == "check")
     {
-        $("#fistLoginSocial .modal-body  errors > div.card > .card-title").html('<i class="fa fa-check"></i> Info')
-        $("#fistLoginSocial .modal-body  errors > div.card").removeClass('bg-danger bg-info').addClass('bg-success')
-        $("#fistLoginSocial .modal-body  errors > div.card > .card-body").html(data.message).parent().addClass('animated fadeIn')                
-        $('#fistLoginSocial .modal-body errors').show()
-        $('#fistLoginSocial .modal-body errors > div.card').addClass('animated fadeIn').show()
-        $('#fistLoginSocial').modal('hide');  
+        $("#firstLoginSocial .modal-body  errors > div.card > .card-title").html('<i class="fa fa-check"></i> Info')
+        $("#firstLoginSocial .modal-body  errors > div.card").removeClass('bg-danger bg-info').addClass('bg-success')
+        $("#firstLoginSocial .modal-body  errors > div.card > .card-body").html(data.message).parent().addClass('animated fadeIn')                
+        $('#firstLoginSocial .modal-body errors').show()
+        $('#firstLoginSocial .modal-body errors > div.card').addClass('animated fadeIn').show()
+        $('#firstLoginSocial').modal('hide');  
         $('.dashboard').attr('href', data.url)      
     }
   })  

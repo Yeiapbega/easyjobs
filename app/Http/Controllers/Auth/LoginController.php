@@ -62,7 +62,7 @@ class LoginController extends Controller
         }
         else
         {
-          return redirect('/login')
+          return redirect('/register')
                     ->withErrors(['errorLogin' => 'Debes registrarte primero']);
         }
     }

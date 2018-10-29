@@ -12,7 +12,7 @@
 @include('includes.menu')
 <div class="section">
 	<div class="row row__wrapper mx-0">
-		<div class="col-lg-4 animated fadeInLeft col-md-6 col-sm-12 auth__wrapper bg-white px-5 py-5">
+		<div class="col-lg-5 animated fadeInLeft col-md-6 col-sm-12 auth__wrapper bg-white px-5 py-5">
 			<div class="middle">
 				<p class="text-center position-relative mb-0">
 					<img src="{{ asset('src/logo/logoShort.png') }}" class="logoShort">
@@ -91,18 +91,4 @@
     $("body").addClass("my-0 mx-0");
     particlesJS.load('body','{{ asset('js/particles.cfg.json') }}');    
 </script>
-@if($errors->has('errorLogin')) 
-   <script type="text/javascript">
-        swal(
-        {
-          title: '',
-          type: 'info',
-          position: 'center',
-          animation: false,
-          customClass: 'animated fadeIn',
-          text: '{{ $errors->first('errorLogin') }}',
-          confirmButtonText: 'Aceptar',  
-        })
-   </script>       
-@endif
 @endsection

@@ -12,7 +12,7 @@
 @include('includes.menu')
 <div class="section">
     <div class="row row__wrapper mx-0">        
-        <div class="col-lg-4 col-xl-4 col-md-6 animated fadeInLeft col-sm-12 auth__wrapper bg-white px-5 pt-4 pb-3">
+        <div class="col-lg-5 col-xl-4 col-md-6 animated fadeInLeft col-sm-12 auth__wrapper bg-white px-5 pt-4 pb-3">
             <errors class="quick" style="display: none;zoom: .75;cursor: pointer;">
                 <div class="card py-2 px-3 bg-danger text-white mb-3 mt-2">
                     <h5 class="mb-1 card-title relaway"><i class="fa fa-exclamation-triangle"></i> 
@@ -127,4 +127,18 @@
     $("body").addClass("my-0 mx-0");
     particlesJS.load('body','{{ asset('js/particles.cfg.json') }}');    
 </script>
+@if($errors->has('errorLogin')) 
+   <script type="text/javascript">
+        swal(
+        {
+          title: '',
+          type: 'info',
+          position: 'center',
+          animation: false,
+          customClass: 'animated fadeIn',
+          text: '{{ $errors->first('errorLogin') }}',
+          confirmButtonText: 'Aceptar',  
+        })
+   </script>       
+@endif
 @endsection

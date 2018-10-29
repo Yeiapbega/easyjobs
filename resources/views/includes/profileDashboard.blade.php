@@ -37,11 +37,12 @@
 					<div class="col-lg-2 col-md-3 d-flex justify-content-center col-sm-12 px-0">
 						<div>
 							<p class="text-center position-relative p-img">
-								<img src="{{ Auth::user()->photo }}" class="img-fluid img-thumbnail profile-img z-depth-1-2">
+								<img src="{{ Auth::user()->photo }}" id="profile-img" class="img-fluid img-thumbnail profile-img z-depth-1-2">
 								<span class="w-100 py-2 px-2 position-absolute change-photo">
 									<i class="lnr lnr-camera bold py-3 px-3 rounded-circle"></i>
 								</span>
 							</p>
+							<input type="file" name="photoUpdate" id="photoUserUpdate" accept=".gif, .jpg, .png" hidden/>
 							<p class="mt-2 nira bold text-center">{{ Auth::user()->fsname }}</p>
 						</div>
 					</div>	
@@ -182,19 +183,8 @@
           </span>
         </button>
       </div>
-      <div class="modal-body pt-4">        
-        <errors class="quick" style="display: none;zoom: .75;cursor: pointer;">
-            <div class="card py-2 px-3 bg-danger text-white mb-3 mt-2">
-                <h5 class="mb-1 card-title relaway"><i class="fa fa-exclamation-triangle"></i>
-                    Errores
-                    <i class="fa fa-times close-errors float-right"></i>
-                </h5>
-                <div class="card-body px-1 py-1">
-
-                </div>
-            </div>
-        </errors>
-       
+      <div class="modal-body pt-4">               
+       	<div class="data"></div>
       </div>
       <div class="modal-footer">
       	<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar <i class="fa fa-times-circle"></i></button>
@@ -214,7 +204,7 @@
 var colorThief = new ColorThief();
 sourceImage = $('.profile-img').get(0)
 let c = colorThief.getPalette(sourceImage,5);
-console.table(c)
+// console.table(c)
 let text = '';
 $('.back_color > div > div.col-4').each(function(key, value) 
 {

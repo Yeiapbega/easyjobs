@@ -24,7 +24,7 @@ class CreateJobsTable extends Migration
             $table->integer('pay');
             $table->dateTime('publicate_date');
             $table->dateTime('finish_date');
-            $table->string('state', 2);
+            $table->string('state', 3);
             $table->string('offerter', 30);
             $table->foreign('offerter')->references('dni')->on('auth')->onDelete('cascade')->onUpdate('cascade');
             //$table->timestamps();

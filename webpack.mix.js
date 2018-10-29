@@ -20,11 +20,13 @@ mix.scripts(
 	'public/js/sweetAlert.js',
 	'public/js/carrousel.js',
 	'public/js/jquery.nice-select.min.js',	
+	'public/js/cropper/cropper.min.js',
 	'resources/assets/js/app.js',
 	'resources/assets/js/auth/auth.js',
 	'public/js/select2.min.js',
 	'public/js/es.js',
-	'resources/assets/js/company/app.js'
+	'resources/assets/js/company/app.js',
+	'public/js/ckeditor.js',	
 ], 'public/js/app.js').version();
 
 mix.styles(
@@ -39,4 +41,5 @@ mix.styles(
    'resources/assets/css/app.css',   
    'resources/assets/css/auth.css',
    'public/css/select2.min.css',
+   'public/js/cropper/cropper.min.css',
 ], 'public/css/app.css').version();

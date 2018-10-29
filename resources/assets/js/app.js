@@ -83,6 +83,21 @@ function notLoadIcon(nameB, nameI)
     i.addClass("fa fa-"+nameI);
 }
 
+$('errors').click(function()
+{
+  $(this).hide();
+})
+
+function loading()
+{
+  $('.loadModal').addClass('active')
+}
+
+function notLoading()
+{
+  $('.loadModal').removeClass('active')
+}
+
 $('.input-easy').focus(function()
 {    
     let icon = $(this).parent().find('.input-icon-easy');    
@@ -160,10 +175,10 @@ $("#notificationContainer").click(function()
     return false;
 });
 
-$('#fistLoginSocial').modal(
+$('#firstLoginSocial').modal(
 {
     keyboard: false,
-    show: true,
+    show: false,
     backdrop: 'static',
     focus: true
 })

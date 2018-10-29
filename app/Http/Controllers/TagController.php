@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tag;
+use App\Models\subTag;
 use Illuminate\Database\Eloquent\Model;
 
 class TagController extends Controller
@@ -14,10 +15,13 @@ class TagController extends Controller
     	$table = Tag::all();
     	foreach($table as $key => $value)
     	{
-    		$text .= '<optgroup label="'.$value->name.'">
-	                </optgroup>';
-    	}
-    	
+    		$text .= '<optgroup label="'.$value->name.'">';
+            foreach(subTag::all()->where('tag',$value->id) as $key => $val)
+            {
+            	$text .= '<option value="'.$val->id.'">'.$val->name.'</option>';
+            }
+            $text .= '</optgroup>';
+    	}    	
     	$text .= '</select>';
     	return $text;
     }

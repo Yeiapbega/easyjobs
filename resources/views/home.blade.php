@@ -340,7 +340,7 @@
 				Top 5 Usuarios Destacados
 				</h5>
 				<div class="carusel-users-top mt-3">
-					<div class="card top-user border-0">						
+					<div class="card top-user border-0 px-2 py-2">						
 						<div style="position: relative;">
 							<img src="{{ asset(Auth::user()->photo) }}" class="userImgTop img-fluid img-thumbnail rounded-circle z-depth-1-2">
 							<img class="card-img-top" src="{{ asset('src/textures/backs/back (2).jpg') }}" alt="Card image cap">

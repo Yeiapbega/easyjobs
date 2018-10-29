@@ -46,7 +46,7 @@
     @yield('modal')
     @if(Auth::check())
         @if(App\Http\Controllers\Auth\RegisterController::isComplete(Auth::user()->id))
-            <div class="modal fade" id="fistLoginSocial" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal fade" id="firstLoginSocial" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
               <div class="modal-dialog" role="document" style="max-width: 650px;">
                 <div class="modal-content rounded-0">
                   <div class="modal-header">
@@ -123,7 +123,12 @@
     @endif
     <script type="text/javascript" src="{{ asset('js/socket.io.js') }}"></script>
     <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
-    @yield('script')
+    @yield('script')    
+    @if( (Auth::check()) && App\Http\Controllers\Auth\RegisterController::isComplete(Auth::user()->id) )
+        <script type="text/javascript">
+            viewModal('firstLoginSocial')
+        </script>
+    @endif
     @yield('scriptShow')
 </body>
 </html>

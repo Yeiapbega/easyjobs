@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class tagJob extends Model
 {
-  protected $table = "tagsjob";
+  protected $table = "tag_jobs";
   public $timestamps = false;
 
   protected $fillable = [

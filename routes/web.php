@@ -34,6 +34,12 @@ Route::group(['middleware' => 'auth'], function()
 		{
 		   return view('layouts.person.home');
 		})->middleware('RequestValidation');
+
+		Route::post('/register/job', 'JobsController@ShowRegisterJobForm')->middleware('RequestValidation');
+		Route::post('/update/user', 'UserController@ShowUpdateForm')->middleware('RequestValidation');
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		Route::post('/register/job/new', 'JobsController@RegisterJobForm')->middleware('RequestValidation');
+		Route::post('/update/user/new', 'UserController@UpdateForm')->middleware('RequestValidation');
 	});
 
 	Route::group(['middleware' => ['IsCompany'], 'prefix' => 'c'], function()
@@ -50,6 +56,9 @@ Route::group(['middleware' => 'auth'], function()
 
 		Route::post('/register/job', 'JobsController@ShowRegisterJobForm')->middleware('RequestValidation');
 		Route::post('/update/user', 'UserController@ShowUpdateForm')->middleware('RequestValidation');
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		Route::post('/register/job/new', 'JobsController@RegisterJobForm')->middleware('RequestValidation');
+		Route::post('/update/user/new', 'UserController@UpdateForm')->middleware('RequestValidation');
 	});
 
 	Route::group(['middleware' => ['IsCp'], 'prefix' => 'cp'], function()

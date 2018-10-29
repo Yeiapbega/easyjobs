@@ -14,5 +14,6 @@ class DatabaseSeeder extends Seeder
         $this->call(rolSeeder::class);
         $this->call(authSeeder::class);
         $this->call(tagSeeder::class);
+        $this->call(tsubTagSedder::class);
     }
 }
