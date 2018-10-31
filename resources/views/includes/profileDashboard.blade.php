@@ -41,8 +41,7 @@
 								<span class="w-100 py-2 px-2 position-absolute change-photo">
 									<i class="lnr lnr-camera bold py-3 px-3 rounded-circle"></i>
 								</span>
-							</p>
-							<input type="file" name="photoUpdate" id="photoUserUpdate" accept=".gif, .jpg, .png" hidden/>
+							</p>							
 							<p class="mt-2 nira bold text-center">{{ Auth::user()->fsname }}</p>
 						</div>
 					</div>	
@@ -189,6 +188,37 @@
       <div class="modal-footer">
       	<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar <i class="fa fa-times-circle"></i></button>
         <button type="button" name="modalProfileButton" class="btn btn-info">Guardar <i class="fa fa-check-circle"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog z-depth-1-2" role="document">
+    <div class="modal-content rounded-0">
+      <div class="modal-header rounded-0">
+        <h4 class="nira bold modal-title mb-0 colorT">Cabiar Foto <span class="lnr lnr-camera"></span></h4>
+        <button type="button" class="close pt-4" data-dismiss="modal" aria-label="Close" style="outline:none;">
+          <span aria-hidden="true" class="">
+              <i class="lnr lnr-cross"></i>
+          </span>
+        </button>
+      </div>
+      <div class="modal-body pt-4">           
+      	<div class="col-lg-12 d-flex justify-content-center col-sm-12 px-0">
+			<div>
+				<p class="text-center position-relative p-img">
+					<img src="{{ Auth::user()->photo }}" id="profile-img-modal" class="img-fluid img-thumbnail z-depth-1-2">
+				</p>	
+				<button type="button" name="change-photo-modal" class="btn btn-info">Cambiar <i class="lnr lnr-sync"></i></button>
+				<button type="button" name="cutPhoto" class="btn btn-info">Cortar <i class="lnr lnr-crop"></i></button>						
+			</div>
+		</div>	
+       	<input type="file" name="photoUpdate" id="photoUserUpdate" accept=".gif, .jpg, .png" hidden/>
+      </div>
+      <div class="modal-footer">
+      	<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar <i class="fa fa-times-circle"></i></button>     	
+        <button type="button" name="savePhoto" class="btn btn-info">Guardar <i class="fa fa-check-circle"></i></button>
       </div>
     </div>
   </div>

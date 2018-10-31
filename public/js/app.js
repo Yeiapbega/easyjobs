@@ -2094,7 +2094,7 @@ $('.controls-profile').click(function()
   includesAjaxButtonProfile(u, i, t);
 })
 
-$('#modalProfileButton').modal(
+$('#modalProfileButton, #photoModal').modal(
 {
     keyboard: true,        
     backdrop: 'static',
@@ -2104,11 +2104,13 @@ $('#modalProfileButton').modal(
 
 function viewModal(id)
 {
+  loading()
   $('#main-contain').css({'filter':'blur(3px)'}).addClass('animated fadeIn') 
 
   setTimeout(function(){$('#'+id).modal('show');},1000)
   $('#'+id).on('shown.bs.modal', function (e) 
   {
+    notLoading()
     $('.loadModal').removeClass('active')
   })
 
@@ -2306,60 +2308,108 @@ $('button[name=modalProfileButton]').click(function()
 
 $('span.change-photo').click(function()
 {
-  $('input[type="file"]#photoUserUpdate').click();
+  viewModal('photoModal')
 })
 
-$('input[type="file"]#photoUserUpdate').click(function()
+$('button[name=change-photo-modal]').click(function()
 {
-  var $file = $(this)  
-  $label = $('.profile-img');  
-  $file.on('change', function(event){
-    var fileName = $file.val().split( '\\' ).pop(),
-        tmppath = URL.createObjectURL(event.target.files[0]);
-    //Check successfully selection
-    if( fileName )
-    {
-      $label
-        .attr('src', tmppath)
-      // swal(
-      // {
-      //   type: 'success',
-      //   text: 'si funco we'
-      // })
-      const image = document.getElementById('profile-img');      
-      const cropper = new Cropper(image, 
-      {
-        aspectRatio: 1 / 1,
-        crop(event) 
-        {
+  // let i = photo();
+  photo()
+  // if(true)
+  // {
+  //   alert(true)
+  // }
+})
+// $label
+//     .attr('src', tmppath)
+//     console.log(2)
+//     var image = document.getElementById('profile-img-modal'); 
+//     //Check successfully selection
+//     let cropper = new Cropper(image, 
+//     {
+//       aspectRatio: 1 / 1,
+//       crop(event) 
+//       {
 
+//       }        
+//     });          
+//     // $label
+//     //   .attr('src', tmppath)
+//     // swal(
+//     // {
+//     //   type: 'success',
+//     //   text: 'si funco we'
+//     // })                    
+//     // cropper.destroy();
+//     // $label
+//     //   .attr('src', tmppath) 
+//     // var image = document.getElementById('profile-img-modal');
+//     // 
+//     cropper.replace(tmppath)
+//     cropper.getCroppedCanvas(
+//     {          
+//       fillColor: '#fff',
+//       imageSmoothingEnabled: false,
+//       imageSmoothingQuality: 'high',
+//     });
+//     $('button[name=cutPhoto]').click(function()
+//     {                
+//       // cropper.reset();
+//       var a = cropper.getCroppedCanvas();
+//       var b = a.toDataURL('image/png');        
+//       // $label = $('#profile-img-modal');
+//       // $label
+//       //   .attr('src', b)
+//       // cropper.destroy();  
+//       // cropper.crop();        
+//     }) 
+var i = 0;          
+function photo()
+{        
+  // var preview = document.querySelector('img');
+  // var file    = document.querySelector('input[type=file]').files[0];
+  // var reader  = new FileReader();
+
+  // reader.onloadend = function () {
+  //   preview.src = reader.result;
+  // }
+
+  // if (file) {
+  //   reader.readAsDataURL(file);
+  // } else {
+  //   preview.src = "";
+  // }
+    i++;
+    console.log(1)
+    var $file = $('input[type="file"]#photoUserUpdate')  
+    $label = $('#profile-img-modal');  
+    if(i == 1)
+    {
+      $file.on('change', function(event)
+      {
+        let fileName = $file.val().split( '\\' ).pop(),
+        tmppath = URL.createObjectURL(event.target.files[0]);   
+        $label
+          .attr('src', tmppath)  
+        if( fileName )
+        {
+          console.log(i)
+        }
+        else
+        {
+          swal(
+          {
+            type: 'error',
+            text: 'Error al cambiar imagen, intente nuevamente'
+          })
         }
       });
-      $('body').dblclick(function()
-      {                
-        var a = cropper.getCroppedCanvas();
-        var b = a.toDataURL('image/png')        
-        $label = $('.profile-img');
-        $label
-          .attr('src', b)
-        cropper.destroy();        
-      })
-        cropper.getCroppedCanvas({          
-          fillColor: '#fff',
-          imageSmoothingEnabled: false,
-          imageSmoothingQuality: 'high',
-        });
-    }
-    else
-    {
-      swal(
-      {
-        type: 'error',
-        text: 'Error al cambiar imagen, intente nuevamente'
-      })
-    }
-  });
-});
+      i = 0;  
+    }    
+    $('input[type="file"]#photoUserUpdate').click();    
+}
+
+
 
 
 /*!
